@@ -3,7 +3,8 @@
 Every route the portal server answers. The page talks to the server only through these; build another backend
 that answers them and the page works unchanged.
 
-- **Auth.** After pairing, every request carries `Authorization: Bearer <device token>`. A 401 means "not paired"
+- **Auth.** Pairing (`POST /pair` with a one-time token) sets an HttpOnly cookie; the page sends it with every
+  request (`credentials: 'include'`). Every write also carries the header `x-aide-approve: 1`. A 401 means "not paired"
   and the page shows its pairing screen.
 - **Agents** are addressed by `host` (machine name) and `pane` (the agent's terminal pane id, e.g. `w1:p1`).
 - **Build.** Answers carry `x-aide-build`; when it changes the page offers a reload.

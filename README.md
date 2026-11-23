@@ -50,7 +50,8 @@ The bar at the bottom ("Demo with invented data") is also added for the demo.
 2. Answer the routes in `API.md`. Agents and chat use `GET /api/agents`, `GET /api/agents/messages` and
    `POST /api/agents/send`; the other routes feed the other views. The demo answers `[]` or `{}` for every
    route it has no recording for, and the page still works.
-3. Auth: the page sends `Authorization: Bearer <token>`. A 401 shows the pairing screen.
+3. Auth: pairing (`POST /pair` with a one-time token) sets an HttpOnly cookie, and the page sends it with every request
+   (`credentials: 'include'`). Every write also carries the header `x-aide-approve: 1`. A 401 shows the pairing screen.
 
 The layout in short:
 

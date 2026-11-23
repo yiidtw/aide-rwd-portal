@@ -8,7 +8,7 @@ that answers them and the page works unchanged.
   and the page shows its pairing screen.
 - **Agents** are addressed by `host` (machine name) and `pane` (the agent's terminal pane id, e.g. `w1:p1`).
 - **Build.** Answers carry `x-aide-build`; when it changes the page offers a reload.
-- Query keys and example answers below come from a demo recording with invented data (366 requests);
+- Query keys and example answers below come from a demo recording with invented data (362 requests);
   body keys come from the page's own calls. A route with neither was not exercised by the recording.
 
 | Method | Path | Query keys (seen) | Body keys (page) |
@@ -22,7 +22,9 @@ that answers them and the page works unchanged.
 | GET | `/api/agents` |  |  |
 | GET | `/api/agents/read` | `host` `lines` `pane` |  |
 | POST | `/api/agents/send` |  | `host` `pane` `text` `comment` `comment_host` |
-| POST | `/api/agents/interrupt` |  |  |
+| GET | `/api/agents/start-options` | `host` |  |
+| POST | `/api/agents/start` |  | `host` `backend` `kind` `folder` `name` |
+| POST | `/api/agents/interrupt` |  | `host` `pane` |
 | GET | `/api/agents/messages` | `host` `limit` `pane` `since` |  |
 | GET | `/api/files/list` | `host` `pane` `path` |  |
 | GET | `/api/files/raw` | `host` `pane` `path` |  |
@@ -88,13 +90,13 @@ that answers them and the page works unchanged.
 [
   {
     "age_secs": 1,
-    "created": "2026-11-23T12:46:38.407Z",
+    "created": "2026-11-23T18:46:08.501Z",
     "cwd": "/home/demo/work/web-app",
     "cwd_name": "web-app",
     "gist": "Bash · npm test checkout",
     "hold_left_secs": 86399,
     "host": "studio-mac",
-    "id": "57656a310afa0d5b",
+    "id": "35d4d68799afd22b",
     "input_fp": "4395966a5102d06b",
     "kind": "hook",
     "pane": "w1:p1",
@@ -109,7 +111,7 @@ that answers them and the page works unchanged.
   },
   {
     "age_secs": 1,
-    "created": "2026-11-23T12:46:38.407Z",
+    "created": "2026-11-23T18:46:08.501Z",
     "cwd": "aide-clipper/web-app",
     "cwd_name": "web-app",
     "gist": "aide clipper · upload_file · https://shop-admin.example.com/",
@@ -166,6 +168,44 @@ that answers them and the page works unchanged.
 }
 ```
 
+### `GET /api/agents/start-options`
+
+`GET /api/agents/start-options?host=studio-mac`
+
+```json
+{
+  "backends": [
+    {
+      "id": "aide-pty",
+      "ok": true
+    },
+    {
+      "id": "herdr",
+      "ok": true
+    }
+  ],
+  "default": "aide-pty",
+  "kinds": [
+    "claude",
+    "codex"
+  ],
+  "folders": [
+    {
+      "path": "/home/demo/projects/api",
+      "name": "api"
+    },
+    {
+      "path": "/home/demo/projects/docs",
+      "name": "docs"
+    },
+    {
+      "path": "/home/demo/projects/release",
+      "name": "release"
+    },
+    {
+…
+```
+
 ### `GET /api/agents/messages`
 
 `GET /api/agents/messages?host=studio-mac&pane=w1%3Ap1&limit=120`
@@ -214,28 +254,28 @@ that answers them and the page works unchanged.
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795437998,
+      "mtime": 1795459568,
       "name": "docs",
       "size": 0
     },
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795437998,
+      "mtime": 1795459568,
       "name": "src",
       "size": 0
     },
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795437998,
+      "mtime": 1795459568,
       "name": "wikinote",
       "size": 0
     },
     {
       "dir": false,
       "kind": "md",
-      "mtime": 1795437998,
+      "mtime": 1795459568,
       "name": "README.md",
       "size": 62
     }
@@ -252,7 +292,7 @@ that answers them and the page works unchanged.
   "disks": [],
   "host": "studio-mac",
   "os": "none",
-  "ts": "2026-11-23T12:46:40.927Z"
+  "ts": "2026-11-23T18:46:11.079Z"
 }
 ```
 
@@ -268,7 +308,7 @@ that answers them and the page works unchanged.
     "files": 4,
     "partial": false
   },
-  "ts": "2026-11-23T12:46:40.941585598+00:00",
+  "ts": "2026-11-23T18:46:11.092738578+00:00",
   "windows": {
     "24h": {
       "hooks": [],
@@ -291,7 +331,7 @@ that answers them and the page works unchanged.
 ```json
 {
   "available": true,
-  "updated": 1795437897,
+  "updated": 1795459452,
   "rule": "One job at a time on the GPU: book a slot before you run anything else.",
   "order": [
     "paper-proofs",

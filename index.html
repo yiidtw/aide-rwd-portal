@@ -31,6 +31,7 @@ header{display:flex;align-items:center;gap:10px;padding:10px 12px;padding-top:ca
 header .t{flex:1;min-width:0}header .t b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}header .t span{font-size:12px;color:var(--mut)}
 .ib{background:none;border:0;color:var(--txt);font-size:22px;padding:4px 8px;cursor:pointer}
 .ibk{display:inline-block;margin-left:4px;padding:0 6px;border-radius:9px;font-size:13px;white-space:nowrap}.ibk:first-child{margin-left:0}.ibk.alerts{background:var(--danger-bg);color:var(--danger-fg)}.ibk.pending{background:var(--warning-bg);color:var(--warning-fg)}.ibk.asks{background:var(--info-bg);color:var(--info-fg)}#confirmPill.red{background:var(--danger-solid);color:var(--on-solid)}#inboxBtn:has(.ibk){background:none;border:0;padding:0}.cf.ua .tt,.cf.al .tt{color:var(--txt);font-size:16px}.subtabs{overflow-x:auto}.subtabs button{white-space:nowrap;padding-left:6px;padding-right:6px}.cf.al.over{border-color:var(--danger-fg)}.cf.al.warn{border-color:var(--warning-fg)}.chip.al.over{background:var(--danger-bg);color:var(--danger-fg)}.chip.al.warn{background:var(--warning-bg);color:var(--warning-fg)}.chip.ua{background:var(--info-bg);color:var(--info-fg)}.chip.door{background:var(--warning-bg);color:var(--warning-fg);margin-left:6px}.cf.ua{border-color:var(--info-fg)}details.hist{margin:14px 0 6px;border-top:1px solid var(--line);padding-top:8px}details.hist summary{color:var(--mut);font-size:13px;cursor:pointer;padding:6px 0}.hrow .d.ok{color:var(--success-fg)}.hrow .d.no{color:var(--mut)}.uadue{margin:4px 0 2px}.chip.due.danger{background:var(--danger-bg);color:var(--danger-fg)}.chip.due.warning{background:var(--warning-bg);color:var(--warning-fg)}.chip.due.info{background:var(--info-bg);color:var(--info-fg)}.uawhy{font-size:13px;color:var(--mut);margin:4px 0}.uaact{margin:6px 0;white-space:pre-wrap;overflow-wrap:anywhere}.ualink{display:block;font-size:13px;overflow-wrap:anywhere;margin:4px 0}.uabtn{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}.uabtn button{margin:0}.uabtn button.deny{background:none;color:var(--danger-fg);border:1px solid var(--danger-fg)}#inboxBtn{font-size:14px;background:var(--cardbg);border:1px solid var(--cardline);border-radius:14px;padding:4px 10px;color:var(--warn);cursor:pointer}
+.nform select,.nform input{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:9px 12px;margin:4px 0;border-radius:10px;border:1px solid var(--line);background:var(--field);color:var(--txt)}.nseg{display:flex;flex-wrap:wrap;gap:6px}.nseg button{margin:0}.nseg button.on{background:var(--me);color:var(--metx)}.nform button.allow{display:block;width:100%;margin:14px 0 0}
 #log{flex:1;overflow-y:auto;padding:12px var(--rw) 4px;-webkit-overflow-scrolling:touch}
 .msg{max-width:86%;margin:6px 0;padding:8px 12px;border-radius:18px;overflow-wrap:anywhere;white-space:normal}
 .msg.user{margin-left:auto;background:var(--me);color:var(--metx);border-bottom-right-radius:5px}
@@ -228,9 +229,7 @@ details.compact .ctext{text-align:left;white-space:pre-wrap;overflow-wrap:anywhe
 .okrn textarea{flex:1;min-width:0;font-size:16px;font-family:inherit;padding:7px 10px;border-radius:10px;border:1px solid var(--line);background:var(--field);color:var(--txt)}
 .okrn button{flex:none;margin:0}
 .rqs{font-size:13px;color:var(--mut);margin:8px 0 2px}
-.rq{padding:8px 0;border-bottom:1px solid var(--line)}.rq .rqh{display:flex;flex-wrap:wrap;gap:2px 10px;font-size:13px;color:var(--mut)}.rq .rqh b{color:var(--txt)}
-.rq .rqt{font-size:15px;line-height:1.45;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer;margin-top:2px}.rq .rqt.open{display:block}
-.rq .rqb{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.rqnew{display:flex;flex-direction:column;gap:6px;margin:8px 0 14px}
+.rqb{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.rqnew{display:flex;flex-direction:column;gap:6px;margin:8px 0 14px}
 .rqnew textarea{width:100%;font-size:16px;font-family:inherit;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--field);color:var(--txt)}.rqnew button{align-self:flex-start}
 .jrow .gone{color:var(--warn)}.jrow .unc{color:var(--warn);font-weight:600}.claim{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:2px 0 10px 32px}.claim select{max-width:100%}
 .canvasbox{border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:8px}
@@ -283,8 +282,8 @@ details.compact .ctext{text-align:left;white-space:pre-wrap;overflow-wrap:anywhe
 <div id="sheet"><div class="box"><div class="pv" id="sheetPv"></div><button id="shReply">↩︎ 回覆這則</button><button id="shCopy">複製整則</button><button id="shCancel">取消</button></div></div>
 <script>(() => {
   'use strict';
-  const REC = {"/api/config":{"status":200,"type":"application/json","body":"{\"host\":\"studio-mac\",\"peers\":[],\"url\":null}","b64":false},"/api/queue":{"status":200,"type":"application/json","body":"[{\"agent\":{\"cwd_name\":\"docs\",\"host\":\"studio-mac\",\"name\":\"docs\",\"pane_id\":\"w3:p1\"},\"attempts\":0,\"claude_queued\":false,\"comment\":null,\"comment_host\":null,\"created\":\"2026-11-20T06:20:00Z\",\"device\":null,\"done_at\":null,\"from\":\"user\",\"host\":\"studio-mac\",\"id\":\"q101\",\"kind\":\"queue\",\"model\":null,\"note\":null,\"priority\":0,\"rank\":1,\"sent_at\":null,\"session_id\":\"d3e0a001-0000-4000-8000-000000000003\",\"state\":\"queued\",\"taken_at\":null,\"text\":\"When the guide is done, add a troubleshooting section for Windows.\",\"turn_ended_at\":null},{\"agent\":{\"cwd_name\":\"release\",\"host\":\"studio-mac\",\"name\":\"release\",\"pane_id\":\"w4:p1\"},\"attempts\":1,\"claude_queued\":false,\"comment\":null,\"comment_host\":null,\"created\":\"2026-11-19T21:00:00Z\",\"device\":null,\"done_at\":\"2026-11-19T21:04:40Z\",\"from\":\"user\",\"host\":\"studio-mac\",\"id\":\"q100\",\"kind\":\"queue\",\"model\":null,\"note\":\"Draft in RELEASE-1.4.md; nothing published.\",\"priority\":0,\"rank\":null,\"sent_at\":\"2026-11-19T21:00:02Z\",\"session_id\":\"d3e0a001-0000-4000-8000-000000000004\",\"state\":\"done\",\"taken_at\":\"2026-11-19T21:00:03Z\",\"text\":\"Draft the release notes for 1.4 from the merged pull requests.\",\"turn_ended_at\":\"2026-11-19T21:04:30Z\"}]","b64":false},"/api/harness/cards":{"status":200,"type":"application/json","body":"[]","b64":false},"/api/shares":{"status":200,"type":"application/json","body":"{\"capture\":false,\"host\":\"studio-mac\",\"shares\":[{\"id\":\"dem0share0002\",\"kind\":\"share\",\"preview\":\"Tailscale is a WireGuard-based app that makes secure, private networks easy for teams of any scale.\",\"status\":\"captured\",\"title\":\"tailscale/tailscale: The easiest, most secure way to use WireGuard and 2FA.\",\"ts\":\"2026-11-19T12:30:25.000Z\",\"url\":\"https://github.com/tailscale/tailscale\"},{\"id\":\"dem0share0001\",\"kind\":\"share\",\"preview\":\"A benchmark of 2,294 software engineering problems drawn from real GitHub issues and pull requests across 12 popular Python repositories.\",\"status\":\"captured\",\"title\":\"SWE-bench: Can Language Models Resolve Real-World GitHub Issues?\",\"ts\":\"2026-11-20T03:10:20.000Z\",\"url\":\"https://arxiv.org/abs/2310.06770\"}]}","b64":false},"/api/specs":{"status":200,"type":"application/json","body":"[]","b64":false},"/api/prds":{"status":200,"type":"application/json","body":"[]","b64":false},"/api/pending":{"status":200,"type":"application/json","body":"[{\"age_secs\":3,\"created\":\"2026-11-23T12:46:38.407Z\",\"cwd\":\"/home/demo/work/web-app\",\"cwd_name\":\"web-app\",\"gist\":\"Bash · npm test checkout\",\"hold_left_secs\":86397,\"host\":\"studio-mac\",\"id\":\"57656a310afa0d5b\",\"input_fp\":\"4395966a5102d06b\",\"kind\":\"hook\",\"pane\":\"w1:p1\",\"permission_mode\":\"default\",\"preview\":\"command: npm test -- --watch=false checkout\",\"preview_truncated\":false,\"reason\":null,\"session_id\":\"d3e0a001-0000-4000-8000-000000000001\",\"title\":\"Run the checkout tests once\",\"tool\":\"Bash\",\"workspace\":\"w1\"},{\"age_secs\":3,\"created\":\"2026-11-23T12:46:38.407Z\",\"cwd\":\"aide-clipper/web-app\",\"cwd_name\":\"web-app\",\"gist\":\"aide clipper · upload_file · https://shop-admin.example.com/\",\"hold_left_secs\":86397,\"host\":\"studio-mac\",\"id\":\"d12397396bfdc871\",\"input_fp\":\"9e089f9d21508fb4\",\"kind\":\"hook\",\"pane\":null,\"permission_mode\":\"default\",\"preview\":\"command: web-app wants to upload invoice-2026-11.pdf (84 KB) into input[type=file]\\nurl: https://shop-admin.example.com/\",\"preview_truncated\":false,\"reason\":null,\"session_id\":\"clipper-c7\",\"title\":\"aide clipper · upload_file · https://shop-admin.example.com/\",\"tool\":\"aide clipper · upload_file\",\"workspace\":null},{\"age_secs\":3,\"created\":\"2026-11-23T12:46:38.425Z\",\"cwd_name\":\"api\",\"host\":\"studio-mac\",\"id\":\"dc6e73541f15960e\",\"kind\":\"screen\",\"name\":\"api\",\"pane\":\"w2:p1\",\"text\":\"────────────────────────────────────────────────────────────\\n ←  ☐ Cache  ☐ Expiry  ✔ Submit  →\\n\\nWhere should search results be cached?\\n\\n❯ 1. In memory, per instance\\n     Fastest; each server keeps its own copy\\n  2. Redis\\n     Shared by all instances; one more service to run\\n  3. Not yet\\n     Measure first, cache later\\n  4. Type something.\\n────────────────────────────────────────────────────────────\\n  5. Chat about this\\n\\nEnter to select · Tab/Arrow keys to navigate · Esc to cancel\",\"text_fp\":\"25bcc68a9758322c\"}]","b64":false},"/api/jobs":{"status":200,"type":"application/json","body":"[{\"agent\":{\"host\":\"studio-mac\",\"name\":\"web-app\",\"pane_id\":\"w1:p1\"},\"cwd\":\"/home/demo/work/web-app\",\"deadline\":null,\"ended\":null,\"host\":\"studio-mac\",\"id\":\"agent:w1:p1\",\"kind\":\"job\",\"last_line\":\"Fix the flaky checkout test\",\"next\":null,\"ok\":null,\"owner\":\"web-app\",\"owner_via\":\"\",\"project\":null,\"raw\":\"{\\n  \\\"agent\\\": \\\"claude\\\",\\n  \\\"cwd\\\": \\\"/home/demo/work/web-app\\\",\\n  \\\"name\\\": \\\"web-app\\\",\\n  \\\"pane_id\\\": \\\"w1:p1\\\",\\n  \\\"status\\\": \\\"blocked\\\"\\n}\",\"section\":\"running\",\"session_gone\":false,\"source\":\"agent\",\"started\":null,\"state\":\"在等你回答\",\"stop\":null,\"stopped_by_user\":false,\"title\":\"web-app\",\"unclaimed\":false,\"what\":\"Fix the flaky checkout test\"},{\"agent\":{\"host\":\"studio-mac\",\"name\":\"api\",\"pane_id\":\"w2:p1\"},\"cwd\":\"/home/demo/work/api\",\"deadline\":null,\"ended\":null,\"host\":\"studio-mac\",\"id\":\"agent:w2:p1\",\"kind\":\"job\",\"last_line\":\"Add caching to the search endpoint\",\"next\":null,\"ok\":null,\"owner\":\"api\",\"owner_via\":\"\",\"project\":null,\"raw\":\"{\\n  \\\"agent\\\": \\\"claude\\\",\\n  \\\"cwd\\\": \\\"/home/demo/work/api\\\",\\n  \\\"name\\\": \\\"api\\\",\\n  \\\"pane_id\\\": \\\"w2:p1\\\",\\n  \\\"status\\\": \\\"blocked\\\"\\n}\",\"section\":\"running\",\"session_gone\":false,\"source\":\"agent\",\"started\":null,\"state\":\"在等你回答\",\"stop\":null,\"stopped_by_user\":false,\"title\":\"api\",\"unclaimed\":false,\"what\":\"Add caching to the search endpoint\"},{\"agent\":{\"host\":\"studio-mac\",\"name\":\"docs\",\"pane_id\":\"w3:p1\"},\"cwd\":\"/home/demo/work/docs\",\"deadline\":null,\"ended\":null,\"host\":\"studio-mac\",\"id\":\"agent:w3:p1\",\"kind\":\"job\",\"last_line\":\"Write the getting-started guide\",\"next\":null,\"ok\":null,\"owner\":\"docs\",\"owner_via\":\"\",\"project\":null,\"raw\":\"{\\n  \\\"agent\\\": \\\"claude\\\",\\n  \\\"cwd\\\": \\\"/home/demo/work/docs\\\",\\n  \\\"name\\\": \\\"docs\\\",\\n  \\\"pane_id\\\": \\\"w3:p1\\\",\\n  \\\"status\\\": \\\"working\\\"\\n}\",\"section\":\"running\",\"session_gone\":false,\"source\":\"agent\",\"started\":null,\"state\":\"在做事\",\"stop\":null,\"stopped_by_user\":false,\"title\":\"docs\",\"unclaimed\":false,\"what\":\"Write the getting-started guide\"},{\"agent\":{\"host\":\"studio-mac\",\"name\":\"release\",\"pane_id\":\"w4:p1\"},\"cwd\":\"/home/demo/work/release\",\"deadline\":null,\"ended\":null,\"host\":\"studio-mac\",\"id\":\"agent:w4:p1\",\"kind\":\"job\",\"last_line\":\"Draft the 1.4 release notes\",\"next\":null,\"ok\":true,\"owner\":\"release\",\"owner_via\":\"\",\"project\":null,\"raw\":\"{\\n  \\\"agent\\\": \\\"claude\\\",\\n  \\\"cwd\\\": \\\"/home/demo/work/release\\\",\\n  \\\"name\\\": \\\"release\\\",\\n  \\\"pane_id\\\": \\\"w4:p1\\\",\\n  \\\"status\\\": \\\"done\\\"\\n}\",\"section\":\"done\",\"session_gone\":false,\"source\":\"agent\",\"started\":null,\"state\":\"做完了，你還沒看\",\"stop\":null,\"stopped_by_user\":false,\"title\":\"release\",\"unclaimed\":false,\"what\":\"Draft the 1.4 release notes\"},{\"agent\":{\"host\":\"gpu-box\",\"name\":\"trainer\",\"pane_id\":\"w1:p1\"},\"cwd\":\"/home/demo/work/trainer\",\"deadline\":null,\"ended\":null,\"host\":\"gpu-box\",\"id\":\"agent:w1:p1\",\"kind\":\"job\",\"last_line\":\"Fine-tune the reranker on last week's clicks\",\"next\":null,\"ok\":null,\"owner\":\"trainer\",\"owner_via\":\"\",\"project\":null,\"raw\":\"{\\n  \\\"agent\\\": \\\"codex\\\",\\n  \\\"cwd\\\": \\\"/home/demo/work/trainer\\\",\\n  \\\"name\\\": \\\"trainer\\\",\\n  \\\"pane_id\\\": \\\"w1:p1\\\",\\n  \\\"status\\\": \\\"working\\\"\\n}\",\"section\":\"running\",\"session_gone\":false,\"source\":\"agent\",\"started\":null,\"state\":\"在做事\",\"stop\":null,\"stopped_by_user\":false,\"title\":\"trainer\",\"unclaimed\":false,\"what\":\"Fine-tune the reranker on last week's clicks\"}]","b64":false},"/api/agents":{"status":200,"type":"application/json","body":"[{\"agent\":\"claude\",\"cwd_name\":\"web-app\",\"host\":\"studio-mac\",\"model\":null,\"name\":\"web-app\",\"owner\":null,\"owner_via\":null,\"pane_id\":\"w1:p1\",\"status\":\"blocked\",\"title\":\"Fix the flaky checkout test\"},{\"agent\":\"claude\",\"cwd_name\":\"api\",\"host\":\"studio-mac\",\"model\":null,\"name\":\"api\",\"owner\":null,\"owner_via\":null,\"pane_id\":\"w2:p1\",\"status\":\"blocked\",\"title\":\"Add caching to the search endpoint\"},{\"agent\":\"claude\",\"cwd_name\":\"docs\",\"host\":\"studio-mac\",\"model\":null,\"name\":\"docs\",\"owner\":null,\"owner_via\":null,\"pane_id\":\"w3:p1\",\"status\":\"working\",\"title\":\"Write the getting-started guide\"},{\"agent\":\"claude\",\"cwd_name\":\"release\",\"host\":\"studio-mac\",\"model\":null,\"name\":\"release\",\"owner\":null,\"owner_via\":null,\"pane_id\":\"w4:p1\",\"status\":\"done\",\"title\":\"Draft the 1.4 release notes\"},{\"agent\":\"codex\",\"cwd_name\":\"trainer\",\"host\":\"gpu-box\",\"model\":null,\"name\":\"trainer\",\"owner\":null,\"owner_via\":null,\"pane_id\":\"w1:p1\",\"status\":\"working\",\"title\":\"Fine-tune the reranker on last week's clicks\"},{\"agent\":\"claude\",\"cwd_name\":\"evals\",\"host\":\"gpu-box\",\"model\":null,\"name\":\"evals\",\"owner\":null,\"owner_via\":null,\"pane_id\":\"w2:p1\",\"status\":\"idle\",\"title\":\"Nightly eval report\"}]","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w1%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"claude\",\"messages\":[{\"role\":\"user\",\"text\":\"The checkout test fails about one run in five on CI. Find out why and fix it.\",\"ts\":\"2026-11-20T08:02:10.000Z\"},{\"model\":\"claude-opus-5-5\",\"model_changed\":true,\"role\":\"assistant\",\"text\":\"I'll read the test and the code it covers first.\",\"ts\":\"2026-11-20T08:02:31.000Z\"},{\"is_error\":false,\"name\":\"Read\",\"result\":\"(the test file)\",\"result_truncated\":false,\"role\":\"tool\",\"summary\":\"/home/demo/work/web-app/src/checkout.test.ts\",\"ts\":\"2026-11-20T08:02:31.000Z\"},{\"model\":\"claude-opus-5-5\",\"role\":\"assistant\",\"text\":\"Found it. The test awaits the price update but not the tax call, so on a slow runner it reads the total before tax arrives.\\n\\n- `checkout.test.ts` line 48 checks `total` right after `setQuantity(2)`.\\n- `updateTotals()` starts two requests and only the first is awaited.\\n\\nI changed the test to wait for both, and made `updateTotals()` return one promise for the two. Now I want to run the checkout tests to confirm.\",\"ts\":\"2026-11-20T08:03:40.000Z\"}],\"session_guessed\":false,\"session_source\":\"herdr\",\"size\":1257,\"status\":\"blocked\"}","b64":false},"/api/asks?all=1":{"status":200,"type":"application/json","body":"[{\"action\":\"Sign in to App Store Connect, open Business, and accept the updated agreement.\",\"door\":\"one-way\",\"host\":\"studio-mac\",\"hq\":\"web-app\",\"id\":\"ua5e1f0a2b\",\"link\":\"https://appstoreconnect.apple.com/\",\"pane\":\"w1:p1\",\"state\":\"open\",\"title\":\"Accept the App Store Connect agreement\",\"ts\":\"2026-11-20T09:30:00Z\",\"why\":\"TestFlight uploads are refused until the new agreement is accepted; the beta (O2) waits on it.\"}]","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w1%3Ap1&since=1257":{"status":200,"type":"application/json","body":"{\"size\":1257,\"status\":\"blocked\",\"unchanged\":true}","b64":false},"/api/files/list?host=studio-mac&pane=w1%3Ap1&path=":{"status":200,"type":"application/json","body":"{\"entries\":[{\"dir\":true,\"kind\":\"dir\",\"mtime\":1795437998,\"name\":\"docs\",\"size\":0},{\"dir\":true,\"kind\":\"dir\",\"mtime\":1795437998,\"name\":\"src\",\"size\":0},{\"dir\":true,\"kind\":\"dir\",\"mtime\":1795437998,\"name\":\"wikinote\",\"size\":0},{\"dir\":false,\"kind\":\"md\",\"mtime\":1795437998,\"name\":\"README.md\",\"size\":62}],\"path\":\"\",\"root\":\"/home/demo/work/web-app\",\"root_name\":\"web-app\",\"touched\":[],\"truncated\":false}","b64":false},"/api/canvas?host=studio-mac&pane=w1%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"web-app\",\"cwd\":\"/home/demo/work/web-app\",\"dir\":\"wikinote/canvas\",\"exists\":false,\"files\":[],\"git\":false,\"host\":\"studio-mac\",\"pane\":\"w1:p1\"}","b64":false},"/api/files/list?host=studio-mac&pane=w1%3Ap1&path=docs":{"status":200,"type":"application/json","body":"{\"entries\":[{\"dir\":false,\"kind\":\"pdf\",\"mtime\":1795437998,\"name\":\"guide.pdf\",\"size\":867}],\"path\":\"docs\",\"root\":\"/home/demo/work/web-app\",\"root_name\":\"web-app\",\"truncated\":false}","b64":false},"/api/files/raw?host=studio-mac&pane=w1%3Ap1&path=wikinote%2Fokr.md":{"status":200,"type":"text/plain; charset=utf-8","body":"# web-app OKRs (Q4)\n\n## O1　Checkout never loses an order\n- [Committed] Checkout tests pass 100 runs in a row: 12/05\n- [Stretch] Zero failed payments in the weekly report: 4 weeks running\n\n## O2　Ship the new storefront\n- [Committed] Mobile layout tests pass at 390 and 1280 px: 12/10\n- [Committed] Beta open to 50 customers: 12/15\n- [Stretch] Median page load under 1 s on a phone: 12/20\n\n## O3　Docs a newcomer can follow\n- [Committed] A new contributor opens a PR from the guide alone: 12/12\n","b64":false},"/api/alerts":{"status":200,"type":"application/json","body":"[]","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w2%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"claude\",\"messages\":[{\"role\":\"user\",\"text\":\"Search is slow for popular queries. Add caching, but ask me before picking where the cache lives.\",\"ts\":\"2026-11-20T07:40:00.000Z\"},{\"model\":\"claude-opus-5-5\",\"model_changed\":true,\"role\":\"assistant\",\"text\":\"The 20 most common queries are 61% of search traffic in last week's logs, and each takes about 420 ms. Caching them would cut most of the load. Where the cache lives is your call, so I'm asking.\",\"ts\":\"2026-11-20T07:41:12.000Z\"}],\"session_guessed\":false,\"session_source\":\"herdr\",\"size\":540,\"status\":\"blocked\"}","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w2%3Ap1&since=540":{"status":200,"type":"application/json","body":"{\"size\":540,\"status\":\"blocked\",\"unchanged\":true}","b64":false},"/api/files/list?host=studio-mac&pane=w2%3Ap1&path=":{"status":200,"type":"application/json","body":"{\"entries\":[],\"path\":\"\",\"root\":\"/home/demo/work/api\",\"root_name\":\"api\",\"touched\":[],\"truncated\":false}","b64":false},"/api/canvas?host=studio-mac&pane=w2%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"api\",\"cwd\":\"/home/demo/work/api\",\"dir\":\"canvas\",\"exists\":false,\"files\":[],\"git\":false,\"host\":\"studio-mac\",\"pane\":\"w2:p1\"}","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w3%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"claude\",\"messages\":[{\"role\":\"user\",\"text\":\"Write a getting-started guide for new contributors: install, run, test, open a PR.\",\"ts\":\"2026-11-20T06:15:00.000Z\"},{\"model\":\"claude-sonnet-5-5\",\"model_changed\":true,\"role\":\"assistant\",\"text\":\"On it. I'll follow the steps myself on a clean checkout so every command in the guide is one I actually ran.\",\"ts\":\"2026-11-20T06:16:05.000Z\"}],\"session_guessed\":false,\"session_source\":\"herdr\",\"size\":441,\"status\":\"working\"}","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w3%3Ap1&since=441":{"status":200,"type":"application/json","body":"{\"size\":441,\"status\":\"working\",\"unchanged\":true}","b64":false},"/api/canvas?host=studio-mac&pane=w3%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"docs\",\"cwd\":\"/home/demo/work/docs\",\"dir\":\"canvas\",\"exists\":false,\"files\":[],\"git\":false,\"host\":\"studio-mac\",\"pane\":\"w3:p1\"}","b64":false},"/api/files/list?host=studio-mac&pane=w3%3Ap1&path=":{"status":200,"type":"application/json","body":"{\"entries\":[],\"path\":\"\",\"root\":\"/home/demo/work/docs\",\"root_name\":\"docs\",\"touched\":[],\"truncated\":false}","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w4%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"claude\",\"messages\":[{\"role\":\"user\",\"text\":\"Draft the release notes for 1.4 from the merged pull requests.\",\"ts\":\"2026-11-19T21:00:00.000Z\"},{\"model\":\"claude-opus-5-5\",\"model_changed\":true,\"role\":\"assistant\",\"text\":\"Done. The draft is in `RELEASE-1.4.md`: 3 features, 9 fixes, 1 breaking change (the `/v1/search` page size now defaults to 20). I left it as a draft; nothing is published.\",\"ts\":\"2026-11-19T21:04:30.000Z\"}],\"session_guessed\":false,\"session_source\":\"herdr\",\"size\":482,\"status\":\"done\"}","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w4%3Ap1&since=482":{"status":200,"type":"application/json","body":"{\"size\":482,\"status\":\"done\",\"unchanged\":true}","b64":false},"/api/files/list?host=studio-mac&pane=w4%3Ap1&path=":{"status":200,"type":"application/json","body":"{\"entries\":[],\"path\":\"\",\"root\":\"/home/demo/work/release\",\"root_name\":\"release\",\"touched\":[],\"truncated\":false}","b64":false},"/api/canvas?host=studio-mac&pane=w4%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"release\",\"cwd\":\"/home/demo/work/release\",\"dir\":\"canvas\",\"exists\":false,\"files\":[],\"git\":false,\"host\":\"studio-mac\",\"pane\":\"w4:p1\"}","b64":false},"/api/agents/messages?host=gpu-box&limit=120&pane=w1%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"codex\",\"messages\":null,\"status\":\"working\"}","b64":false},"/api/agents/read?host=gpu-box&lines=200&pane=w1%3Ap1":{"status":200,"type":"application/json","body":"{\"text\":\"\"}","b64":false},"/api/files/list?host=gpu-box&pane=w1%3Ap1&path=":{"status":200,"type":"application/json","body":"{\"entries\":[],\"path\":\"\",\"root\":\"/home/demo/work/trainer\",\"root_name\":\"trainer\",\"touched\":[],\"truncated\":false}","b64":false},"/api/canvas?host=gpu-box&pane=w1%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"trainer\",\"cwd\":\"/home/demo/work/trainer\",\"dir\":\"canvas\",\"exists\":false,\"files\":[],\"git\":false,\"host\":\"gpu-box\",\"pane\":\"w1:p1\"}","b64":false},"/api/agents/messages?host=gpu-box&limit=120&pane=w2%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"claude\",\"messages\":[{\"role\":\"user\",\"text\":\"Run tonight's eval suite and summarize what changed since yesterday.\",\"ts\":\"2026-11-20T02:00:00.000Z\"},{\"model\":\"claude-sonnet-5-5\",\"model_changed\":true,\"role\":\"assistant\",\"text\":\"Done. 412 of 430 cases pass (yesterday 405). The 7 new passes are all in long-context retrieval; nothing regressed. Full table in `reports/2026-11-20.md`.\",\"ts\":\"2026-11-20T02:41:00.000Z\"}],\"session_guessed\":false,\"session_source\":\"herdr\",\"size\":473,\"status\":\"idle\"}","b64":false},"/api/agents/messages?host=gpu-box&limit=120&pane=w2%3Ap1&since=473":{"status":200,"type":"application/json","body":"{\"size\":473,\"status\":\"idle\",\"unchanged\":true}","b64":false},"/api/files/list?host=gpu-box&pane=w2%3Ap1&path=":{"status":200,"type":"application/json","body":"{\"entries\":[],\"path\":\"\",\"root\":\"/home/demo/work/evals\",\"root_name\":\"evals\",\"touched\":[],\"truncated\":false}","b64":false},"/api/canvas?host=gpu-box&pane=w2%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"evals\",\"cwd\":\"/home/demo/work/evals\",\"dir\":\"canvas\",\"exists\":false,\"files\":[],\"git\":false,\"host\":\"gpu-box\",\"pane\":\"w2:p1\"}","b64":false},"/api/decisions":{"status":200,"type":"application/json","body":"[]","b64":false},"/api/favicon?host=github.com":{"status":200,"type":"image/x-icon","body":"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AAAAAAAAKysrBhYWGUcWFhiVFRUYvxUVGNkWFhfzFhYX8xUVGNkVFRi/FhYYlRYWGUcrKysGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=","b64":true},"/api/favicon?host=arxiv.org":{"status":200,"type":"image/x-icon","body":"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","b64":true},"/api/quota":{"status":200,"type":"application/json","body":"{\"providers\":[{\"id\":\"claude\",\"name\":\"Claude\",\"plan\":\"Claude Max\",\"pools\":[{\"known\":true,\"label\":\"5h\",\"resets_at\":null,\"used\":34.0},{\"known\":true,\"label\":\"7d\",\"resets_at\":\"2026-12-01T06:00:00Z\",\"used\":52.0}]},{\"id\":\"codex\",\"name\":\"Codex\",\"plan\":\"ChatGPT Plus\",\"pools\":[{\"known\":true,\"label\":\"5h\",\"resets_at\":null,\"used\":12.0},{\"known\":true,\"label\":\"7d\",\"resets_at\":\"2026-11-29T00:00:00Z\",\"used\":21.0}]}],\"stale\":false,\"thresholds\":[70,90],\"updated\":\"2026-11-23T12:46:38.407252831+00:00\"}","b64":false},"/api/machine/resources?host=studio-mac":{"status":200,"type":"application/json","body":"{\"disk\":null,\"disks\":[],\"host\":\"studio-mac\",\"os\":\"none\",\"ts\":\"2026-11-23T12:46:40.933Z\"}","b64":false},"/api/machine/usage?host=studio-mac":{"status":200,"type":"application/json","body":"{\"host\":\"studio-mac\",\"scanned\":{\"bytes\":2720,\"files\":4,\"partial\":false},\"ts\":\"2026-11-23T12:46:40.941585598+00:00\",\"windows\":{\"24h\":{\"hooks\":[],\"logs\":[],\"skills\":[]},\"7d\":{\"hooks\":[],\"logs\":[],\"skills\":[]}}}","b64":false},"/api/machine/resources?host=gpu-box":{"status":200,"type":"application/json","body":"{\"disk\":null,\"disks\":[],\"host\":\"gpu-box\",\"os\":\"none\",\"ts\":\"2026-11-23T12:46:40.979Z\"}","b64":false},"/api/machine/usage?host=gpu-box":{"status":200,"type":"application/json","body":"{\"host\":\"gpu-box\",\"scanned\":{\"bytes\":473,\"files\":1,\"partial\":false},\"ts\":\"2026-11-23T12:46:40.987174616+00:00\",\"windows\":{\"24h\":{\"hooks\":[],\"logs\":[],\"skills\":[]},\"7d\":{\"hooks\":[],\"logs\":[],\"skills\":[]}}}","b64":false},"/api/machine/gpu":{"status":200,"type":"application/json","body":"{\"available\":true,\"updated\":1795437897,\"rule\":\"One job at a time on the GPU: book a slot before you run anything else.\",\"order\":[\"paper-proofs\",\"evals\",\"playground\"],\"cluster\":{\"req\":2,\"jobs\":[[\"40112\",\"gen-oss\",\"RUNNING\"]]},\"projects\":{\"paper-proofs\":{\"prefix\":\"pp-\",\"hq\":\"research\",\"base\":3,\"waiting\":4,\"placed\":1,\"oldest_wait_h\":1.6,\"done_7d\":37,\"failed_7d\":1,\"gpu_s_7d\":14820,\"alerts\":[],\"reported\":{\"round\":\"r3\",\"registered\":120,\"proved_direct\":41,\"proved_after_split\":12,\"conditional\":6,\"stuck\":61,\"neg_total\":10,\"neg_proved\":0,\"prov_fail\":0}},\"evals\":{\"prefix\":\"ev-\",\"hq\":\"evals\",\"base\":2,\"waiting\":1,\"placed\":1,\"oldest_wait_h\":0.4,\"done_7d\":12,\"failed_7d\":0,\"gpu_s_7d\":5210,\"alerts\":[],\"reported\":null},\"playground\":{\"prefix\":\"pg-\",\"hq\":\"research\",\"base\":1,\"waiting\":0,\"placed\":0,\"oldest_wait_h\":0,\"done_7d\":3,\"failed_7d\":0,\"gpu_s_7d\":940,\"alerts\":[],\"reported\":null}}}"}};
-  const BUILD = "d9b5555f91ec";
+  const REC = {"/api/config":{"status":200,"type":"application/json","body":"{\"host\":\"studio-mac\",\"peers\":[],\"url\":null}","b64":false},"/api/queue":{"status":200,"type":"application/json","body":"[{\"agent\":{\"cwd_name\":\"docs\",\"host\":\"studio-mac\",\"name\":\"docs\",\"pane_id\":\"w3:p1\"},\"attempts\":0,\"claude_queued\":false,\"comment\":null,\"comment_host\":null,\"created\":\"2026-11-20T06:20:00Z\",\"device\":null,\"done_at\":null,\"from\":\"user\",\"host\":\"studio-mac\",\"id\":\"q101\",\"kind\":\"queue\",\"model\":null,\"note\":null,\"priority\":0,\"rank\":1,\"sent_at\":null,\"session_id\":\"d3e0a001-0000-4000-8000-000000000003\",\"state\":\"queued\",\"taken_at\":null,\"text\":\"When the guide is done, add a troubleshooting section for Windows.\",\"turn_ended_at\":null},{\"agent\":{\"cwd_name\":\"release\",\"host\":\"studio-mac\",\"name\":\"release\",\"pane_id\":\"w4:p1\"},\"attempts\":1,\"claude_queued\":false,\"comment\":null,\"comment_host\":null,\"created\":\"2026-11-19T21:00:00Z\",\"device\":null,\"done_at\":\"2026-11-19T21:04:40Z\",\"from\":\"user\",\"host\":\"studio-mac\",\"id\":\"q100\",\"kind\":\"queue\",\"model\":null,\"note\":\"Draft in RELEASE-1.4.md; nothing published.\",\"priority\":0,\"rank\":null,\"sent_at\":\"2026-11-19T21:00:02Z\",\"session_id\":\"d3e0a001-0000-4000-8000-000000000004\",\"state\":\"done\",\"taken_at\":\"2026-11-19T21:00:03Z\",\"text\":\"Draft the release notes for 1.4 from the merged pull requests.\",\"turn_ended_at\":\"2026-11-19T21:04:30Z\"}]","b64":false},"/api/shares":{"status":200,"type":"application/json","body":"{\"capture\":false,\"host\":\"studio-mac\",\"shares\":[{\"id\":\"dem0share0002\",\"kind\":\"share\",\"preview\":\"Tailscale is a WireGuard-based app that makes secure, private networks easy for teams of any scale.\",\"status\":\"captured\",\"title\":\"tailscale/tailscale: The easiest, most secure way to use WireGuard and 2FA.\",\"ts\":\"2026-11-19T12:30:25.000Z\",\"url\":\"https://github.com/tailscale/tailscale\"},{\"id\":\"dem0share0001\",\"kind\":\"share\",\"preview\":\"A benchmark of 2,294 software engineering problems drawn from real GitHub issues and pull requests across 12 popular Python repositories.\",\"status\":\"captured\",\"title\":\"SWE-bench: Can Language Models Resolve Real-World GitHub Issues?\",\"ts\":\"2026-11-20T03:10:20.000Z\",\"url\":\"https://arxiv.org/abs/2310.06770\"}]}","b64":false},"/api/harness/cards":{"status":200,"type":"application/json","body":"[]","b64":false},"/api/specs":{"status":200,"type":"application/json","body":"[]","b64":false},"/api/prds":{"status":200,"type":"application/json","body":"[]","b64":false},"/api/pending":{"status":200,"type":"application/json","body":"[{\"age_secs\":3,\"created\":\"2026-11-23T18:46:08.501Z\",\"cwd\":\"/home/demo/work/web-app\",\"cwd_name\":\"web-app\",\"gist\":\"Bash · npm test checkout\",\"hold_left_secs\":86397,\"host\":\"studio-mac\",\"id\":\"35d4d68799afd22b\",\"input_fp\":\"4395966a5102d06b\",\"kind\":\"hook\",\"pane\":\"w1:p1\",\"permission_mode\":\"default\",\"preview\":\"command: npm test -- --watch=false checkout\",\"preview_truncated\":false,\"reason\":null,\"session_id\":\"d3e0a001-0000-4000-8000-000000000001\",\"title\":\"Run the checkout tests once\",\"tool\":\"Bash\",\"workspace\":\"w1\"},{\"age_secs\":3,\"created\":\"2026-11-23T18:46:08.501Z\",\"cwd\":\"aide-clipper/web-app\",\"cwd_name\":\"web-app\",\"gist\":\"aide clipper · upload_file · https://shop-admin.example.com/\",\"hold_left_secs\":86397,\"host\":\"studio-mac\",\"id\":\"42b8d32d2709fa62\",\"input_fp\":\"9e089f9d21508fb4\",\"kind\":\"hook\",\"pane\":null,\"permission_mode\":\"default\",\"preview\":\"command: web-app wants to upload invoice-2026-11.pdf (84 KB) into input[type=file]\\nurl: https://shop-admin.example.com/\",\"preview_truncated\":false,\"reason\":null,\"session_id\":\"clipper-c7\",\"title\":\"aide clipper · upload_file · https://shop-admin.example.com/\",\"tool\":\"aide clipper · upload_file\",\"workspace\":null},{\"age_secs\":3,\"created\":\"2026-11-23T18:46:08.520Z\",\"cwd_name\":\"api\",\"host\":\"studio-mac\",\"id\":\"ad8bc71c5fb95005\",\"kind\":\"screen\",\"name\":\"api\",\"pane\":\"w2:p1\",\"text\":\"────────────────────────────────────────────────────────────\\n ←  ☐ Cache  ☐ Expiry  ✔ Submit  →\\n\\nWhere should search results be cached?\\n\\n❯ 1. In memory, per instance\\n     Fastest; each server keeps its own copy\\n  2. Redis\\n     Shared by all instances; one more service to run\\n  3. Not yet\\n     Measure first, cache later\\n  4. Type something.\\n────────────────────────────────────────────────────────────\\n  5. Chat about this\\n\\nEnter to select · Tab/Arrow keys to navigate · Esc to cancel\",\"text_fp\":\"25bcc68a9758322c\"}]","b64":false},"/api/jobs":{"status":200,"type":"application/json","body":"[{\"agent\":{\"host\":\"studio-mac\",\"name\":\"web-app\",\"pane_id\":\"w1:p1\"},\"cwd\":\"/home/demo/work/web-app\",\"deadline\":null,\"ended\":null,\"host\":\"studio-mac\",\"id\":\"agent:w1:p1\",\"kind\":\"job\",\"last_line\":\"Fix the flaky checkout test\",\"next\":null,\"ok\":null,\"owner\":\"web-app\",\"owner_via\":\"\",\"project\":null,\"raw\":\"{\\n  \\\"agent\\\": \\\"claude\\\",\\n  \\\"cwd\\\": \\\"/home/demo/work/web-app\\\",\\n  \\\"name\\\": \\\"web-app\\\",\\n  \\\"pane_id\\\": \\\"w1:p1\\\",\\n  \\\"status\\\": \\\"blocked\\\"\\n}\",\"section\":\"running\",\"session_gone\":false,\"source\":\"agent\",\"started\":null,\"state\":\"在等你回答\",\"stop\":null,\"stopped_by_user\":false,\"title\":\"web-app\",\"unclaimed\":false,\"what\":\"Fix the flaky checkout test\"},{\"agent\":{\"host\":\"studio-mac\",\"name\":\"api\",\"pane_id\":\"w2:p1\"},\"cwd\":\"/home/demo/work/api\",\"deadline\":null,\"ended\":null,\"host\":\"studio-mac\",\"id\":\"agent:w2:p1\",\"kind\":\"job\",\"last_line\":\"Add caching to the search endpoint\",\"next\":null,\"ok\":null,\"owner\":\"api\",\"owner_via\":\"\",\"project\":null,\"raw\":\"{\\n  \\\"agent\\\": \\\"claude\\\",\\n  \\\"cwd\\\": \\\"/home/demo/work/api\\\",\\n  \\\"name\\\": \\\"api\\\",\\n  \\\"pane_id\\\": \\\"w2:p1\\\",\\n  \\\"status\\\": \\\"blocked\\\"\\n}\",\"section\":\"running\",\"session_gone\":false,\"source\":\"agent\",\"started\":null,\"state\":\"在等你回答\",\"stop\":null,\"stopped_by_user\":false,\"title\":\"api\",\"unclaimed\":false,\"what\":\"Add caching to the search endpoint\"},{\"agent\":{\"host\":\"studio-mac\",\"name\":\"docs\",\"pane_id\":\"w3:p1\"},\"cwd\":\"/home/demo/work/docs\",\"deadline\":null,\"ended\":null,\"host\":\"studio-mac\",\"id\":\"agent:w3:p1\",\"kind\":\"job\",\"last_line\":\"Write the getting-started guide\",\"next\":null,\"ok\":null,\"owner\":\"docs\",\"owner_via\":\"\",\"project\":null,\"raw\":\"{\\n  \\\"agent\\\": \\\"claude\\\",\\n  \\\"cwd\\\": \\\"/home/demo/work/docs\\\",\\n  \\\"name\\\": \\\"docs\\\",\\n  \\\"pane_id\\\": \\\"w3:p1\\\",\\n  \\\"status\\\": \\\"working\\\"\\n}\",\"section\":\"running\",\"session_gone\":false,\"source\":\"agent\",\"started\":null,\"state\":\"在做事\",\"stop\":null,\"stopped_by_user\":false,\"title\":\"docs\",\"unclaimed\":false,\"what\":\"Write the getting-started guide\"},{\"agent\":{\"host\":\"studio-mac\",\"name\":\"release\",\"pane_id\":\"w4:p1\"},\"cwd\":\"/home/demo/work/release\",\"deadline\":null,\"ended\":null,\"host\":\"studio-mac\",\"id\":\"agent:w4:p1\",\"kind\":\"job\",\"last_line\":\"Draft the 1.4 release notes\",\"next\":null,\"ok\":true,\"owner\":\"release\",\"owner_via\":\"\",\"project\":null,\"raw\":\"{\\n  \\\"agent\\\": \\\"claude\\\",\\n  \\\"cwd\\\": \\\"/home/demo/work/release\\\",\\n  \\\"name\\\": \\\"release\\\",\\n  \\\"pane_id\\\": \\\"w4:p1\\\",\\n  \\\"status\\\": \\\"done\\\"\\n}\",\"section\":\"done\",\"session_gone\":false,\"source\":\"agent\",\"started\":null,\"state\":\"做完了，你還沒看\",\"stop\":null,\"stopped_by_user\":false,\"title\":\"release\",\"unclaimed\":false,\"what\":\"Draft the 1.4 release notes\"},{\"agent\":{\"host\":\"gpu-box\",\"name\":\"trainer\",\"pane_id\":\"w1:p1\"},\"cwd\":\"/home/demo/work/trainer\",\"deadline\":null,\"ended\":null,\"host\":\"gpu-box\",\"id\":\"agent:w1:p1\",\"kind\":\"job\",\"last_line\":\"Fine-tune the reranker on last week's clicks\",\"next\":null,\"ok\":null,\"owner\":\"trainer\",\"owner_via\":\"\",\"project\":null,\"raw\":\"{\\n  \\\"agent\\\": \\\"codex\\\",\\n  \\\"cwd\\\": \\\"/home/demo/work/trainer\\\",\\n  \\\"name\\\": \\\"trainer\\\",\\n  \\\"pane_id\\\": \\\"w1:p1\\\",\\n  \\\"status\\\": \\\"working\\\"\\n}\",\"section\":\"running\",\"session_gone\":false,\"source\":\"agent\",\"started\":null,\"state\":\"在做事\",\"stop\":null,\"stopped_by_user\":false,\"title\":\"trainer\",\"unclaimed\":false,\"what\":\"Fine-tune the reranker on last week's clicks\"}]","b64":false},"/api/agents":{"status":200,"type":"application/json","body":"[{\"agent\":\"claude\",\"cwd_name\":\"web-app\",\"host\":\"studio-mac\",\"model\":null,\"name\":\"web-app\",\"owner\":null,\"owner_via\":null,\"pane_id\":\"w1:p1\",\"status\":\"blocked\",\"title\":\"Fix the flaky checkout test\"},{\"agent\":\"claude\",\"cwd_name\":\"api\",\"host\":\"studio-mac\",\"model\":null,\"name\":\"api\",\"owner\":null,\"owner_via\":null,\"pane_id\":\"w2:p1\",\"status\":\"blocked\",\"title\":\"Add caching to the search endpoint\"},{\"agent\":\"claude\",\"cwd_name\":\"docs\",\"host\":\"studio-mac\",\"model\":null,\"name\":\"docs\",\"owner\":null,\"owner_via\":null,\"pane_id\":\"w3:p1\",\"status\":\"working\",\"title\":\"Write the getting-started guide\"},{\"agent\":\"claude\",\"cwd_name\":\"release\",\"host\":\"studio-mac\",\"model\":null,\"name\":\"release\",\"owner\":null,\"owner_via\":null,\"pane_id\":\"w4:p1\",\"status\":\"done\",\"title\":\"Draft the 1.4 release notes\"},{\"agent\":\"codex\",\"cwd_name\":\"trainer\",\"host\":\"gpu-box\",\"model\":null,\"name\":\"trainer\",\"owner\":null,\"owner_via\":null,\"pane_id\":\"w1:p1\",\"status\":\"working\",\"title\":\"Fine-tune the reranker on last week's clicks\"},{\"agent\":\"claude\",\"cwd_name\":\"evals\",\"host\":\"gpu-box\",\"model\":null,\"name\":\"evals\",\"owner\":null,\"owner_via\":null,\"pane_id\":\"w2:p1\",\"status\":\"idle\",\"title\":\"Nightly eval report\"}]","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w1%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"claude\",\"messages\":[{\"role\":\"user\",\"text\":\"The checkout test fails about one run in five on CI. Find out why and fix it.\",\"ts\":\"2026-11-20T08:02:10.000Z\"},{\"model\":\"claude-opus-5-5\",\"model_changed\":true,\"role\":\"assistant\",\"text\":\"I'll read the test and the code it covers first.\",\"ts\":\"2026-11-20T08:02:31.000Z\"},{\"is_error\":false,\"name\":\"Read\",\"result\":\"(the test file)\",\"result_truncated\":false,\"role\":\"tool\",\"summary\":\"/home/demo/work/web-app/src/checkout.test.ts\",\"ts\":\"2026-11-20T08:02:31.000Z\"},{\"model\":\"claude-opus-5-5\",\"role\":\"assistant\",\"text\":\"Found it. The test awaits the price update but not the tax call, so on a slow runner it reads the total before tax arrives.\\n\\n- `checkout.test.ts` line 48 checks `total` right after `setQuantity(2)`.\\n- `updateTotals()` starts two requests and only the first is awaited.\\n\\nI changed the test to wait for both, and made `updateTotals()` return one promise for the two. Now I want to run the checkout tests to confirm.\",\"ts\":\"2026-11-20T08:03:40.000Z\"}],\"session_guessed\":false,\"session_source\":\"herdr\",\"size\":1257,\"status\":\"blocked\"}","b64":false},"/api/asks?all=1":{"status":200,"type":"application/json","body":"[{\"action\":\"Sign in to App Store Connect, open Business, and accept the updated agreement.\",\"door\":\"one-way\",\"host\":\"studio-mac\",\"hq\":\"web-app\",\"id\":\"ua5e1f0a2b\",\"link\":\"https://appstoreconnect.apple.com/\",\"pane\":\"w1:p1\",\"state\":\"open\",\"title\":\"Accept the App Store Connect agreement\",\"ts\":\"2026-11-20T09:30:00Z\",\"why\":\"TestFlight uploads are refused until the new agreement is accepted; the beta (O2) waits on it.\"}]","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w1%3Ap1&since=1257":{"status":200,"type":"application/json","body":"{\"size\":1257,\"status\":\"blocked\",\"unchanged\":true}","b64":false},"/api/files/list?host=studio-mac&pane=w1%3Ap1&path=":{"status":200,"type":"application/json","body":"{\"entries\":[{\"dir\":true,\"kind\":\"dir\",\"mtime\":1795459568,\"name\":\"docs\",\"size\":0},{\"dir\":true,\"kind\":\"dir\",\"mtime\":1795459568,\"name\":\"src\",\"size\":0},{\"dir\":true,\"kind\":\"dir\",\"mtime\":1795459568,\"name\":\"wikinote\",\"size\":0},{\"dir\":false,\"kind\":\"md\",\"mtime\":1795459568,\"name\":\"README.md\",\"size\":62}],\"path\":\"\",\"root\":\"/home/demo/work/web-app\",\"root_name\":\"web-app\",\"touched\":[],\"truncated\":false}","b64":false},"/api/canvas?host=studio-mac&pane=w1%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"web-app\",\"cwd\":\"/home/demo/work/web-app\",\"dir\":\"wikinote/canvas\",\"exists\":false,\"files\":[],\"git\":false,\"host\":\"studio-mac\",\"pane\":\"w1:p1\"}","b64":false},"/api/files/list?host=studio-mac&pane=w1%3Ap1&path=docs":{"status":200,"type":"application/json","body":"{\"entries\":[{\"dir\":false,\"kind\":\"pdf\",\"mtime\":1795459568,\"name\":\"guide.pdf\",\"size\":867}],\"path\":\"docs\",\"root\":\"/home/demo/work/web-app\",\"root_name\":\"web-app\",\"truncated\":false}","b64":false},"/api/files/raw?host=studio-mac&pane=w1%3Ap1&path=wikinote%2Fokr.md":{"status":200,"type":"text/plain; charset=utf-8","body":"# web-app OKRs (Q4)\n\n## O1　Checkout never loses an order\n- [Committed] Checkout tests pass 100 runs in a row: 12/05\n- [Stretch] Zero failed payments in the weekly report: 4 weeks running\n\n## O2　Ship the new storefront\n- [Committed] Mobile layout tests pass at 390 and 1280 px: 12/10\n- [Committed] Beta open to 50 customers: 12/15\n- [Stretch] Median page load under 1 s on a phone: 12/20\n\n## O3　Docs a newcomer can follow\n- [Committed] A new contributor opens a PR from the guide alone: 12/12\n","b64":false},"/api/alerts":{"status":200,"type":"application/json","body":"[]","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w2%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"claude\",\"messages\":[{\"role\":\"user\",\"text\":\"Search is slow for popular queries. Add caching, but ask me before picking where the cache lives.\",\"ts\":\"2026-11-20T07:40:00.000Z\"},{\"model\":\"claude-opus-5-5\",\"model_changed\":true,\"role\":\"assistant\",\"text\":\"The 20 most common queries are 61% of search traffic in last week's logs, and each takes about 420 ms. Caching them would cut most of the load. Where the cache lives is your call, so I'm asking.\",\"ts\":\"2026-11-20T07:41:12.000Z\"}],\"session_guessed\":false,\"session_source\":\"herdr\",\"size\":540,\"status\":\"blocked\"}","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w2%3Ap1&since=540":{"status":200,"type":"application/json","body":"{\"size\":540,\"status\":\"blocked\",\"unchanged\":true}","b64":false},"/api/canvas?host=studio-mac&pane=w2%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"api\",\"cwd\":\"/home/demo/work/api\",\"dir\":\"canvas\",\"exists\":false,\"files\":[],\"git\":false,\"host\":\"studio-mac\",\"pane\":\"w2:p1\"}","b64":false},"/api/files/list?host=studio-mac&pane=w2%3Ap1&path=":{"status":200,"type":"application/json","body":"{\"entries\":[],\"path\":\"\",\"root\":\"/home/demo/work/api\",\"root_name\":\"api\",\"touched\":[],\"truncated\":false}","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w3%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"claude\",\"messages\":[{\"role\":\"user\",\"text\":\"Write a getting-started guide for new contributors: install, run, test, open a PR.\",\"ts\":\"2026-11-20T06:15:00.000Z\"},{\"model\":\"claude-sonnet-5-5\",\"model_changed\":true,\"role\":\"assistant\",\"text\":\"On it. I'll follow the steps myself on a clean checkout so every command in the guide is one I actually ran.\",\"ts\":\"2026-11-20T06:16:05.000Z\"}],\"session_guessed\":false,\"session_source\":\"herdr\",\"size\":441,\"status\":\"working\"}","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w3%3Ap1&since=441":{"status":200,"type":"application/json","body":"{\"size\":441,\"status\":\"working\",\"unchanged\":true}","b64":false},"/api/files/list?host=studio-mac&pane=w3%3Ap1&path=":{"status":200,"type":"application/json","body":"{\"entries\":[],\"path\":\"\",\"root\":\"/home/demo/work/docs\",\"root_name\":\"docs\",\"touched\":[],\"truncated\":false}","b64":false},"/api/canvas?host=studio-mac&pane=w3%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"docs\",\"cwd\":\"/home/demo/work/docs\",\"dir\":\"canvas\",\"exists\":false,\"files\":[],\"git\":false,\"host\":\"studio-mac\",\"pane\":\"w3:p1\"}","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w4%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"claude\",\"messages\":[{\"role\":\"user\",\"text\":\"Draft the release notes for 1.4 from the merged pull requests.\",\"ts\":\"2026-11-19T21:00:00.000Z\"},{\"model\":\"claude-opus-5-5\",\"model_changed\":true,\"role\":\"assistant\",\"text\":\"Done. The draft is in `RELEASE-1.4.md`: 3 features, 9 fixes, 1 breaking change (the `/v1/search` page size now defaults to 20). I left it as a draft; nothing is published.\",\"ts\":\"2026-11-19T21:04:30.000Z\"}],\"session_guessed\":false,\"session_source\":\"herdr\",\"size\":482,\"status\":\"done\"}","b64":false},"/api/agents/messages?host=studio-mac&limit=120&pane=w4%3Ap1&since=482":{"status":200,"type":"application/json","body":"{\"size\":482,\"status\":\"done\",\"unchanged\":true}","b64":false},"/api/files/list?host=studio-mac&pane=w4%3Ap1&path=":{"status":200,"type":"application/json","body":"{\"entries\":[],\"path\":\"\",\"root\":\"/home/demo/work/release\",\"root_name\":\"release\",\"touched\":[],\"truncated\":false}","b64":false},"/api/canvas?host=studio-mac&pane=w4%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"release\",\"cwd\":\"/home/demo/work/release\",\"dir\":\"canvas\",\"exists\":false,\"files\":[],\"git\":false,\"host\":\"studio-mac\",\"pane\":\"w4:p1\"}","b64":false},"/api/agents/messages?host=gpu-box&limit=120&pane=w1%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"codex\",\"messages\":null,\"status\":\"working\"}","b64":false},"/api/agents/read?host=gpu-box&lines=200&pane=w1%3Ap1":{"status":200,"type":"application/json","body":"{\"text\":\"\"}","b64":false},"/api/files/list?host=gpu-box&pane=w1%3Ap1&path=":{"status":200,"type":"application/json","body":"{\"entries\":[],\"path\":\"\",\"root\":\"/home/demo/work/trainer\",\"root_name\":\"trainer\",\"touched\":[],\"truncated\":false}","b64":false},"/api/canvas?host=gpu-box&pane=w1%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"trainer\",\"cwd\":\"/home/demo/work/trainer\",\"dir\":\"canvas\",\"exists\":false,\"files\":[],\"git\":false,\"host\":\"gpu-box\",\"pane\":\"w1:p1\"}","b64":false},"/api/agents/messages?host=gpu-box&limit=120&pane=w2%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"claude\",\"messages\":[{\"role\":\"user\",\"text\":\"Run tonight's eval suite and summarize what changed since yesterday.\",\"ts\":\"2026-11-20T02:00:00.000Z\"},{\"model\":\"claude-sonnet-5-5\",\"model_changed\":true,\"role\":\"assistant\",\"text\":\"Done. 412 of 430 cases pass (yesterday 405). The 7 new passes are all in long-context retrieval; nothing regressed. Full table in `reports/2026-11-20.md`.\",\"ts\":\"2026-11-20T02:41:00.000Z\"}],\"session_guessed\":false,\"session_source\":\"herdr\",\"size\":473,\"status\":\"idle\"}","b64":false},"/api/agents/messages?host=gpu-box&limit=120&pane=w2%3Ap1&since=473":{"status":200,"type":"application/json","body":"{\"size\":473,\"status\":\"idle\",\"unchanged\":true}","b64":false},"/api/canvas?host=gpu-box&pane=w2%3Ap1":{"status":200,"type":"application/json","body":"{\"agent\":\"evals\",\"cwd\":\"/home/demo/work/evals\",\"dir\":\"canvas\",\"exists\":false,\"files\":[],\"git\":false,\"host\":\"gpu-box\",\"pane\":\"w2:p1\"}","b64":false},"/api/files/list?host=gpu-box&pane=w2%3Ap1&path=":{"status":200,"type":"application/json","body":"{\"entries\":[],\"path\":\"\",\"root\":\"/home/demo/work/evals\",\"root_name\":\"evals\",\"touched\":[],\"truncated\":false}","b64":false},"/api/decisions":{"status":200,"type":"application/json","body":"[]","b64":false},"/api/favicon?host=github.com":{"status":200,"type":"image/x-icon","body":"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AAAAAAAAKysrBhYWGUcWFhiVFRUYvxUVGNkWFhfzFhYX8xUVGNkVFRi/FhYYlRYWGUcrKysGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=","b64":true},"/api/favicon?host=arxiv.org":{"status":200,"type":"image/x-icon","body":"AAABAAIAEBAAAAAAAABoBQAAJgAAACAgAAAAAAAAqAgAAI4FAAAoAAAAEAAAACAAAAABAAgAAAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wAAxsYAAP8AAI7/jgBKgVoAdZm4AA13DQC3zukAAKpxAA46SgAA//8AVf9VACODqwAq6CoAls+3AA0+DQAAxgAAW6uNACeMNwAOcoIAFdbuAEqCjAAUpBQAvt2+ABx0WwAHnKQAK1JNABlOKgB6s5sAN2JpAIrcmwAU3RQAAFVVAA6PZgCZ8qoAHP8cAFaRdwAOq7sADSINAADjAAAAqgAAJ3A3AADj4wAjZo4AAI6OAMHl4wAygFQAlLzGAA7I2ABrnIwASG9pAAe7sQAckqAAPH1/ABRPFAAyY1QADcwNAHypjABIi2kAB/H5ABWdtQB3rKkAB5xsAA7k9AAcyekAB7nBAByQsAAVgWAADbANAJHQogAH9AcAG5kbAA3oDQAH1wcAB594AFN+hQAO6A4AFZ62AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDRygDAwMDAwMDAwNKAwMDRzscAwMDAwMDAwMgPkgDAx8YNgMDKCkpKANHEggzTQMELh4XRD0VQQ0ZN0wOOQMDAyQwNQsLCwsLQCxFAwMDAwMDPwsLLSEhFDw8GQMDAwMDKAJCISsLCysKTkMoAwMDAykLPEILCwsLQjwVKQMDAwMpCwsLMTwLMTwLFSkDAwMDKAILCwAVCwAVCyYoAwMDAwMJCwstCwstCwsiAwMDAwMDEzQLCwsLCwsaEEcDAwMXSCU4SwILCwIJJxYqRwMDHQVGSQMoKSkoA0cPBhsRAyMyBwMDAwMDAwMDDDovRwMDDEkDAwMDAwMDAyQMRwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAACAAAABAAAAAAQAIAAAAAACABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8AAMbGAAD/AACO/44AOXRbAIql/wAAjgAAZp+pADfSNwAVLEQAw9zUAAD//wAAjo4AB0oHAGiwaAAxZ58AMaDYAABxOQCYxakAVf9VAADGAAAvPnEAbHSOAGSN6QAijiIAFdbuALzM/wAnVDcAgKjUAByQsADe5f8AAHFxABu1GwA9mT0AABwcAKr/qgAc/xwAAFVVAHH/cQBHlmgAAKqqABRsFADj/+MAxv/GAFLcYwBKgowAFN0UAE1usQCM0owAp8HpACO74wB1tbgAMHcwAH67fgAUMxQAAHEAAFqQvgAAqgAAADk5AADj4wAcdJQADlYtAByszAAqWYkAboixACVBRgA4drYADh4uAA7I2AC+3b4AGTIqAMja6QCdw74AQphTAIWn6QAiVSIAPnNwAJuy/wBVkqkAzdn/ANTo1AApuykA7vL/AHqZ/wAHEQcAG0QbABSkFAAbfRsALFJNAECFYgANkw0ADSINAA7MDgA2iDYAJ8U3ABtgOAAH8fkADjpKACp1pQAHDxcADuT0ABzJ6QAqrt4AB7nBADiT0wAjg6sAk8aTAAf0BwAAVQAADXcNABtgGwAb0hsAIsYiABuZGwAN6A0AfKq+AOn06QAeMD8AIlMyAA4iDgAO6A4AL3cvADFooADe5v8AgajUAA5WLgB7qr4AK1JNAEqCjQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDcAcDAwMDAwMDAwMDAwMDAwMDAwMDchUDAwMDAwMDA1d2XDgDAwMDAwMDAwMDAwMDAwMDA1J9ShlsAwMDAwNwKDIueAMDAwMDAwMDAwMDAwMDAwMDUhMdTBkDAwMDUjRGdRiAAwMDAwMDAwMDAwMDAwMDA3E5TghPR3MDAwMkK0ZrMFcDAwMDAwdtbW1tBwMDAwNwKDIBfBNHUgMDAywBAU4FVS9sOj4KamdnZ2kQCj46IVZLQTF5cnIDAwMDJRQEfBgFTCpAPxphDAwMZRoRQ0BcXAVMcwMDAwMDAwMDAwMnH1R3agwMDAwMDAwMDAxlZxBkb3kDAwMDAwMDAwMDAwMEF2phDAwMDAwMDAwMDAwMM3tuAwMDAwMDAwMDAwMDAzo9DAwMDAwCKSkpKWgaDAwMZkA6AwMDAwMDAwMDAwMDEjwMDAwMJiMAAAAAZApmDAwMQ34DAwMDAwMDAwMDAwMmDAwCKTsNDAwMDAwMDURAamEaCgMDAwMDAwMDAwMDBwIMZWIAIAwMDAwMDAwMIAAKGhp7BwMDAwMDAwMDAwNtDAwMZmICDAwMDAwMDAwCYmYMDGdtAwMDAwMDAwMDA20MDAwMZQwMDAwMDAwMDAxlDAwMZ20DAwMDAwMDAwMDbQwMDAwMDAxlDAwMDAxlDAwMDAxnbQMDAwMDAwMDAwNtDAwMDAwMAmNmDAwMAmNmDAwMDGdtAwMDAwMDAwMDAwcCDAwMDAwAAGcMDAwAAGcMDAwMHgcDAwMDAwMDAwMDAyYMDAwMDAAAZwwMDAAAZwwMDGViAwMDAwMDAwMDAwMDEjwMDAwMOzsMDAwMOzsMDAwMRX4DAwMDAwMDAwMDAwM6KQwMDAw8PAwMDAw8PAwMDAw9OgMDAwMDAwMDAwMDAy9ZAgwMDAwMDAwMDAwMDAwMHgBbAwMDAwMDAwMDAwMDGQVgAgwMDAwMDAwMDAwMDAIjeFZwAwMDAwMDAy9sbBlMIkIWKTwMDAwMDAwMDDwpAABMKFYhAwMDAwMDeg4ZTDlJXlpYEiYCDAwMDAImEjpWVjkYLlZwAwMDAwMtHDd0GzZSeQMDAwdtbW1tBwMDAwNwHVMGTTdVFQMDA1MdNQ9RCQMDAwMDAwMDAwMDAwMDAwNfC1BNOQVtAwMDLBsoTHhdAwMDAwMDAwMDAwMDAwMDAwMkD0yBQnADAwMlLEh/VjoDAwMDAwMDAwMDAwMDAwMDAyR1f1ohAwMDAwMDJCRSeQMDAwMDAwMDAwMDAwMDAwMDJyQkeXkDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=","b64":true},"/api/quota":{"status":200,"type":"application/json","body":"{\"providers\":[{\"id\":\"claude\",\"name\":\"Claude\",\"plan\":\"Claude Max\",\"pools\":[{\"known\":true,\"label\":\"5h\",\"resets_at\":null,\"used\":34.0},{\"known\":true,\"label\":\"7d\",\"resets_at\":\"2026-12-01T06:00:00Z\",\"used\":52.0}]},{\"id\":\"codex\",\"name\":\"Codex\",\"plan\":\"ChatGPT Plus\",\"pools\":[{\"known\":true,\"label\":\"5h\",\"resets_at\":null,\"used\":12.0},{\"known\":true,\"label\":\"7d\",\"resets_at\":\"2026-11-29T00:00:00Z\",\"used\":21.0}]}],\"stale\":false,\"thresholds\":[70,90],\"updated\":\"2026-11-23T18:46:08.501707605+00:00\"}","b64":false},"/api/machine/resources?host=studio-mac":{"status":200,"type":"application/json","body":"{\"disk\":null,\"disks\":[],\"host\":\"studio-mac\",\"os\":\"none\",\"ts\":\"2026-11-23T18:46:11.085Z\"}","b64":false},"/api/machine/usage?host=studio-mac":{"status":200,"type":"application/json","body":"{\"host\":\"studio-mac\",\"scanned\":{\"bytes\":2720,\"files\":4,\"partial\":false},\"ts\":\"2026-11-23T18:46:11.092738578+00:00\",\"windows\":{\"24h\":{\"hooks\":[],\"logs\":[],\"skills\":[]},\"7d\":{\"hooks\":[],\"logs\":[],\"skills\":[]}}}","b64":false},"/api/agents/start-options?host=studio-mac":{"status":200,"type":"application/json","body":"{\"backends\":[{\"id\":\"aide-pty\",\"ok\":false},{\"id\":\"herdr\",\"ok\":true}],\"default\":\"herdr\",\"folders\":[{\"name\":\"api\",\"path\":\"/home/demo/work/api\"},{\"name\":\"docs\",\"path\":\"/home/demo/work/docs\"},{\"name\":\"release\",\"path\":\"/home/demo/work/release\"},{\"name\":\"web-app\",\"path\":\"/home/demo/work/web-app\"}],\"kinds\":[\"claude\",\"codex\"]}","b64":false},"/api/agents/start-options?host=gpu-box":{"status":200,"type":"application/json","body":"{\"backends\":[{\"id\":\"aide-pty\",\"ok\":false},{\"id\":\"herdr\",\"ok\":true}],\"default\":\"herdr\",\"folders\":[{\"name\":\"evals\",\"path\":\"/home/demo/work/evals\"},{\"name\":\"trainer\",\"path\":\"/home/demo/work/trainer\"}],\"kinds\":[\"claude\",\"codex\"]}","b64":false},"/api/machine/resources?host=gpu-box":{"status":200,"type":"application/json","body":"{\"disk\":null,\"disks\":[],\"host\":\"gpu-box\",\"os\":\"none\",\"ts\":\"2026-11-23T18:46:11.137Z\"}","b64":false},"/api/machine/usage?host=gpu-box":{"status":200,"type":"application/json","body":"{\"host\":\"gpu-box\",\"scanned\":{\"bytes\":473,\"files\":1,\"partial\":false},\"ts\":\"2026-11-23T18:46:11.147634072+00:00\",\"windows\":{\"24h\":{\"hooks\":[],\"logs\":[],\"skills\":[]},\"7d\":{\"hooks\":[],\"logs\":[],\"skills\":[]}}}","b64":false},"/api/machine/gpu":{"status":200,"type":"application/json","body":"{\"available\":true,\"updated\":1795459451,\"rule\":\"One job at a time on the GPU: book a slot before you run anything else.\",\"order\":[\"paper-proofs\",\"evals\",\"playground\"],\"cluster\":{\"req\":2,\"jobs\":[[\"40112\",\"gen-oss\",\"RUNNING\"]]},\"projects\":{\"paper-proofs\":{\"prefix\":\"pp-\",\"hq\":\"research\",\"base\":3,\"waiting\":4,\"placed\":1,\"oldest_wait_h\":1.6,\"done_7d\":37,\"failed_7d\":1,\"gpu_s_7d\":14820,\"alerts\":[],\"reported\":{\"round\":\"r3\",\"registered\":120,\"proved_direct\":41,\"proved_after_split\":12,\"conditional\":6,\"stuck\":61,\"neg_total\":10,\"neg_proved\":0,\"prov_fail\":0}},\"evals\":{\"prefix\":\"ev-\",\"hq\":\"evals\",\"base\":2,\"waiting\":1,\"placed\":1,\"oldest_wait_h\":0.4,\"done_7d\":12,\"failed_7d\":0,\"gpu_s_7d\":5210,\"alerts\":[],\"reported\":null},\"playground\":{\"prefix\":\"pg-\",\"hq\":\"research\",\"base\":1,\"waiting\":0,\"placed\":0,\"oldest_wait_h\":0,\"done_7d\":3,\"failed_7d\":0,\"gpu_s_7d\":940,\"alerts\":[],\"reported\":null}}}"},"/api/agents/start-options":{"status":200,"type":"application/json","body":"{\"backends\":[{\"id\":\"aide-pty\",\"ok\":true},{\"id\":\"herdr\",\"ok\":true}],\"default\":\"aide-pty\",\"kinds\":[\"claude\",\"codex\"],\"folders\":[{\"path\":\"/home/demo/projects/api\",\"name\":\"api\"},{\"path\":\"/home/demo/projects/docs\",\"name\":\"docs\"},{\"path\":\"/home/demo/projects/release\",\"name\":\"release\"},{\"path\":\"/home/demo/projects/web-app\",\"name\":\"web-app\"}]}"}};
+  const BUILD = "151cc881c507";
   const norm = u => { const x = new URL(u, location.href); const q = [...x.searchParams.entries()].sort(); return x.pathname + (q.length ? '?' + new URLSearchParams(q) : ''); };
   const empty = p => /\/(agents|pending|queue|decisions|specs|prds|bugs|uploads|jobs)$/.test(p) ? '[]' : '{}';
   const note = () => { const t = document.getElementById('toast'); if (t) { t.textContent = 'This is a demo: nothing was sent to a real agent.'; t.classList.add('on'); setTimeout(() => t.classList.remove('on'), 2600); } };
@@ -295,6 +294,8 @@ details.compact .ctext{text-align:left;white-space:pre-wrap;overflow-wrap:anywhe
     if (u.origin !== location.origin || !(u.pathname.startsWith('/api/') || u.pathname === '/sw.js')) return realFetch(input, init);
     const m = (init.method || 'GET').toUpperCase();
     const hdr = { 'x-aide-build': BUILD };
+    // 開 agent says plainly that nothing started (an "ok" would read as a started agent that never shows up)
+    if (m !== 'GET' && u.pathname === '/api/agents/start') return new Response('This is a demo: no agent was started.', { status: 409, headers: { ...hdr, 'content-type': 'text/plain' } });
     if (m !== 'GET') { if (!/page-state|bugs|push/.test(u.pathname)) note(); return new Response('{"ok":true,"demo":true}', { status: 200, headers: { ...hdr, 'content-type': 'application/json' } }); }
     let k = norm(url), r = REC[k];
     if (!r) { const base = u.pathname; const alt = Object.keys(REC).find(x => x === base || x.startsWith(base + '?')); r = alt && REC[alt]; }
@@ -303,13 +304,13 @@ details.compact .ctext{text-align:left;white-space:pre-wrap;overflow-wrap:anywhe
     return new Response(body, { status: r.status, headers: { ...hdr, 'content-type': r.type } });
   };
   if (navigator.serviceWorker) { try { navigator.serviceWorker.register = () => Promise.reject(new Error('demo')); } catch (e) {} }
-})();</script><script>const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({
+})();</script><script>const esc = s => String(s ?? "").replace(/[&<>"']/g, (c => ({
   "&": "&amp;",
   "<": "&lt;",
   ">": "&gt;",
   '"': "&quot;",
   "'": "&#39;"
-}[c]));
+}[c])));
 
 let LANG = "zh";
 
@@ -333,7 +334,7 @@ function tr(s) {
 
 function trf(s, v) {
   const has = k => !!v && Object.prototype.hasOwnProperty.call(v, k);
-  return String(tr(s)).replace(/\{(\w+)\|([^|}]*)\|([^}]*)\}/g, (m, k, one, many) => has(k) ? v[k] == 1 ? one : many : m).replace(/\{(\w+)\}/g, (m, k) => has(k) ? String(v[k]) : m);
+  return String(tr(s)).replace(/\{(\w+)\|([^|}]*)\|([^}]*)\}/g, ((m, k, one, many) => has(k) ? v[k] == 1 ? one : many : m)).replace(/\{(\w+)\}/g, ((m, k) => has(k) ? String(v[k]) : m));
 }
 
 function N_(s) {
@@ -344,20 +345,20 @@ const LINK = (u, t) => '<a href="' + u + '" target="_blank" rel="noopener norefe
 
 function mdi(t) {
   const codes = [];
-  t = t.replace(/`([^`\n]+)`/g, (m, c) => {
+  t = t.replace(/`([^`\n]+)`/g, ((m, c) => {
     codes.push(c);
     return "" + (codes.length - 1) + "";
-  });
+  }));
   const raws = [], keep = h => {
     raws.push(h);
     return "" + (raws.length - 1) + "";
   };
-  t = t.replace(/!\[([^\]\n]*)\]\(([^\s)]+)(?:\s+&quot;[^)\n]*&quot;)?\)/g, (m, a, u) => /^https?:\/\//.test(u) ? keep(LINK(u, "🖼 " + (a || u))) : MDREL ? keep('<img class="mdimg" data-src="' + u + '" alt="' + a + '">') : m);
-  if (MDREL) t = t.replace(/\[([^\]\n]+)\]\((?!https?:\/\/|#|mailto:)([^\s)]+)\)/g, (m, a, u) => keep('<a class="mdfile" data-file="' + u + '">' + a + "</a>"));
-  t = t.replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g, (m, a, u) => LINK(u, a));
-  t = t.replace(/(^|[\s(（「])(https?:\/\/[^\s<)）」]*[^\s<)）」.,;:!?。，、])/g, (m, p, u) => p + LINK(u, u));
+  t = t.replace(/!\[([^\]\n]*)\]\(([^\s)]+)(?:\s+&quot;[^)\n]*&quot;)?\)/g, ((m, a, u) => /^https?:\/\//.test(u) ? keep(LINK(u, "🖼 " + (a || u))) : MDREL ? keep('<img class="mdimg" data-src="' + u + '" alt="' + a + '">') : m));
+  if (MDREL) t = t.replace(/\[([^\]\n]+)\]\((?!https?:\/\/|#|mailto:)([^\s)]+)\)/g, ((m, a, u) => keep('<a class="mdfile" data-file="' + u + '">' + a + "</a>")));
+  t = t.replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g, ((m, a, u) => LINK(u, a)));
+  t = t.replace(/(^|[\s(（「])(https?:\/\/[^\s<)）」]*[^\s<)）」.,;:!?。，、])/g, ((m, p, u) => p + LINK(u, u)));
   t = t.replace(/\*\*([^*\n]+?)\*\*/g, "<b>$1</b>").replace(/__([^_\n]+?)__/g, "<b>$1</b>").replace(/~~([^~\n]+?)~~/g, "<s>$1</s>").replace(/(^|[^*\w])\*([^*\s][^*\n]*?)\*(?!\*)/g, "$1<i>$2</i>");
-  return t.replace(/\u0002(\d+)\u0002/g, (m, k) => raws[+k]).replace(/\u0001(\d+)\u0001/g, (m, k) => "<code>" + codes[+k] + "</code>");
+  return t.replace(/\u0002(\d+)\u0002/g, ((m, k) => raws[+k])).replace(/\u0001(\d+)\u0001/g, ((m, k) => "<code>" + codes[+k] + "</code>"));
 }
 
 const TSEP = /^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)*\|?\s*$/, LI = /^(\s*)([-*+]|\d+[.)])\s+(.*)/, QT = /^\s*&gt;\s?/;
@@ -366,7 +367,7 @@ const tcells = l => {
   l = l.trim();
   if (l.startsWith("|")) l = l.slice(1);
   if (l.endsWith("|") && !l.endsWith("\\|")) l = l.slice(0, -1);
-  return l.split("|").map(c => c.trim());
+  return l.split("|").map((c => c.trim()));
 };
 
 function md(s) {
@@ -384,12 +385,12 @@ function md(s) {
       continue;
     }
     if (isT(i)) {
-      const hd = tcells(l), al = tcells(L[i + 1]).map(c => c.startsWith(":") && c.endsWith(":") ? "center" : c.endsWith(":") ? "right" : "");
+      const hd = tcells(l), al = tcells(L[i + 1]).map((c => c.startsWith(":") && c.endsWith(":") ? "center" : c.endsWith(":") ? "right" : ""));
       i += 2;
       const rows = [];
       while (i < L.length && L[i].includes("|") && L[i].trim()) rows.push(tcells(L[i++]));
       const cell = (t, c, k) => "<" + t + (al[k] ? ' style="text-align:' + al[k] + '"' : "") + ">" + mdi(c) + "</" + t + ">";
-      out.push('<div class="tbl"><table><thead><tr>' + hd.map((c, k) => cell("th", c, k)).join("") + "</tr></thead><tbody>" + rows.map(r => "<tr>" + hd.map((_, k) => cell("td", r[k] || "", k)).join("") + "</tr>").join("") + "</tbody></table></div>");
+      out.push('<div class="tbl"><table><thead><tr>' + hd.map(((c, k) => cell("th", c, k))).join("") + "</tr></thead><tbody>" + rows.map((r => "<tr>" + hd.map(((_, k) => cell("td", r[k] || "", k))).join("") + "</tr>")).join("") + "</tbody></table></div>");
       continue;
     }
     const h = l.match(/^(#{1,6})\s+(.*)/);
@@ -502,8 +503,8 @@ function cardGist(c) {
   if (c.kind === "login") return c.step === "method" ? tr("選登入方式") : tr("打開登入頁，把授權碼貼回來");
   if (c.kind !== "screen") return hookGist(c);
   const q = parseQ(c.text);
-  const L = c.text.split("\n").slice(Math.max(q.tab, 0)).map(l => l.trim()).filter(l => l && !/^[─╌]+$/.test(l) && !/^←/.test(l));
-  return (L.find(l => /[?？]/.test(l)) || L[0] || tr("agent 在等你回答")).slice(0, 140);
+  const L = c.text.split("\n").slice(Math.max(q.tab, 0)).map((l => l.trim())).filter((l => l && !/^[─╌]+$/.test(l) && !/^←/.test(l)));
+  return (L.find((l => /[?？]/.test(l))) || L[0] || tr("agent 在等你回答")).slice(0, 140);
 }
 
 const PANE_CH = "┌│└├╭╰┐┘┤╮╯";
@@ -523,16 +524,16 @@ function parseQ(text) {
     tab = i;
     break;
   }
-  let first = L0.findIndex((l, i) => i >= Math.max(tab, 0) && /^\s*(❯)?\s*\d{1,2}\.\s/.test(l));
-  const pane = first >= 0 && L0.slice(first).some(l => /\S\s{2,}[┌╭]|^\s*[┌╭]/.test(l));
+  let first = L0.findIndex(((l, i) => i >= Math.max(tab, 0) && /^\s*(❯)?\s*\d{1,2}\.\s/.test(l)));
+  const pane = first >= 0 && L0.slice(first).some((l => /\S\s{2,}[┌╭]|^\s*[┌╭]/.test(l)));
   const preview = [];
-  const L = pane ? L0.map((l, i) => {
+  const L = pane ? L0.map(((l, i) => {
     if (i < first) return l;
     const [left, right] = splitPane(l);
     const t = right.replace(/[┌┐└┘├┤│─╭╮╰╯]/g, "").trim();
     if (t) preview.push(t);
     return left;
-  }) : L0;
+  })) : L0;
   const opts = [];
   let cur = null, next = false;
   for (const l of L.slice(Math.max(tab, 0))) {
@@ -556,7 +557,7 @@ function parseQ(text) {
     }
   }
   if (!opts.length) {
-    const i = L.findIndex(l => /^\s*❯\s+\S/.test(l));
+    const i = L.findIndex((l => /^\s*❯\s+\S/.test(l)));
     if (i >= 0) {
       const ind = L[i].match(/^(\s*)❯/)[1].length;
       const row = new RegExp("^\\s{" + ind + "}(❯|\\s)\\s+\\S");
@@ -564,7 +565,7 @@ function parseQ(text) {
       let a = i, b = i;
       while (a > 0 && inMenu(L[a - 1])) a--;
       while (b < L.length - 1 && inMenu(L[b + 1])) b++;
-      L.slice(a, b + 1).forEach((l, k) => {
+      L.slice(a, b + 1).forEach(((l, k) => {
         opts.push({
           n: k + 1,
           box: false,
@@ -573,15 +574,15 @@ function parseQ(text) {
           label: l.replace(/^\s*❯?\s*/, "").trim()
         });
         if (/^\s*❯/.test(l)) cur = k + 1;
-      });
+      }));
     }
   }
-  const multi = opts.some(o => o.box);
-  const boxes = opts.filter(o => o.box);
-  const textRow = multi ? boxes.length ? boxes[boxes.length - 1].n : null : (opts.find(o => /^Type something\.?$/.test(o.label)) || {}).n || null;
+  const multi = opts.some((o => o.box));
+  const boxes = opts.filter((o => o.box));
+  const textRow = multi ? boxes.length ? boxes[boxes.length - 1].n : null : (opts.find((o => /^Type something\.?$/.test(o.label))) || {}).n || null;
   return {
     tab: tab,
-    opts: opts.filter(o => o.label !== "Chat about this"),
+    opts: opts.filter((o => o.label !== "Chat about this")),
     cur: cur,
     multi: multi,
     next: next,
@@ -682,7 +683,7 @@ const SH_STATE = {
   stored: ""
 };
 
-const shOrder = L => [ ...L || [] ].sort((a, b) => String(b.ts || "").localeCompare(String(a.ts || "")));
+const shOrder = L => [ ...L || [] ].sort(((a, b) => String(b.ts || "").localeCompare(String(a.ts || ""))));
 
 const shDay = t => {
   const d = localTime(t);
@@ -706,12 +707,12 @@ const shWhen = t => {
   return d ? p2(d.getMonth() + 1) + "-" + p2(d.getDate()) + " " + p2(d.getHours()) + ":" + p2(d.getMinutes()) : (t || "").replace("T", " ").slice(5, 16);
 };
 
-const photoLines = ps => "（我傳了 " + ps.length + " 張照片給你，請用 Read 打開：）\n" + ps.map(p => "- " + p).join("\n");
+const photoLines = ps => "（我傳了 " + ps.length + " 張照片給你，請用 Read 打開：）\n" + ps.map((p => "- " + p)).join("\n");
 
 function b64ToU8(s) {
   s = s.replace(/-/g, "+").replace(/_/g, "/");
   const r = atob(s + "=".repeat((4 - s.length % 4) % 4));
-  return Uint8Array.from([ ...r ].map(c => c.charCodeAt(0)));
+  return Uint8Array.from([ ...r ].map((c => c.charCodeAt(0))));
 }
 
 const SPEC_SHOW_MS = 500;
@@ -736,7 +737,7 @@ const specCanApprove = s => !!(s && s.sha256 && (s.state === "pending" || s.stat
 
 const specsWaiting = L => (L || []).filter(specCanApprove).length;
 
-const specOrder = L => [ ...L || [] ].sort((a, b) => specCanApprove(b) - specCanApprove(a) || (specKey(a) < specKey(b) ? -1 : specKey(a) > specKey(b) ? 1 : 0));
+const specOrder = L => [ ...L || [] ].sort(((a, b) => specCanApprove(b) - specCanApprove(a) || (specKey(a) < specKey(b) ? -1 : specKey(a) > specKey(b) ? 1 : 0)));
 
 const specTapOk = (e, shownAt, now, down) => !!(e && e.isTrusted === true) && shownAt > 0 && (down > 0 ? down : now) - shownAt >= SPEC_SHOW_MS;
 
@@ -819,7 +820,7 @@ function hcChanges(reason) {
 const hcChangeText = it => it.path + tr("：") + (it.old === "None" ? tr("（之前沒有）") : it.old) + " → " + (it.new === "ABSENT" ? tr("（已刪除）") : it.new);
 
 function hcGroups(files, items) {
-  const by = new Map((items || []).map(i => [ i.path, i ])), seen = new Set, changed = [], same = [];
+  const by = new Map((items || []).map((i => [ i.path, i ]))), seen = new Set, changed = [], same = [];
   for (const [p, h] of files || []) {
     const i = by.get(p);
     if (i) {
@@ -848,7 +849,7 @@ function hcGroups(files, items) {
   };
 }
 
-const hcOrder = L => [ ...L || [] ].sort((a, b) => hcCanDecide(b) - hcCanDecide(a) || (hcKey(a) < hcKey(b) ? -1 : hcKey(a) > hcKey(b) ? 1 : 0));
+const hcOrder = L => [ ...L || [] ].sort(((a, b) => hcCanDecide(b) - hcCanDecide(a) || (hcKey(a) < hcKey(b) ? -1 : hcKey(a) > hcKey(b) ? 1 : 0)));
 
 const LASTING_NOTE = N_("這個核准會長期生效，推進器會一直依它核對");
 
@@ -868,10 +869,10 @@ function specProjects(L) {
     if (specCanApprove(s)) e.waiting++;
     m.set(k, e);
   }
-  return [ ...m.values() ].sort((a, b) => a.key < b.key ? -1 : a.key > b.key ? 1 : 0);
+  return [ ...m.values() ].sort(((a, b) => a.key < b.key ? -1 : a.key > b.key ? 1 : 0));
 }
 
-const specFiltered = (L, f) => f ? (L || []).filter(s => specProj(s) === f) : L || [];
+const specFiltered = (L, f) => f ? (L || []).filter((s => specProj(s) === f)) : L || [];
 
 const JOB_SECTIONS = [ [ "running", N_("正在跑") ], [ "scheduled", N_("排定") ], [ "done", N_("24 小時內結束") ] ];
 
@@ -919,19 +920,19 @@ const DEFAULT_OWNER = 'ops';
 
 function jobsTree(L, agents) {
   const s = jobsSplit(L);
-  const A = (agents || []).filter(a => a && a.kind !== "peer_error");
+  const A = (agents || []).filter((a => a && a.kind !== "peer_error"));
   const live = new Set(A.map(agentHq));
   const home = o => o && live.has(o) ? o : DEFAULT_OWNER;
-  const P = s.projects.map(p => ({
+  const P = s.projects.map((p => ({
     p: p,
     key: jobKey(p),
-    jobs: s.jobs.filter(j => j.host === p.host && j.project === p.id),
+    jobs: s.jobs.filter((j => j.host === p.host && j.project === p.id)),
     unowned: !(p.owner && live.has(p.owner))
-  }));
+  })));
   const pids = new Set(s.projects.map(jobKey));
   const byOwner = {}, jobsByOwner = {};
   for (const x of P) (byOwner[home(x.p.owner)] = byOwner[home(x.p.owner)] || []).push(x);
-  for (const j of s.jobs.filter(j => !(j.project && pids.has(j.host + "|" + j.project)) && j.source !== "agent")) (jobsByOwner[home(j.owner)] = jobsByOwner[home(j.owner)] || []).push(j);
+  for (const j of s.jobs.filter((j => !(j.project && pids.has(j.host + "|" + j.project)) && j.source !== "agent"))) (jobsByOwner[home(j.owner)] = jobsByOwner[home(j.owner)] || []).push(j);
   return {
     byOwner: byOwner,
     jobsByOwner: jobsByOwner,
@@ -945,7 +946,7 @@ function jobsTree(L, agents) {
 
 function jobsOfAgent(t, a) {
   const mine = (t.jobsByOwner || {})[agentHq(a)] || [];
-  return Object.values(t.jobsByOwner || {}).flat().filter(j => j.agent && j.agent.host === a.host && j.agent.pane_id === a.pane_id || mine.includes(j));
+  return Object.values(t.jobsByOwner || {}).flat().filter((j => j.agent && j.agent.host === a.host && j.agent.pane_id === a.pane_id || mine.includes(j)));
 }
 
 const SESSION_GONE = N_("開它的 session 已經不在");
@@ -959,7 +960,7 @@ function unclaimedLine(j, now) {
   }) : tr("沒人認領：已經超過 1 小時，下一次清理就停掉");
 }
 
-const filesOrder = E => [ ...E || [] ].sort((a, b) => b.dir - a.dir || (a.dir ? String(a.name).localeCompare(String(b.name)) : (b.mtime || 0) - (a.mtime || 0)));
+const filesOrder = E => [ ...E || [] ].sort(((a, b) => b.dir - a.dir || (a.dir ? String(a.name).localeCompare(String(b.name)) : (b.mtime || 0) - (a.mtime || 0))));
 
 const hashTab = t => ({
   canvas: "files",
@@ -1003,15 +1004,15 @@ const cardNeedsUser = k => {
   return k.startsWith("door:") || k.startsWith("judge:") || k.startsWith("due:") || k === "budget:gpu-over";
 };
 
-const projWaitingN = p => !p ? 0 : Array.isArray(p.cards) ? (p.user_cards || []).length + p.cards.filter(c => c && cardNeedsUser(c.key)).length : p.waiting_n || 0;
+const projWaitingN = p => !p ? 0 : Array.isArray(p.cards) ? (p.user_cards || []).length + p.cards.filter((c => c && cardNeedsUser(c.key))).length : p.waiting_n || 0;
 
 const projWaits = p => !p ? 0 : p.stuck ? projWaitingN(p) : Math.max(projWaitingN(p), p.waits_user ? 1 : 0);
 
 const sameAgent = (a, b) => !!(a && b && a.host === b.host && a.pane_id === b.pane_id);
 
 function ownerRow(h, agents) {
-  const L = (agents || []).filter(a => a && a.kind !== "peer_error");
-  return L.find(a => !a.owner && agentHq(a) === h) || L.find(a => agentHq(a) === h) || null;
+  const L = (agents || []).filter((a => a && a.kind !== "peer_error"));
+  return L.find((a => !a.owner && agentHq(a) === h)) || L.find((a => agentHq(a) === h)) || null;
 }
 
 function badgeItems(a, tree, cards, prds, hcs) {
@@ -1042,7 +1043,7 @@ function badgeItems(a, tree, cards, prds, hcs) {
 }
 
 function rowBadges(a, tree, cards, prds, hcs) {
-  const I = badgeItems(a, tree, cards, prds, hcs), n = k => I.filter(i => i.kind === k).reduce((s, i) => s + i.n, 0), t = tree || {};
+  const I = badgeItems(a, tree, cards, prds, hcs), n = k => I.filter((i => i.kind === k)).reduce(((s, i) => s + i.n), 0), t = tree || {};
   const own = a && sameAgent(ownerRow(agentHq(a), t.agents || []), a) ? ((t.byOwner || {})[agentHq(a)] || []).length : 0;
   return {
     projects: own,
@@ -1106,12 +1107,12 @@ const TREND = {
 
 function projView(p) {
   const g = p.gates || {}, la = p.last_advance || null, b = p.budget || {};
-  const gates = (g.list || []).map(x => ({
+  const gates = (g.list || []).map((x => ({
     id: x.id,
     mark: x.passed ? "✓" : x.current ? "▶" : x.door ? "🚪" : "·",
     cls: x.passed ? "ok" : x.current ? "cur" : "",
     due: x.due || ""
-  }));
+  })));
   const due = [ g.frontier && g.due ? trf("{gate} 截止 {due}", {
     gate: g.frontier,
     due: g.due
@@ -1127,8 +1128,8 @@ function projView(p) {
   }), b.gpu_hours != null ? "GPU " + b.gpu_hours + (b.gpu_cap != null ? "/" + b.gpu_cap : "") + " h" : "", b.claude_7d_pct != null ? trf("Claude 7 天 {n}%（整個帳號）", {
     n: b.claude_7d_pct
   }) : "" ];
-  const waits = [ ...(p.user_cards || []).map(c => c.title || c.name), ...(p.cards || []).filter(c => !/^(approve|halt:)/.test(c.key || "")).map(c => c.text) ].filter(Boolean);
-  const best = Array.isArray(p.best_of_n) && p.best_of_n.length ? p.best_of_n.map(x => (x.branch || "?") + " " + (x.score ?? "")).join(tr("、")) : tr("還沒有（欄位已留）");
+  const waits = [ ...(p.user_cards || []).map((c => c.title || c.name)), ...(p.cards || []).filter((c => !/^(approve|halt:)/.test(c.key || ""))).map((c => c.text)) ].filter(Boolean);
+  const best = Array.isArray(p.best_of_n) && p.best_of_n.length ? p.best_of_n.map((x => (x.branch || "?") + " " + (x.score ?? ""))).join(tr("、")) : tr("還沒有（欄位已留）");
   const st = p.stuck ? [ tr("卡住"), "stuck" ] : p.waits_user ? [ tr("等你"), "wait" ] : projHeld(p) ? [ tr("暫停"), "wait" ] : p.running ? [ tr("在跑"), "run" ] : [ tr("完成"), "ok" ];
   return {
     kind: p.type === "autodev" ? "autodev" : "auto research",
@@ -1142,11 +1143,11 @@ function projView(p) {
       l: g.left
     }) : "",
     due: due,
-    oracle: (p.oracle || []).map(o => ({
+    oracle: (p.oracle || []).map((o => ({
       t: o.verdict === "pass" ? "✓" : "✗" + (o.failing_n || ""),
       ok: o.verdict === "pass",
       gate: o.gate || ""
-    })),
+    }))),
     trend: tr(TREND[p.trend]) || "",
     last: la && la.ts ? {
       ts: la.ts,
@@ -1204,7 +1205,7 @@ const canRerun = p => !!(p && String(p.id || "").startsWith("harness:") && p.las
 const jobSub = j => [ j.host, j.owner, j.state ].filter(Boolean).join(" · ");
 
 function commentState(c, dels) {
-  const d = (dels || []).find(x => x.comment_id === c.id) || c.delivered || null;
+  const d = (dels || []).find((x => x.comment_id === c.id)) || c.delivered || null;
   if (d) return {
     done: true,
     handoff: false,
@@ -1226,24 +1227,24 @@ function commentState(c, dels) {
   };
 }
 
-const jobCommentsOf = (x, cs) => (cs || []).filter(c => c.job === x.id && c.host === x.host).sort(byField("ts", 1));
+const jobCommentsOf = (x, cs) => (cs || []).filter((c => c.job === x.id && c.host === x.host)).sort(byField("ts", 1));
 
 function jobHandoffText(x, c) {
   return [ c.verdict === "reject" ? "（我在 aide portal 把這份退回給你，附上意見）" : "（我在 aide portal 留言給你）", "對象：" + (x.title || x.id) + "（" + x.host + " · " + x.id + "）", c.version ? String(x.id || "").startsWith("canvas:") ? canvasVersionText(c.version) : "版本：sha256 " + String(c.version).slice(0, 12) + "…" : "", c.para ? "段落：第 " + (c.para.i + 1) + " 段" : "", (c.verdict === "reject" ? "退回的原因：" : "我的留言：") + c.text ].filter(Boolean).join("\n");
 }
 
 function jobHandoffTargets(x, agents, owner) {
-  const L = (agents || []).filter(a => a && a.kind !== "peer_error" && a.pane_id);
+  const L = (agents || []).filter((a => a && a.kind !== "peer_error" && a.pane_id));
   const first = [];
-  if (owner) first.push(...L.filter(a => agentHq(a) === owner));
-  if (x.agent) first.push(...L.filter(a => a.host === x.agent.host && a.pane_id === x.agent.pane_id));
+  if (owner) first.push(...L.filter((a => agentHq(a) === owner)));
+  if (x.agent) first.push(...L.filter((a => a.host === x.agent.host && a.pane_id === x.agent.pane_id)));
   const seen = new Set;
-  return [ ...first, ...L ].filter(a => {
+  return [ ...first, ...L ].filter((a => {
     const k = a.host + "|" + a.pane_id;
     if (seen.has(k)) return false;
     seen.add(k);
     return true;
-  });
+  }));
 }
 
 const CONFIRM_KIND = {
@@ -1257,7 +1258,7 @@ const CONFIRM_KIND = {
 };
 
 const ownerOf = (tree, host, id) => {
-  const x = (tree && tree.projects || []).find(q => q.p.id === id && (!host || q.p.host === host));
+  const x = (tree && tree.projects || []).find((q => q.p.id === id && (!host || q.p.host === host)));
   return x ? x.p.owner || null : null;
 };
 
@@ -1329,7 +1330,7 @@ const hcJob = c => ({
 });
 
 function prdItems(prds) {
-  return (prds || []).filter(prdCanDecide).map(p => {
+  return (prds || []).filter(prdCanDecide).map((p => {
     const k = p.state === "changed" ? "prdv" : "prd";
     return {
       kind: "prd",
@@ -1341,7 +1342,7 @@ function prdItems(prds) {
       tldr: tldrOf(p).text,
       tldr_missing: []
     };
-  });
+  }));
 }
 
 const DECISION = {
@@ -1367,7 +1368,7 @@ const SIGN_CATS = [ "prd", "spec", "approval" ];
 const inScope = (cat, scope) => scope === "prd" ? cat === "prd" : scope === "sign" ? SIGN_CATS.includes(cat) : scope === "decisions" ? !SIGN_CATS.includes(cat) : true;
 
 function historyItems(L, scope) {
-  return (L || []).filter(x => x && x.kind === "decision" && inScope(x.category, scope)).sort(byField("ts", -1)).slice(0, HISTORY_MAX).map(d => ({
+  return (L || []).filter((x => x && x.kind === "decision" && inScope(x.category, scope))).sort(byField("ts", -1)).slice(0, HISTORY_MAX).map((d => ({
     ts: d.ts || "",
     decision: tr(DECISION[d.decision]) || d.decision || "",
     cls: d.decision || "",
@@ -1376,7 +1377,7 @@ function historyItems(L, scope) {
     who: d.who || "",
     host: d.host || "",
     about: d.agent && (d.agent.cwd_name || d.agent.pane) || d.project || ""
-  }));
+  })));
 }
 
 function parseHash(h) {
@@ -1429,11 +1430,11 @@ const okrNote = s => {
 const commentOld = (c, sha) => !!(c && c.version && sha && c.version !== sha);
 
 function prdThreads(p, comments) {
-  const cs = (comments || []).filter(c => c.job === p.id && c.host === p.host).sort(byField("ts", 1));
-  const paras = (p.paragraphs || []).map(x => Object.assign({}, x, {
+  const cs = (comments || []).filter((c => c.job === p.id && c.host === p.host)).sort(byField("ts", 1));
+  const paras = (p.paragraphs || []).map((x => Object.assign({}, x, {
     comments: []
-  }));
-  const by = new Map(paras.map(x => [ x.sha, x ]));
+  })));
+  const by = new Map(paras.map((x => [ x.sha, x ])));
   const general = [], gone = [];
   for (const c of cs) {
     const o = {
@@ -1452,7 +1453,7 @@ function prdThreads(p, comments) {
   };
 }
 
-const specRejected = (s, comments) => (comments || []).some(c => c.host === s.host && c.job === "spec:" + s.project + "/" + s.id && c.verdict === "reject" && c.version === s.sha256);
+const specRejected = (s, comments) => (comments || []).some((c => c.host === s.host && c.job === "spec:" + s.project + "/" + s.id && c.verdict === "reject" && c.version === s.sha256));
 
 const specJob = s => ({
   host: s.host,
@@ -1460,7 +1461,7 @@ const specJob = s => ({
   title: s.title || s.id
 });
 
-const pinnedPrds = (prds, owner) => (prds || []).filter(p => p && p.kind === "prd" && p.state === "approved" && p.owner === owner);
+const pinnedPrds = (prds, owner) => (prds || []).filter((p => p && p.kind === "prd" && p.state === "approved" && p.owner === owner));
 
 const metricLine = m => m.text + tr("：") + (m.progress == null ? tr("進度（資料來源之後接）") : m.progress);
 
@@ -1480,23 +1481,23 @@ const byName = (a, b) => {
 };
 
 function sideGroups(agents, tree, cards, prds) {
-  const live = (agents || []).filter(a => a && a.kind !== "peer_error");
+  const live = (agents || []).filter((a => a && a.kind !== "peer_error"));
   const hqs = new Set;
   for (const a of live) if (a.owner) hqs.add(a.owner);
   for (const x of tree && tree.projects || []) if (x.p.owner) hqs.add(x.p.owner);
   for (const p of prds || []) if (p && p.owner) hqs.add(p.owner);
-  const groups = [ ...hqs ].sort().map(h => {
-    const self = live.find(a => !a.owner && agentHq(a) === h) || null;
-    const workers = live.filter(a => a.owner === h).sort(byName);
+  const groups = [ ...hqs ].sort().map((h => {
+    const self = live.find((a => !a.owner && agentHq(a) === h)) || null;
+    const workers = live.filter((a => a.owner === h)).sort(byName);
     return {
       hq: h,
       agent: self,
       workers: workers
     };
-  });
+  }));
   return {
     groups: groups,
-    loose: live.filter(a => !a.owner && !hqs.has(agentHq(a))).sort(byName)
+    loose: live.filter((a => !a.owner && !hqs.has(agentHq(a)))).sort(byName)
   };
 }
 
@@ -1507,14 +1508,14 @@ const ownerTag = a => a && a.owner ? trf("{owner} 的", {
 }) : "";
 
 function hostRows(home, peers, agents, alt, api) {
-  const L = (agents || []).filter(a => a && a.host);
+  const L = (agents || []).filter((a => a && a.host));
   const hosts = [];
-  for (const h of [ home, ...(peers || []).map(p => p.host), ...L.map(a => a.host) ]) if (h && !hosts.includes(h)) hosts.push(h);
-  const usingHost = api ? ((alt || []).find(b => b.url === api) || {}).host : home;
-  return hosts.map(h => {
-    const err = L.find(a => a.kind === "peer_error" && a.host === h);
-    const n = L.filter(a => a.host === h && a.kind !== "peer_error").length;
-    const url = ((peers || []).find(p => p.host === h) || (alt || []).find(b => b.host === h) || {}).url || "";
+  for (const h of [ home, ...(peers || []).map((p => p.host)), ...L.map((a => a.host)) ]) if (h && !hosts.includes(h)) hosts.push(h);
+  const usingHost = api ? ((alt || []).find((b => b.url === api)) || {}).host : home;
+  return hosts.map((h => {
+    const err = L.find((a => a.kind === "peer_error" && a.host === h));
+    const n = L.filter((a => a.host === h && a.kind !== "peer_error")).length;
+    const url = ((peers || []).find((p => p.host === h)) || (alt || []).find((b => b.host === h)) || {}).url || "";
     const using = h === usingHost;
     const state = using ? tr("現在連的這台") : err ? trf("連不上（{err}）", {
       err: String(err.error || "").slice(0, 60)
@@ -1528,9 +1529,9 @@ function hostRows(home, peers, agents, alt, api) {
       url: url,
       using: using,
       canDirect: !using && !!url,
-      paired: (alt || []).some(b => b.host === h)
+      paired: (alt || []).some((b => b.host === h))
     };
-  });
+  }));
 }
 
 const unreachableMsg = (home, others) => trf("連不上 {host}", {
@@ -1552,7 +1553,7 @@ const HOME_RETRY_MS = 2500;
 
 const fallbacks = (alt, home, origin) => {
   const o = String(origin || "").replace(/\/+$/, "");
-  return (alt || []).filter(b => b && b.url && b.host !== home && String(b.url).replace(/\/+$/, "") !== o);
+  return (alt || []).filter((b => b && b.url && b.host !== home && String(b.url).replace(/\/+$/, "") !== o));
 };
 
 const reach = async (tryHome, alts, tryAlt, wait) => {
@@ -1584,7 +1585,7 @@ const htmlSrcdoc = h => HTML_CSP + String(h || "");
 
 const tabsShown = (view, cur) => view === "chat" && !!cur;
 
-const canvasPick = (V, sel) => !V || !V.length ? null : V.find(x => x.version === sel) || V[0];
+const canvasPick = (V, sel) => !V || !V.length ? null : V.find((x => x.version === sel)) || V[0];
 
 const canvasVersionLabel = x => x.uncommitted ? tr("未提交") : x.short + " · " + String(x.ts || "").slice(5, 16).replace("T", " ");
 
@@ -1606,7 +1607,7 @@ const canvasCommentable = id => /^canvas:[A-Za-z0-9_.:@\/-]{1,160}$/.test(id) &&
 
 function canvasCommentLabel(c, V, cur) {
   if (!c || !c.version || cur && c.version === cur.version) return "";
-  const x = (V || []).find(v => v.version === c.version);
+  const x = (V || []).find((v => v.version === c.version));
   return x ? x.uncommitted ? tr("針對未提交的版本") : trf("針對 {v}", {
     v: x.short
   }) : tr("針對已不在的版本");
@@ -1622,7 +1623,7 @@ function canvasEmptyText(name, dir) {
   }) : "");
 }
 
-const BUILD = "d9b5555f91ec";
+const BUILD = "151cc881c507";
 
 const buildChanged = (page, server, api) => !!(server && !api && !/^__AIDE_/.test(String(page)) && server !== page);
 
@@ -1648,7 +1649,7 @@ const nextOpenHost = (cur, h) => cur === h ? "" : h;
 function hostToOpen(stored, hosts, cards) {
   if (stored === "") return "";
   if (stored && (hosts || []).includes(stored)) return stored;
-  return (hosts || []).find(h => (cards || []).some(c => c.host === h)) || (hosts || [])[0] || null;
+  return (hosts || []).find((h => (cards || []).some((c => c.host === h)))) || (hosts || [])[0] || null;
 }
 
 function openAfter(ev, cur, store) {
@@ -1664,11 +1665,11 @@ const TAILSCALE_HINT = N_("手機的 Tailscale 可能斷了；打開 Tailscale a
 
 function sideMachines(agents, home, down, via) {
   const h0 = home || tr("這台主機");
-  const live = down && !via ? [] : (agents || []).filter(a => a && !(down && a.host === h0));
-  const hosts = [ ...new Set(live.map(a => a.host)) ];
+  const live = down && !via ? [] : (agents || []).filter((a => a && !(down && a.host === h0)));
+  const hosts = [ ...new Set(live.map((a => a.host))) ];
   return {
     agents: live,
-    hosts: down ? [ h0, ...hosts.filter(h => h !== h0) ] : hosts,
+    hosts: down ? [ h0, ...hosts.filter((h => h !== h0)) ] : hosts,
     down: down ? {
       host: h0,
       hint: via ? trf("連不上 {home}；現在直接連 {via}，只看得到 {via} 上的 agent", {
@@ -1682,7 +1683,7 @@ function sideMachines(agents, home, down, via) {
   };
 }
 
-const hostRowsOf = (h, agents) => (agents || []).filter(a => a && a.host === h && a.kind !== "peer_error");
+const hostRowsOf = (h, agents) => (agents || []).filter((a => a && a.host === h && a.kind !== "peer_error"));
 
 function hostSummary(h, agents, tree, cards, prds, hcs) {
   const o = {
@@ -1699,7 +1700,7 @@ function hostSummary(h, agents, tree, cards, prds, hcs) {
   return o;
 }
 
-const hostBadgeItems = (h, agents, tree, cards, prds, hcs) => hostRowsOf(h, agents).flatMap(a => badgeItems(a, tree, cards, prds, hcs));
+const hostBadgeItems = (h, agents, tree, cards, prds, hcs) => hostRowsOf(h, agents).flatMap((a => badgeItems(a, tree, cards, prds, hcs)));
 
 function fmtBytes(n, base) {
   const b = base || 1024, u = [ "B", "KB", "MB", "GB", "TB", "PB" ];
@@ -1753,7 +1754,7 @@ function resRows(r) {
       n: fmtBytes(d.avail, 1e3)
     })
   });
-  (r.disks || []).forEach((x, i) => {
+  (r.disks || []).forEach(((x, i) => {
     if (x && x.total) R.push({
       key: "disk" + (i + 1),
       label: tr("磁碟"),
@@ -1762,7 +1763,7 @@ function resRows(r) {
         n: fmtBytes(x.avail, 1e3)
       })
     });
-  });
+  }));
   for (const g of r.gpus || []) R.push({
     key: "gpu" + g.index,
     label: "GPU " + g.index,
@@ -1778,12 +1779,12 @@ function resRows(r) {
 function procView(r) {
   const p = r && r.procs || {}, t = p.mine_total, o = p.others, g = r && r.gpu_procs, cg = r && r.cgroup;
   return {
-    mine: (p.mine || []).map(x => ({
+    mine: (p.mine || []).map((x => ({
       pid: x.pid,
       cpu: x.cpu + "%",
       mem: fmtBytes(x.rss),
       cmd: x.cmd
-    })),
+    }))),
     mineTotal: t ? trf("我們的帳號：{n} 個程序 · CPU {cpu}% · 記憶體 {mem}", {
       n: t.n,
       cpu: t.cpu,
@@ -1795,11 +1796,11 @@ function procView(r) {
       cpu: o.cpu,
       mem: fmtBytes(o.rss)
     }) : "",
-    gpuMine: g ? (g.mine || []).map(x => ({
+    gpuMine: g ? (g.mine || []).map((x => ({
       pid: x.pid,
       mem: fmtBytes(x.mem * MiB),
       cmd: x.cmd
-    })) : [],
+    }))) : [],
     gpuOthers: g && g.others && g.others.n ? trf("其他帳號在 GPU 上：{n} 個程序，顯存 {mem}", {
       n: g.others.n,
       mem: fmtBytes(g.others.mem * MiB)
@@ -1820,26 +1821,26 @@ const USAGE_WINDOWS = [ [ "24h", N_("24 小時") ], [ "7d", N_("7 天") ] ];
 
 function usageView(u, win) {
   const w = u && u.windows && u.windows[win] || {}, s = u && u.scanned || {};
-  const kv = o => Object.entries(o || {}).map(([k, v]) => k + " " + v);
+  const kv = o => Object.entries(o || {}).map((([k, v]) => k + " " + v));
   return {
-    hooks: (w.hooks || []).map(h => ({
+    hooks: (w.hooks || []).map((h => ({
       label: h.name + " · " + h.rule,
       event: h.event,
       fired: h.fired,
       blocked: h.blocked,
       errors: h.errors
-    })),
-    skills: (w.skills || []).map(x => ({
+    }))),
+    skills: (w.skills || []).map((x => ({
       skill: x.skill,
       n: x.n,
-      agents: Object.entries(x.agents || {}).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)).map(([a, n]) => a + " " + n).join(" · ")
-    })),
-    logs: (w.logs || []).map(l => ({
+      agents: Object.entries(x.agents || {}).sort(((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))).map((([a, n]) => a + " " + n)).join(" · ")
+    }))),
+    logs: (w.logs || []).map((l => ({
       log: l.log,
       text: [ trf("{n} 筆", {
         n: l.n
       }), ...kv(l.decisions), ...kv(l.labels) ].join(" · ")
-    })),
+    }))),
     scanned: trf("讀了 {n} 個對話紀錄（{size}）；", {
       n: s.files || 0,
       size: fmtBytes(s.bytes || 0)
@@ -1858,12 +1859,12 @@ const mdhm = ts => {
 };
 
 function quotaRows(q) {
-  const T = (q && q.thresholds || [ 70, 90 ]).slice().sort((a, b) => a - b);
-  return (q && q.providers || []).map(p => ({
+  const T = (q && q.thresholds || [ 70, 90 ]).slice().sort(((a, b) => a - b));
+  return (q && q.providers || []).map((p => ({
     name: p.name + (p.plan ? trf("（{x}）", {
       x: p.plan
     }) : ""),
-    pools: (p.pools || []).map(o => {
+    pools: (p.pools || []).map((o => {
       const known = o.known && o.used != null;
       return {
         label: tr(POOL_LABEL[o.label]) || o.label,
@@ -1873,8 +1874,8 @@ function quotaRows(q) {
         }) : "") : tr("不知道"),
         level: !known ? "unknown" : T.length && o.used >= T[T.length - 1] ? "over" : T.length && o.used >= T[0] ? "warn" : "ok"
       };
-    })
-  }));
+    }))
+  })));
 }
 
 function quotaNote(q) {
@@ -1888,9 +1889,9 @@ function quotaNote(q) {
 function parseThresholds(s) {
   const L = String(s || "").split(/[\s,，、]+/).filter(Boolean);
   if (!L.length || L.length > 5) return null;
-  const n = L.map(x => /^\d{1,3}$/.test(x) ? +x : NaN);
-  if (n.some(x => !(x >= 1 && x <= 100))) return null;
-  return [ ...new Set(n) ].sort((a, b) => a - b);
+  const n = L.map((x => /^\d{1,3}$/.test(x) ? +x : NaN));
+  if (n.some((x => !(x >= 1 && x <= 100)))) return null;
+  return [ ...new Set(n) ].sort(((a, b) => a - b));
 }
 
 const decisionItems = (cards, specs, hcs, tree, prds, comments) => confirmItems(cards, specs, hcs, tree, prds, comments).concat(signItems(prds, specs, hcs, tree, comments));
@@ -1900,11 +1901,11 @@ function approveMarker(text) {
   if (i < 0) return null;
   const r = t.slice(i + 13), j = r.indexOf("]");
   if (j < 0) return null;
-  const s = r.slice(0, j).split("\n").map((l, n) => n ? l.replace(/^[\s│|┃]+/, "") : l).join("");
+  const s = r.slice(0, j).split("\n").map(((l, n) => n ? l.replace(/^[\s│|┃]+/, "") : l)).join("");
   const k = s.indexOf("kind="), p = s.indexOf("path="), h = s.indexOf("sha256=");
   if (k < 0 || !(k < p && p < h)) return null;
   const kind = s.slice(k + 5, p).trim(), path = s.slice(p + 5, h).trim(), sha256 = s.slice(h + 7).replace(/\s+/g, "");
-  if (!/^(prd|spec)$/.test(kind) || !/^[A-Za-z0-9._\/-]{1,300}$/.test(path) || path.startsWith("/") || path.split("/").some(c => !c || c === "." || c === "..") || !/^[0-9a-f]{64}$/.test(sha256)) return null;
+  if (!/^(prd|spec)$/.test(kind) || !/^[A-Za-z0-9._\/-]{1,300}$/.test(path) || path.startsWith("/") || path.split("/").some((c => !c || c === "." || c === "..")) || !/^[0-9a-f]{64}$/.test(sha256)) return null;
   return {
     kind: kind,
     path: path,
@@ -1912,7 +1913,7 @@ function approveMarker(text) {
   };
 }
 
-const approveOption = q => (q && q.opts || []).find(o => /^核准/.test(o.label))?.n || null;
+const approveOption = q => (q && q.opts || []).find((o => /^核准/.test(o.label)))?.n || null;
 
 function reqFrom(f) {
   f = String(f || "");
@@ -1926,21 +1927,21 @@ function reqFrom(f) {
   });
 }
 
-const reqMine = (L, a) => (L || []).filter(r => r && a && r.host === a.host && r.agent && r.agent.pane_id === a.pane_id);
+const reqMine = (L, a) => (L || []).filter((r => r && a && r.host === a.host && r.agent && r.agent.pane_id === a.pane_id));
 
 const tms = t => Date.parse(t || "") || 0;
 
 function reqSections(L, a, now) {
-  const M = reqMine(L, a), by = s => M.filter(r => r.state === s);
+  const M = reqMine(L, a), by = s => M.filter((r => r.state === s));
   return {
-    queued: by("queued").sort((x, y) => (y.priority || 0) - (x.priority || 0) || tms(x.created) - tms(y.created)),
-    sent: by("sent").sort((x, y) => tms(x.sent_at) - tms(y.sent_at)),
-    taken: by("taken").sort((x, y) => tms(y.taken_at) - tms(x.taken_at)),
-    done: by("done").filter(r => now - tms(r.done_at) <= 864e5).sort((x, y) => tms(y.done_at) - tms(x.done_at))
+    queued: by("queued").sort(((x, y) => (y.priority || 0) - (x.priority || 0) || tms(x.created) - tms(y.created))),
+    sent: by("sent").sort(((x, y) => tms(x.sent_at) - tms(y.sent_at))),
+    taken: by("taken").sort(((x, y) => tms(y.taken_at) - tms(x.taken_at))),
+    done: by("done").filter((r => now - tms(r.done_at) <= 864e5)).sort(((x, y) => tms(y.done_at) - tms(x.done_at)))
   };
 }
 
-const openReqCount = (L, a) => reqMine(L, a).filter(r => r.state === "queued" || r.state === "sent" || r.state === "taken").length;
+const openReqCount = (L, a) => reqMine(L, a).filter((r => r.state === "queued" || r.state === "sent" || r.state === "taken")).length;
 
 function reqState(r, now) {
   if (r.state === "sent") return trf("已送出 {d}，還沒有接手", {
@@ -1958,7 +1959,7 @@ function reqState(r, now) {
 }
 
 function reqMove(Q, id, dir) {
-  const i = (Q || []).findIndex(r => r.id === id);
+  const i = (Q || []).findIndex((r => r.id === id));
   if (i < 0) return null;
   const n = dir === "up" ? Q[i - 1] : Q[i + 1];
   if (!n) return null;
@@ -1982,7 +1983,7 @@ function bugSnapshot(x) {
     home_down: !!x.homeDown,
     screen: String(x.screen || ""),
     ua: String(x.ua || "").slice(0, 200),
-    errors: (x.errors || []).slice(-5).map(e => String(e).slice(0, 300)),
+    errors: (x.errors || []).slice(-5).map((e => String(e).slice(0, 300))),
     shots: (x.shots || []).slice(0, 6).map(String),
     shot_error: String(x.shotError || "").slice(0, 200)
   };
@@ -2000,7 +2001,7 @@ function bugNew(text, snap, now, rand) {
 function bugLoad(store) {
   try {
     const L = JSON.parse(store.getItem(BUG_KEY) || "[]");
-    return Array.isArray(L) ? L.filter(b => b && b.id && b.text) : [];
+    return Array.isArray(L) ? L.filter((b => b && b.id && b.text)) : [];
   } catch (e) {
     return [];
   }
@@ -2082,7 +2083,7 @@ function schedCards(L, a, jobs, now) {
     why: "scheduled",
     j: j
   });
-  for (const j of J.done.filter(j => !failed(j))) out.push({
+  for (const j of J.done.filter((j => !failed(j)))) out.push({
     kind: "job",
     why: "done",
     j: j
@@ -2092,11 +2093,11 @@ function schedCards(L, a, jobs, now) {
     why: "done",
     r: r
   });
-  return out.map((c, i) => ({
+  return out.map(((c, i) => ({
     ...c,
     i: i,
     rank: SCHED_RANK[c.why]
-  })).sort((x, y) => x.rank - y.rank || x.i - y.i);
+  }))).sort(((x, y) => x.rank - y.rank || x.i - y.i));
 }
 
 const modelName = m => {
@@ -2133,12 +2134,12 @@ const bonSame = (j, x) => !!(j && x && j.bon && x.bon && x.bon.group === j.bon.g
 
 function bonGroupLine(j, jobs) {
   if (!j || !j.bon) return "";
-  const G = (jobs || []).filter(x => bonSame(j, x)).sort((a, b) => a.bon.k - b.bon.k);
+  const G = (jobs || []).filter((x => bonSame(j, x))).sort(((a, b) => a.bon.k - b.bon.k));
   if (G.length < 2) return "";
-  return tr("同一組：") + G.map(x => trf("第 {k} 個 {m}", {
+  return tr("同一組：") + G.map((x => trf("第 {k} 個 {m}", {
     k: x.bon.k,
     m: x.model || tr("模型未知")
-  }) + (x.bon.picked ? x.bon.picked === x.bon.k ? " ✓" : " ✗" : "")).join(" · ");
+  }) + (x.bon.picked ? x.bon.picked === x.bon.k ? " ✓" : " ✗" : ""))).join(" · ");
 }
 
 function bonStats(jobs) {
@@ -2156,10 +2157,10 @@ function bonStats(jobs) {
     if (b.picked === b.k) o.won++;
     m.set(k, o);
   }
-  return [ ...m.values() ].sort((a, b) => b.tried - a.tried || b.won - a.won || (a.model < b.model ? -1 : a.model > b.model ? 1 : 0));
+  return [ ...m.values() ].sort(((a, b) => b.tried - a.tried || b.won - a.won || (a.model < b.model ? -1 : a.model > b.model ? 1 : 0)));
 }
 
-const bonStatsLine = S => S.length ? tr("best of n 被選中的次數（最近 24 小時、已經比完的）：") + S.map(o => o.model + " " + o.won + "/" + o.tried).join(" · ") : "";
+const bonStatsLine = S => S.length ? tr("best of n 被選中的次數（最近 24 小時、已經比完的）：") + S.map((o => o.model + " " + o.won + "/" + o.tried)).join(" · ") : "";
 
 function okrParse(s) {
   const L = String(s || "").replace(/\r/g, "").split("\n");
@@ -2192,7 +2193,7 @@ function okrParse(s) {
       continue;
     }
     const li = /^\s{0,3}[-*+]\s+(.*)$/.exec(l);
-    if (li && !c.note.some(x => x.trim())) {
+    if (li && !c.note.some((x => x.trim()))) {
       const g = /^\[([^\]]{1,12})\]\s*(.*)$/.exec(li[1]);
       c.krs.push(g ? {
         tag: g[1],
@@ -2203,7 +2204,7 @@ function okrParse(s) {
       });
       continue;
     }
-    if (/^\s+\S/.test(l) && c.krs.length && !c.note.some(x => x.trim())) {
+    if (/^\s+\S/.test(l) && c.krs.length && !c.note.some((x => x.trim()))) {
       c.krs[c.krs.length - 1].text += " " + l.trim();
       continue;
     }
@@ -2217,7 +2218,7 @@ function okrParse(s) {
   return {
     title: title,
     intro: txt(intro),
-    cards: cards.map(x => ({
+    cards: cards.map((x => ({
       head: x.head,
       id: x.id,
       name: x.name,
@@ -2225,7 +2226,7 @@ function okrParse(s) {
       desc: txt(x.desc),
       krs: x.krs,
       note: txt(x.note)
-    })),
+    }))),
     rest: rest
   };
 }
@@ -2239,7 +2240,7 @@ function alertItems(L) {
     seen.add(k);
     out.push(x);
   }
-  return out.sort((a, b) => (a.level === "over" ? 0 : 1) - (b.level === "over" ? 0 : 1));
+  return out.sort(((a, b) => (a.level === "over" ? 0 : 1) - (b.level === "over" ? 0 : 1)));
 }
 
 function askOrder(L) {
@@ -2247,7 +2248,7 @@ function askOrder(L) {
     const t = a && a.due ? Date.parse(a.due) : NaN;
     return isNaN(t) ? Infinity : t;
   };
-  return (L || []).slice().sort((a, b) => due(a) - due(b) || (a.door === "one-way" ? 0 : 1) - (b.door === "one-way" ? 0 : 1) || String(a.ts || "").localeCompare(String(b.ts || "")));
+  return (L || []).slice().sort(((a, b) => due(a) - due(b) || (a.door === "one-way" ? 0 : 1) - (b.door === "one-way" ? 0 : 1) || String(a.ts || "").localeCompare(String(b.ts || ""))));
 }
 
 function dueLabel(due, now) {
@@ -2286,7 +2287,7 @@ function noticeLine(na, nd, nu) {
   return p.join(" · ");
 }
 
-const okrObjectives = s => String(s || "").split("\n").filter(l => /^##\s+\S/.test(l)).map(l => l.replace(/^##\s+/, "").trim()).slice(0, 12);
+const okrObjectives = s => String(s || "").split("\n").filter((l => /^##\s+\S/.test(l))).map((l => l.replace(/^##\s+/, "").trim())).slice(0, 12);
 
 const okrRetireText = o => "【OKR】用戶說這個目標不要了：「" + o + "」。請在 " + OKR_PATH + " 把它移到「停用」一節並寫上今天的日期，停掉只為它做的工作，再用一兩句回報停了什麼。";
 
@@ -2341,7 +2342,7 @@ function draftSet(D, k, text, now) {
     at: now || 0
   }; else delete D[k];
   const ks = Object.keys(D);
-  if (ks.length > DRAFT_MAX) ks.sort((a, b) => (D[a].at || 0) - (D[b].at || 0)).slice(0, ks.length - DRAFT_MAX).forEach(x => delete D[x]);
+  if (ks.length > DRAFT_MAX) ks.sort(((a, b) => (D[a].at || 0) - (D[b].at || 0))).slice(0, ks.length - DRAFT_MAX).forEach((x => delete D[x]));
   return D;
 }
 
@@ -2367,14 +2368,14 @@ function outLoad(store, now) {
   try {
     L = JSON.parse(store.getItem(OUT_KEY) || "[]");
   } catch (e) {}
-  return outExpire((Array.isArray(L) ? L : []).filter(o => o && o.id && o.k && typeof o.t === "string" && now - (o.at || 0) < OUT_TTL).map(o => o.st === "sending" ? {
+  return outExpire((Array.isArray(L) ? L : []).filter((o => o && o.id && o.k && typeof o.t === "string" && now - (o.at || 0) < OUT_TTL)).map((o => o.st === "sending" ? {
     ...o,
     st: "unsure"
-  } : o), now);
+  } : o)), now);
 }
 
 function outExpire(L, now) {
-  return (L || []).filter(o => !(o.st === "sent" && now - (o.at || 0) > 18e5));
+  return (L || []).filter((o => !(o.st === "sent" && now - (o.at || 0) > 18e5)));
 }
 
 function outSave(store, L) {
@@ -2394,34 +2395,34 @@ const outAdd = (L, k, t, now, id) => L.concat([ {
   st: "sending"
 } ]).slice(-OUT_MAX);
 
-const outMark = (L, id, st) => L.map(o => o.id === id ? {
+const outMark = (L, id, st) => L.map((o => o.id === id ? {
   ...o,
   st: st
-} : o);
+} : o));
 
-const outDrop = (L, id) => L.filter(o => o.id !== id);
+const outDrop = (L, id) => L.filter((o => o.id !== id));
 
-const outFor = (L, k) => L.filter(o => o.k === k);
+const outFor = (L, k) => L.filter((o => o.k === k));
 
 const OUT_SENT_TTL = 18e5;
 
 const outNorm = s => String(s || "").replace(/^\s*\[aide:q\d+\]\s*/, "").replace(/\s+/g, "").slice(0, 120);
 
 function outSettle(L, k, messages, now) {
-  const seen = (messages || []).filter(m => m && m.role === "user").map(m => outNorm(m.text)).filter(Boolean);
-  return L.filter(o => {
+  const seen = (messages || []).filter((m => m && m.role === "user")).map((m => outNorm(m.text))).filter(Boolean);
+  return L.filter((o => {
     if (o.k !== k) return true;
     if (now && o.st === "sent" && now - (o.at || 0) > OUT_SENT_TTL) return false;
     const t = outNorm(o.t);
     if (!t) return false;
-    const i = seen.findIndex(x => x === t || x.length >= 20 && t.startsWith(x) || t.length >= 20 && x.startsWith(t));
+    const i = seen.findIndex((x => x === t || x.length >= 20 && t.startsWith(x) || t.length >= 20 && x.startsWith(t)));
     if (i < 0) return true;
     seen.splice(i, 1);
     return false;
-  });
+  }));
 }
 
-const outBusy = L => L.some(o => o.st === "sending");
+const outBusy = L => L.some((o => o.st === "sending"));
 
 const OUT_NOTE = {
   sending: N_("送出中…"),
@@ -2434,10 +2435,10 @@ function outShown(o, queue, a) {
   if (!o || o.st !== "sent") return o ? o.st : "";
   const t = outNorm(o.t);
   if (!t || !a) return o.st;
-  const hit = (queue || []).some(r => r && r.agent && r.agent.host === a.host && r.agent.pane_id === a.pane_id && (r.state === "taken" || r.state === "done") && (!o.at || !r.created || tms(r.created) >= o.at - 1e4) && (() => {
+  const hit = (queue || []).some((r => r && r.agent && r.agent.host === a.host && r.agent.pane_id === a.pane_id && (r.state === "taken" || r.state === "done") && (!o.at || !r.created || tms(r.created) >= o.at - 1e4) && (() => {
     const x = outNorm(r.text);
     return x && (x === t || x.length >= 20 && t.startsWith(x) || t.length >= 20 && x.startsWith(t));
-  })());
+  })()));
   return hit ? "taken" : "sent";
 }
 
@@ -2448,20 +2449,20 @@ const outSameTime = (o, r) => !o.at || !r.created || tms(r.created) >= o.at - 1e
 function outQueueItem(o, queue, a) {
   const t = outNorm(o && o.t);
   if (!t || !a) return null;
-  return (queue || []).find(r => r && r.agent && r.agent.host === a.host && r.agent.pane_id === a.pane_id && outSameTime(o, r) && (() => {
+  return (queue || []).find((r => r && r.agent && r.agent.host === a.host && r.agent.pane_id === a.pane_id && outSameTime(o, r) && (() => {
     const x = outNorm(r.text);
     return x && (x === t || x.length >= 20 && t.startsWith(x) || t.length >= 20 && x.startsWith(t));
-  })()) || null;
+  })())) || null;
 }
 
 function outStuck(L, k, queue, a, now) {
-  return outFor(L, k).filter(o => {
+  return outFor(L, k).filter((o => {
     if (o.st === "sending" || o.st === "unsure") return false;
     const r = outQueueItem(o, queue, a);
     if (!r) return false;
     const end = r.done_at || r.turn_ended_at;
     return !!end && now - tms(end) > OUT_STUCK_MS;
-  });
+  }));
 }
 
 function outSpanCovers(msgs, o, queue, a) {
@@ -2500,13 +2501,13 @@ function pageState(x) {
       messages: Array.isArray(x.msgs) ? x.msgs.length : -1,
       guessed: !!x.guess
     },
-    bubbles: (x.out || []).slice(-12).map(o => ({
+    bubbles: (x.out || []).slice(-12).map((o => ({
       st: o.st,
       shown: o.shown || o.st,
       age_s: Math.round((now - (o.at || now)) / 1e3),
       agent: o.k,
       head: String(o.t || "").replace(/\s+/g, " ").slice(0, 40)
-    })),
+    }))),
     drafts: x.drafts || 0,
     bugs_waiting: x.bugs || 0,
     banner: String(x.banner || "").slice(0, 120),
@@ -2518,7 +2519,7 @@ function pageState(x) {
     home_down: !!x.homeDown,
     visible: !!x.visible,
     screen: String(x.screen || ""),
-    errors: (x.errors || []).slice(-5).map(e => String(e).slice(0, 300))
+    errors: (x.errors || []).slice(-5).map((e => String(e).slice(0, 300)))
   };
 }
 
@@ -2528,7 +2529,7 @@ function gpuView(st, now) {
   if (!st || !st.available) return null;
   const P = st.projects || {};
   const age = st.updated ? Math.max(0, Math.round(((now || Date.now()) / 1e3 - st.updated) / 60)) : null;
-  const rows = (st.order || Object.keys(P)).filter(k => P[k]).map(k => {
+  const rows = (st.order || Object.keys(P)).filter((k => P[k])).map((k => {
     const v = P[k], r = v.reported || null;
     return {
       name: k,
@@ -2566,7 +2567,7 @@ function gpuView(st, now) {
         f: n0(r.prov_fail)
       }) : ""
     };
-  });
+  }));
   const c = st.cluster;
   return {
     rule: st.rule || "",
@@ -2575,7 +2576,7 @@ function gpuView(st, now) {
     rows: rows,
     cluster: c ? trf("叢集佇列 {n} 筆", {
       n: c.req
-    }) + ((c.jobs || []).length ? " · " + c.jobs.map(j => j[1] + " " + (j[2] || "")).join(tr("、")) : tr(" · 沒有生成器在跑")) : ""
+    }) + ((c.jobs || []).length ? " · " + c.jobs.map((j => j[1] + " " + (j[2] || ""))).join(tr("、")) : tr(" · 沒有生成器在跑")) : ""
   };
 }
 
@@ -2584,13 +2585,29 @@ const QUICK_ZH = [ "進度？", "結論？", "聽不懂", "簡答", "講中文",
 const QUICK_EN = [ "Status?", "Bottom line?", "I don't follow", "Shorter, please", "Are you there?" ];
 
 function quickList(saved, lang) {
-  const L = String(saved || "").split("\n").map(x => x.trim()).filter(Boolean).map(x => x.slice(0, 60)).slice(0, 8);
+  const L = String(saved || "").split("\n").map((x => x.trim())).filter(Boolean).map((x => x.slice(0, 60))).slice(0, 8);
   return L.length ? L : (lang === "en" ? QUICK_EN : QUICK_ZH).slice();
 }
 
 const SERVER_STATES = [ N_("在做事"), N_("在等你回答"), N_("做完了，你還沒看") ];
 
 const EN = {
+  "開 agent": "New agent",
+  "再試一次": "Try again",
+  "在這台開一個新的 agent。資料夾只能選已經有 agent 在用的，或在它旁邊的。": "Start a new agent on this machine. The folder must be one an agent already works in, or next to one.",
+  "種類": "Kind",
+  "開在": "Run on",
+  "aide 自己的主機": "aide's own host",
+  "（沒在跑）": " (not running)",
+  "跟現在其他 agent 一樣開在 herdr。": "On herdr, like the other agents today.",
+  "開在 aide 自己的主機（aide-pty）。不好用的話，在這裡切回 herdr。": "On aide's own host (aide-pty). If it does not work well, switch back to herdr here.",
+  "資料夾": "Folder",
+  "選一個資料夾…": "Pick a folder…",
+  "這台還沒有任何 agent，所以沒有可以選的資料夾。": "No agent runs on this machine yet, so there is no folder to pick.",
+  "名字（可以不填，預設是資料夾的名字）": "Name (optional; the folder's name by default)",
+  "開啟中…": "Starting…",
+  "已在 {host} 開好新的 agent": "Started a new agent on {host}",
+  "沒有開成：{e}": "Not started: {e}",
   "快捷回覆": "Quick replies",
   "長按送出鍵可以送快捷回覆；在設定裡改句子。": "Hold the send button for quick replies; change them in Settings.",
   "一行一句，最多 8 句；留空就用預設。": "One per line, up to 8; leave empty for the defaults.",
@@ -2945,7 +2962,6 @@ const EN = {
   "寫 OKR": "Write OKR",
   "↑ 往前": "↑ Move up",
   "↓ 往後": "↓ Move down",
-  "立案 {t}": "Filed {t}",
   "排進 {who} 的要求了": "Added to {who}’s requests",
   "沒有排進去：": "Not added: ",
   "沒有改：": "Not changed: ",
@@ -3296,17 +3312,17 @@ function switchLang(l) {
   renderMain(true);
 }
 
-document.addEventListener("gesturestart", e => e.preventDefault());
+document.addEventListener("gesturestart", (e => e.preventDefault()));
 
-document.addEventListener("gesturechange", e => e.preventDefault());
+document.addEventListener("gesturechange", (e => e.preventDefault()));
 
 let lastTouch = 0;
 
-document.addEventListener("touchend", e => {
+document.addEventListener("touchend", (e => {
   const t = Date.now();
   if (t - lastTouch < 300 && !e.target.closest("textarea,input,button")) e.preventDefault();
   lastTouch = t;
-}, {
+}), {
   passive: false
 });
 
@@ -3324,9 +3340,9 @@ function closeSheet() {
   sheetMsg = null;
 }
 
-$("sheet").addEventListener("click", e => {
+$("sheet").addEventListener("click", (e => {
   if (e.target.id === "sheet") closeSheet();
-});
+}));
 
 $("shCancel").onclick = closeSheet;
 
@@ -3350,14 +3366,14 @@ $("quoteX").onclick = () => {
 };
 
 function bindHold(w, m) {
-  w.addEventListener("touchstart", e => {
+  w.addEventListener("touchstart", (e => {
     holdEl = w;
     w.classList.add("hold");
-    holdT = setTimeout(() => {
+    holdT = setTimeout((() => {
       holdT = null;
       openSheet(m, w);
-    }, 450);
-  }, {
+    }), 450);
+  }), {
     passive: true
   });
   const cancel = () => {
@@ -3371,10 +3387,10 @@ function bindHold(w, m) {
     passive: true
   });
   w.addEventListener("touchend", cancel);
-  w.addEventListener("contextmenu", e => {
+  w.addEventListener("contextmenu", (e => {
     e.preventDefault();
     openSheet(m, w);
-  });
+  }));
 }
 
 const TH = [ "auto", "light", "dark" ];
@@ -3401,7 +3417,7 @@ function setTheme(t) {
   applyTheme(theme);
 }
 
-matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => applyTheme(theme));
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (() => applyTheme(theme)));
 
 const app = $("app");
 
@@ -3415,16 +3431,16 @@ $("shade").onclick = () => openSide(false);
 
 let tx = null, ty = null, from = null;
 
-document.addEventListener("touchstart", e => {
+document.addEventListener("touchstart", (e => {
   const t = e.touches[0];
   tx = t.clientX;
   ty = t.clientY;
   from = app.classList.contains("open") ? "open" : tx < 28 ? "edge" : null;
-}, {
+}), {
   passive: true
 });
 
-document.addEventListener("touchmove", e => {
+document.addEventListener("touchmove", (e => {
   if (from === null || drag) return;
   const t = e.touches[0], dx = t.clientX - tx, dy = Math.abs(t.clientY - ty);
   if (dy > 40) {
@@ -3438,7 +3454,7 @@ document.addEventListener("touchmove", e => {
     openSide(false);
     from = null;
   }
-}, {
+}), {
   passive: true
 });
 
@@ -3452,7 +3468,7 @@ function saveAlt() {
   try {
     localStorage.setItem("aide.alt", JSON.stringify(ALT));
   } catch (e) {}
-  if ("caches" in window) caches.open("aide-alt").then(c => c.put("/__aide_alt", new Response(JSON.stringify(ALT)))).catch(() => {});
+  if ("caches" in window) caches.open("aide-alt").then((c => c.put("/__aide_alt", new Response(JSON.stringify(ALT))))).catch((() => {}));
   showAlt();
 }
 
@@ -3472,7 +3488,7 @@ function showAlt() {
 
 function showVia() {
   const v = $("via");
-  const b = ALT.find(x => x.url === API);
+  const b = ALT.find((x => x.url === API));
   const t = API ? viaText(homeName(), b ? b.host : API) : "";
   v.hidden = !t;
   v.textContent = t ? "⚠︎ " + t : "";
@@ -3481,7 +3497,7 @@ function showVia() {
 
 async function tfetch(u, o, ms) {
   const c = new AbortController;
-  const t = setTimeout(() => c.abort(), ms || o && o.waitMs || 5e3);
+  const t = setTimeout((() => c.abort()), ms || o && o.waitMs || 5e3);
   try {
     return await fetch(u, Object.assign({}, o, {
       signal: c.signal
@@ -3508,7 +3524,7 @@ async function raw(u, o) {
       }
       return null;
     };
-    const x = await reach(() => at(""), fallbacks(ALT, homeName(), location.origin), b => at(b.url), () => new Promise(res => setTimeout(res, HOME_RETRY_MS)));
+    const x = await reach((() => at("")), fallbacks(ALT, homeName(), location.origin), (b => at(b.url)), (() => new Promise((res => setTimeout(res, HOME_RETRY_MS)))));
     const r = x.r;
     if (r && !x.via) {
       S.homeDown = false;
@@ -3523,12 +3539,12 @@ async function raw(u, o) {
     }
     S.homeDown = true;
     renderSide();
-    throw new Error(unreachableMsg(homeName(), (S.cfg && S.cfg.peers || []).map(p => p.host)));
+    throw new Error(unreachableMsg(homeName(), (S.cfg && S.cfg.peers || []).map((p => p.host))));
   }
   return tfetch(API + u, o);
 }
 
-const apiHost = () => (ALT.find(b => b.url === API) || {}).host;
+const apiHost = () => (ALT.find((b => b.url === API)) || {}).host;
 
 async function j(u, o) {
   const r = await raw(u, o);
@@ -3555,8 +3571,8 @@ function newBuild(b) {
   try {
     sessionStorage.setItem("aide.reloadFor", b);
   } catch (e) {}
-  const up = navigator.serviceWorker && navigator.serviceWorker.getRegistration ? navigator.serviceWorker.getRegistration().then(r => r && r.update()).catch(() => {}) : Promise.resolve();
-  up.finally(() => location.reload());
+  const up = navigator.serviceWorker && navigator.serviceWorker.getRegistration ? navigator.serviceWorker.getRegistration().then((r => r && r.update())).catch((() => {})) : Promise.resolve();
+  up.finally((() => location.reload()));
 }
 
 function showNewBuild(b) {
@@ -3575,14 +3591,14 @@ function probeHome() {
   if (!API) return;
   tfetch("/healthz", {
     cache: "no-store"
-  }, 4e3).then(r => {
+  }, 4e3).then((r => {
     if (r.ok) {
       API = "";
       S.homeDown = false;
       showVia();
       poll();
     }
-  }).catch(() => {});
+  })).catch((() => {}));
 }
 
 async function loadConfig() {
@@ -3619,7 +3635,7 @@ async function pairWith(p) {
       })
     });
     if (r.ok) {
-      ALT = ALT.filter(b => b.host !== p.host).concat([ {
+      ALT = ALT.filter((b => b.host !== p.host)).concat([ {
         host: p.host,
         url: t.url
       } ]);
@@ -3634,7 +3650,7 @@ async function pairBackups() {
   if (API) return;
   await loadConfig();
   for (const p of S.cfg && S.cfg.peers || []) {
-    if (p.host !== S.cfg.host && !ALT.some(b => b.host === p.host && b.url === p.url)) await pairWith(p);
+    if (p.host !== S.cfg.host && !ALT.some((b => b.host === p.host && b.url === p.url))) await pairWith(p);
   }
 }
 
@@ -3706,14 +3722,14 @@ function showSettings() {
 }
 
 async function connectDirect(h, url) {
-  if (!ALT.some(b => b.host === h) && !await pairWith({
+  if (!ALT.some((b => b.host === h)) && !await pairWith({
     host: h,
     url: url
   })) {
     toast(notPairedMsg(h));
     return;
   }
-  const b = ALT.find(x => x.host === h);
+  const b = ALT.find((x => x.host === h));
   API = b.url;
   showVia();
   toast(trf("現在直接連 {h}，只看得到 {h} 上的 agent", {
@@ -3762,12 +3778,12 @@ function showHosts(log) {
 }
 
 function cardsFor(a) {
-  return S.cards.filter(c => c.host === a.host && c.pane === a.pane_id);
+  return S.cards.filter((c => c.host === a.host && c.pane === a.pane_id));
 }
 
 const isOn = a => !!(a && S.cur && key(S.cur) === key(a) && S.view === "chat");
 
-const badgeHtml = bd => bd.length ? '<span class="bdgs">' + bd.map(([c, t]) => '<span class="bdg ' + c + '">' + esc(t) + "</span>").join("") + "</span>" : "";
+const badgeHtml = bd => bd.length ? '<span class="bdgs">' + bd.map((([c, t]) => '<span class="bdg ' + c + '">' + esc(t) + "</span>")).join("") + "</span>" : "";
 
 function workerRow(a) {
   const n = cardsFor(a).length;
@@ -3826,7 +3842,7 @@ function renderSide() {
     });
     box.append(hd);
     if (!hostOpen(h, S.openHost)) continue;
-    for (const a of M.agents.filter(x => x.host === h)) {
+    for (const a of M.agents.filter((x => x.host === h))) {
       if (a.kind === "peer_error") {
         box.append(el("div", "row", '<div class="tx"><div class="sub">' + tr("連不上：") + esc(a.error) + "</div></div>"));
         continue;
@@ -3890,10 +3906,10 @@ function showBadges() {
   }))));
   if (!I.length) box.append(el("div", "hint", tr("現在沒有卡住、等你或在跑的")));
   for (const [k, lab] of BADGE_KINDS) {
-    const G = I.filter(i => i.kind === k);
+    const G = I.filter((i => i.kind === k));
     if (!G.length) continue;
     box.append(el("div", "fsec", esc(tr(lab) + trf("（{x}）", {
-      x: G.reduce((s, i) => s + i.n, 0)
+      x: G.reduce(((s, i) => s + i.n), 0)
     }))));
     for (const i of G) {
       const r = el("div", "bitem", "<b>" + esc(i.title) + "</b><span>" + esc((sp.host ? (i.agent.name || i.agent.cwd_name || i.agent.pane_id) + " · " : "") + badgeItemSub(i)) + "</span>");
@@ -3946,6 +3962,10 @@ function openMachine(h) {
 
 async function loadMachine() {
   if (!MC.host) return;
+  if (MC.tab === "new") {
+    if (NA.host !== MC.host || !NA.opt) return loadNew();
+    return;
+  }
   const want = MC.tab, host = MC.host;
   try {
     const v = await j("/api/machine/" + (MC.tab === "usage" ? "usage" : MC.tab === "gpu" ? "gpu" : "resources") + "?host=" + encodeURIComponent(MC.host));
@@ -3967,7 +3987,7 @@ function showMachine() {
   $("title").textContent = MC.host;
   $("subtitle").textContent = tr("這台機器");
   const tb = el("div", "subtabs");
-  for (const [k, lab] of [ [ "res", tr("資源") ], [ "usage", tr("使用統計") ], [ "gpu", tr("GPU 排隊") ] ]) {
+  for (const [k, lab] of [ [ "res", tr("資源") ], [ "usage", tr("使用統計") ], [ "gpu", tr("GPU 排隊") ], [ "new", tr("開 agent") ] ]) {
     const b = el("button", MC.tab === k ? "on" : "", esc(lab));
     b.onclick = () => {
       MC.tab = k;
@@ -3978,8 +3998,165 @@ function showMachine() {
   }
   log.append(tb);
   if (MC.err) log.append(el("div", "hint", esc(MC.err)));
-  if (MC.tab === "usage") machineUsage(log); else if (MC.tab === "gpu") machineGpu(log); else machineRes(log);
+  if (MC.tab === "usage") machineUsage(log); else if (MC.tab === "gpu") machineGpu(log); else if (MC.tab === "new") machineNew(log); else machineRes(log);
   log.scrollTop = top;
+}
+
+const NA = {
+  host: null,
+  opt: null,
+  err: "",
+  kind: "claude",
+  backend: null,
+  folder: "",
+  name: "",
+  busy: false
+};
+
+const naKey = h => "aide.newAgentHost." + h;
+
+function naSaved(h) {
+  try {
+    return localStorage.getItem(naKey(h));
+  } catch (e) {
+    return null;
+  }
+}
+
+function naSave(h, b) {
+  try {
+    localStorage.setItem(naKey(h), b);
+  } catch (e) {}
+}
+
+async function loadNew() {
+  const h = MC.host;
+  NA.err = "";
+  try {
+    const v = await j("/api/agents/start-options?host=" + encodeURIComponent(h));
+    if (h !== MC.host) return;
+    NA.host = h;
+    NA.opt = v;
+    const ok = id => (v.backends || []).some((b => b.id === id && b.ok));
+    const want = naSaved(h);
+    NA.backend = ok(want) ? want : ok(v.default) ? v.default : ((v.backends || []).find((b => b.ok)) || {}).id || null;
+    if (!(v.folders || []).some((f => f.path === NA.folder))) NA.folder = "";
+  } catch (e) {
+    NA.host = h;
+    NA.opt = null;
+    NA.err = e && e.message || tr("讀不到");
+  }
+  if (S.view === "machine" && MC.tab === "new") renderMain(true);
+}
+
+function machineNew(log) {
+  if (NA.host !== MC.host || !NA.opt && !NA.err) {
+    log.append(el("div", "typing", tr("讀取中…")));
+    return;
+  }
+  if (!NA.opt) {
+    log.append(el("div", "hint", esc(NA.err)));
+    log.append(btn(tr("再試一次"), "", loadNew));
+    return;
+  }
+  const o = NA.opt, box = el("div", "nform");
+  log.append(box);
+  box.append(el("div", "hint", tr("在這台開一個新的 agent。資料夾只能選已經有 agent 在用的，或在它旁邊的。")));
+  box.append(el("div", "fsec", tr("種類")));
+  const kr = el("div", "nseg");
+  for (const k of o.kinds || []) {
+    const b = el("button", NA.kind === k ? "on" : "", esc(k === "claude" ? "Claude" : k === "codex" ? "Codex" : k));
+    b.onclick = () => {
+      NA.kind = k;
+      renderMain(true);
+    };
+    kr.append(b);
+  }
+  box.append(kr);
+  box.append(el("div", "fsec", tr("開在")));
+  const br = el("div", "nseg");
+  for (const b of o.backends || []) {
+    const x = el("button", NA.backend === b.id ? "on" : "", esc((b.id === "aide-pty" ? tr("aide 自己的主機") : "herdr") + (b.ok ? "" : tr("（沒在跑）"))));
+    x.disabled = !b.ok;
+    x.onclick = () => {
+      NA.backend = b.id;
+      naSave(MC.host, b.id);
+      renderMain(true);
+    };
+    br.append(x);
+  }
+  box.append(br);
+  box.append(el("div", "hint", NA.backend === "herdr" ? tr("跟現在其他 agent 一樣開在 herdr。") : tr("開在 aide 自己的主機（aide-pty）。不好用的話，在這裡切回 herdr。")));
+  box.append(el("div", "fsec", tr("資料夾")));
+  const sel = document.createElement("select");
+  sel.append(new Option(tr("選一個資料夾…"), ""));
+  for (const f of o.folders || []) sel.append(new Option(f.name + " — " + f.path, f.path));
+  sel.value = NA.folder;
+  sel.onchange = () => {
+    NA.folder = sel.value;
+    renderMain(true);
+  };
+  box.append(sel);
+  if (!(o.folders || []).length) box.append(el("div", "hint", tr("這台還沒有任何 agent，所以沒有可以選的資料夾。")));
+  box.append(el("div", "fsec", tr("名字（可以不填，預設是資料夾的名字）")));
+  const inp = document.createElement("input");
+  inp.maxLength = 40;
+  inp.value = NA.name;
+  inp.oninput = () => {
+    NA.name = inp.value;
+  };
+  box.append(inp);
+  if (NA.err) box.append(el("div", "hint", esc(NA.err)));
+  const go = btn(NA.busy ? tr("開啟中…") : tr("開始"), "allow", startNew);
+  go.disabled = NA.busy || !NA.folder || !NA.backend;
+  box.append(go);
+}
+
+async function startNew() {
+  if (NA.busy || !NA.folder || !NA.backend) return;
+  const h = MC.host;
+  NA.busy = true;
+  NA.err = "";
+  renderMain(true);
+  try {
+    const r = await raw("/api/agents/start", {
+      method: "POST",
+      headers: H,
+      body: JSON.stringify({
+        host: h,
+        backend: NA.backend,
+        kind: NA.kind,
+        folder: NA.folder,
+        name: NA.name.trim()
+      })
+    });
+    if (r.status === 401) throw new Error(notPairedMsg(h));
+    if (!r.ok) throw new Error(await r.text() || String(r.status));
+    const x = await r.json();
+    NA.name = "";
+    NA.folder = "";
+    toast(trf("已在 {host} 開好新的 agent", {
+      host: h
+    }));
+    for (let i = 0; i < 6; i++) {
+      try {
+        S.agents = await j("/api/agents");
+      } catch (e) {}
+      const a = S.agents.find((y => y.host === h && y.pane_id === x.pane));
+      if (a) {
+        NA.busy = false;
+        pick(a);
+        return;
+      }
+      await new Promise((res => setTimeout(res, 700)));
+    }
+  } catch (e) {
+    NA.err = trf("沒有開成：{e}", {
+      e: e && e.message || ""
+    });
+  }
+  NA.busy = false;
+  if (S.view === "machine") renderMain(true);
 }
 
 function machineGpu(log) {
@@ -4521,39 +4698,6 @@ function schedRowEl(c, a, jobs) {
   return w;
 }
 
-function reqRow(r, Q) {
-  const d = el("div", "rq");
-  const now = Date.now();
-  d.append(el("div", "rqh", "<b>" + esc(reqFrom(r.from)) + "</b><span>" + esc(reqState(r, now)) + "</span><span>" + esc(schedModel({
-    kind: "req",
-    r: r
-  }, S.cur)) + "</span><span>" + esc(trf("立案 {t}", {
-    t: mdhm(r.created)
-  })) + "</span>"));
-  const t = el("div", "rqt");
-  t.textContent = r.text;
-  t.onclick = () => t.classList.toggle("open");
-  d.append(t);
-  if (Q) {
-    const bx = el("div", "rqb"), up = reqMove(Q, r.id, "up"), dn = reqMove(Q, r.id, "down");
-    if (up != null) {
-      const b = el("button", "", tr("↑ 往前"));
-      b.onclick = e => moveReq(e, r, up);
-      bx.append(b);
-    }
-    if (dn != null) {
-      const b = el("button", "", tr("↓ 往後"));
-      b.onclick = e => moveReq(e, r, dn);
-      bx.append(b);
-    }
-    const x = el("button", "deny", tr("移除"));
-    x.onclick = e => dropReq(e, r);
-    bx.append(x);
-    d.append(bx);
-  }
-  return d;
-}
-
 async function addReq(e, a, t) {
   if (!(e && e.isTrusted === true) || !t) return;
   try {
@@ -4609,11 +4753,11 @@ async function dropReq(e, r) {
 
 let drag = null, hold = null;
 
-const rowsOf = h => [ ...$("alist").querySelectorAll(".row[data-ws]") ].filter(x => x.dataset.host === h);
+const rowsOf = h => [ ...$("alist").querySelectorAll(".row[data-ws]") ].filter((x => x.dataset.host === h));
 
 function dropAt(y) {
-  const rows = rowsOf(drag.host).filter(x => x.dataset.ws !== drag.ws);
-  rows.forEach(x => x.classList.remove("drop-before", "drop-after"));
+  const rows = rowsOf(drag.host).filter((x => x.dataset.ws !== drag.ws));
+  rows.forEach((x => x.classList.remove("drop-before", "drop-after")));
   let before = null;
   for (const x of rows) {
     const b = x.getBoundingClientRect();
@@ -4627,7 +4771,7 @@ function dropAt(y) {
 }
 
 function startDrag(r, y) {
-  if (!r.isConnected) r = rowsOf(r.dataset.host).find(x => x.dataset.ws === r.dataset.ws) || r;
+  if (!r.isConnected) r = rowsOf(r.dataset.host).find((x => x.dataset.ws === r.dataset.ws)) || r;
   drag = {
     r: r,
     host: r.dataset.host,
@@ -4644,8 +4788,8 @@ async function endDrag() {
   drag = null;
   d.r.classList.remove("dragging");
   d.r.style.transform = "";
-  $("alist").querySelectorAll(".drop-before,.drop-after").forEach(x => x.classList.remove("drop-before", "drop-after"));
-  const rows = rowsOf(d.host).map(x => x.dataset.ws).filter((w, i, a) => a.indexOf(w) === i);
+  $("alist").querySelectorAll(".drop-before,.drop-after").forEach((x => x.classList.remove("drop-before", "drop-after")));
+  const rows = rowsOf(d.host).map((x => x.dataset.ws)).filter(((w, i, a) => a.indexOf(w) === i));
   const i = rows.indexOf(d.ws);
   const unchanged = d.before === undefined || (d.before === null ? i === rows.length - 1 : rows[i + 1] === d.before);
   if (!unchanged) {
@@ -4670,23 +4814,23 @@ async function endDrag() {
   renderSide();
 }
 
-$("alist").addEventListener("touchstart", e => {
+$("alist").addEventListener("touchstart", (e => {
   const r = e.target.closest(".row[data-ws]");
   if (!r) return;
   const t = e.touches[0];
   hold = {
     x: t.clientX,
     y: t.clientY,
-    timer: setTimeout(() => {
+    timer: setTimeout((() => {
       hold = null;
       startDrag(r, t.clientY);
-    }, 450)
+    }), 450)
   };
-}, {
+}), {
   passive: true
 });
 
-$("alist").addEventListener("touchmove", e => {
+$("alist").addEventListener("touchmove", (e => {
   const t = e.touches[0];
   if (hold && (Math.abs(t.clientX - hold.x) > 8 || Math.abs(t.clientY - hold.y) > 8)) {
     clearTimeout(hold.timer);
@@ -4696,11 +4840,11 @@ $("alist").addEventListener("touchmove", e => {
   e.preventDefault();
   drag.r.style.transform = "translateY(" + (t.clientY - drag.y0) + "px)";
   dropAt(t.clientY);
-}, {
+}), {
   passive: false
 });
 
-$("alist").addEventListener("touchend", e => {
+$("alist").addEventListener("touchend", (e => {
   if (hold) {
     clearTimeout(hold.timer);
     hold = null;
@@ -4708,11 +4852,11 @@ $("alist").addEventListener("touchend", e => {
   if (!drag) return;
   e.preventDefault();
   endDrag();
-}, {
+}), {
   passive: false
 });
 
-$("alist").addEventListener("touchcancel", () => {
+$("alist").addEventListener("touchcancel", (() => {
   if (hold) {
     clearTimeout(hold.timer);
     hold = null;
@@ -4721,33 +4865,33 @@ $("alist").addEventListener("touchcancel", () => {
     drag.before = undefined;
     endDrag();
   }
-});
+}));
 
-$("alist").addEventListener("dragstart", e => {
+$("alist").addEventListener("dragstart", (e => {
   const r = e.target.closest(".row[data-ws]");
   if (!r) return;
   startDrag(r, e.clientY);
   e.dataTransfer.effectAllowed = "move";
-});
+}));
 
-$("alist").addEventListener("dragover", e => {
+$("alist").addEventListener("dragover", (e => {
   if (!drag) return;
   e.preventDefault();
   dropAt(e.clientY);
-});
+}));
 
-$("alist").addEventListener("drop", e => {
+$("alist").addEventListener("drop", (e => {
   if (!drag) return;
   e.preventDefault();
   endDrag();
-});
+}));
 
-$("alist").addEventListener("dragend", () => {
+$("alist").addEventListener("dragend", (() => {
   if (drag) {
     drag.before = undefined;
     endDrag();
   }
-});
+}));
 
 $("confirmRow").onclick = () => openConfirm();
 
@@ -4760,17 +4904,17 @@ $("setRow").onclick = () => openSettings();
 
 const BUGERR = [];
 
-addEventListener("error", e => {
+addEventListener("error", (e => {
   BUGERR.push(errLine(e));
   if (BUGERR.length > 10) BUGERR.shift();
-});
+}));
 
-addEventListener("unhandledrejection", e => {
+addEventListener("unhandledrejection", (e => {
   if (e && e.reason) {
     BUGERR.push(errLine(e));
     if (BUGERR.length > 10) BUGERR.shift();
   }
-});
+}));
 
 const BUGSTORE = {
   getItem: k => {
@@ -4806,7 +4950,7 @@ async function flushBugs() {
         break;
       }
       if (!ok) break;
-      L = bugLoad(BUGSTORE).filter(x => x.id !== b.id);
+      L = bugLoad(BUGSTORE).filter((x => x.id !== b.id));
       bugSave(BUGSTORE, L);
     }
   } finally {
@@ -4904,7 +5048,7 @@ function openBug(shot) {
 let H2C = null;
 
 function loadH2C() {
-  if (!H2C) H2C = new Promise((ok, no) => {
+  if (!H2C) H2C = new Promise(((ok, no) => {
     const sc = document.createElement("script");
     sc.src = "./vendor/html2canvas.js";
     sc.onload = () => window.html2canvas ? ok(window.html2canvas) : no(new Error("html2canvas"));
@@ -4913,7 +5057,7 @@ function loadH2C() {
       no(new Error(tr("截圖工具載入失敗")));
     };
     document.head.append(sc);
-  });
+  }));
   return H2C;
 }
 
@@ -4983,10 +5127,10 @@ function annotate(img) {
       c.lineCap = "round";
       c.lineJoin = "round";
       c.beginPath();
-      m.p.forEach((q, n) => {
+      m.p.forEach(((q, n) => {
         const x = ox + q.x * k, y = oy + q.y * k;
         if (n) c.lineTo(x, y); else c.moveTo(x, y);
-      });
+      }));
       if (m.p.length === 1) c.lineTo(ox + m.p[0].x * k + .01, oy + m.p[0].y * k);
       c.stroke();
     } else {
@@ -5049,50 +5193,50 @@ function annotate(img) {
   };
   const tools = el("div", "shottools"), sizes = el("div", "shottools");
   const paintBar = () => {
-    tools.replaceChildren(btn2(tr("框"), tool === "box" ? "on" : "", () => {
+    tools.replaceChildren(btn2(tr("框"), tool === "box" ? "on" : "", (() => {
       tool = "box";
       paintBar();
-    }), btn2(tr("黑筆"), tool === "pen" ? "on" : "", () => {
+    })), btn2(tr("黑筆"), tool === "pen" ? "on" : "", (() => {
       tool = "pen";
       paintBar();
-    }));
-    sizes.replaceChildren(...[ [ "S", tr("細") ], [ "M", tr("中") ], [ "L", tr("粗") ] ].map(([k, l]) => btn2(l, size === k ? "on" : "", () => {
+    })));
+    sizes.replaceChildren(...[ [ "S", tr("細") ], [ "M", tr("中") ], [ "L", tr("粗") ] ].map((([k, l]) => btn2(l, size === k ? "on" : "", (() => {
       size = k;
       paintBar();
-    })));
+    })))));
     sizes.hidden = tool !== "pen";
   };
   paintBar();
-  bar.append(el("div", "hint", tr("「框」圈出有問題的地方，「黑筆」塗掉不想給人看的內容，再按「下一步」寫一句話。")), tools, sizes, btn2(tr("復原"), "", () => {
+  bar.append(el("div", "hint", tr("「框」圈出有問題的地方，「黑筆」塗掉不想給人看的內容，再按「下一步」寫一句話。")), tools, sizes, btn2(tr("復原"), "", (() => {
     marks.pop();
     draw();
-  }), btn2(tr("取消"), "", () => {
+  })), btn2(tr("取消"), "", (() => {
     ov.remove();
     window.removeEventListener("resize", draw);
-  }), btn2(tr("下一步"), "allow", () => {
+  })), btn2(tr("下一步"), "allow", (() => {
     const out = document.createElement("canvas");
     out.width = img.width;
     out.height = img.height;
     const o = out.getContext("2d");
     o.drawImage(img, 0, 0);
     for (const m of marks) paint(o, m, 1, 0, 0);
-    out.toBlob(bl => {
+    out.toBlob((bl => {
       ov.remove();
       window.removeEventListener("resize", draw);
       if (bl) openBug(bl); else toast(tr("截圖失敗："));
-    }, "image/jpeg", .9);
-  }));
+    }), "image/jpeg", .9);
+  })));
   addEventListener("resize", draw);
   requestAnimationFrame(draw);
 }
 
 $("shotBtn").onclick = () => shoot();
 
-addEventListener("online", () => flushBugs());
+addEventListener("online", (() => flushBugs()));
 
-setInterval(() => {
+setInterval((() => {
   if (bugLoad(BUGSTORE).length) flushBugs();
-}, 6e4);
+}), 6e4);
 
 showBugSub();
 
@@ -5155,7 +5299,7 @@ function toast(t) {
   x.textContent = t;
   x.classList.add("on");
   clearTimeout(toast.t);
-  toast.t = setTimeout(() => x.classList.remove("on"), 2600);
+  toast.t = setTimeout((() => x.classList.remove("on")), 2600);
 }
 
 function cardEl(c) {
@@ -5223,7 +5367,7 @@ async function post(path, body) {
 }
 
 function after(c, nc, note) {
-  const i = S.cards.findIndex(x => sameCard(x, c));
+  const i = S.cards.findIndex((x => sameCard(x, c)));
   if (i >= 0) {
     if (nc) S.cards[i] = nc; else S.cards.splice(i, 1);
   }
@@ -5238,7 +5382,7 @@ function after(c, nc, note) {
 
 function screenDo(path, payload) {
   const c = P.card;
-  return act(async () => {
+  return act((async () => {
     const [r, j] = await post(path, Object.assign({
       host: c.host,
       id: c.id
@@ -5250,7 +5394,7 @@ function screenDo(path, payload) {
       return;
     }
     throw new Error(j.error || r.status);
-  });
+  }));
 }
 
 const keys = k => screenDo("/api/screen/keys", {
@@ -5258,7 +5402,7 @@ const keys = k => screenDo("/api/screen/keys", {
 });
 
 function approveQuestion(c) {
-  return act(async () => {
+  return act((async () => {
     const [r, j] = await post("/api/questions/approve", {
       host: c.host,
       id: c.id
@@ -5269,7 +5413,7 @@ function approveQuestion(c) {
       return;
     }
     throw new Error(j.error || r.status);
-  });
+  }));
 }
 
 const sendText = (t, pre, enter) => screenDo("/api/screen/text", {
@@ -5280,7 +5424,7 @@ const sendText = (t, pre, enter) => screenDo("/api/screen/text", {
 
 function decide(decision, message) {
   const c = P.card;
-  return act(async () => {
+  return act((async () => {
     const [r, j] = await post("/api/decide", {
       host: c.host,
       id: c.id,
@@ -5292,7 +5436,7 @@ function decide(decision, message) {
       return;
     }
     throw new Error(j.error || r.status);
-  });
+  }));
 }
 
 function btn(lab, cls, fn) {
@@ -5318,18 +5462,18 @@ function renderPanel() {
       inp.rows = 2;
       inp.placeholder = tr("告訴 agent 改做什麼");
       box.append(inp);
-      box.append(btn(tr("拒絕並送出說明"), "deny", () => {
+      box.append(btn(tr("拒絕並送出說明"), "deny", (() => {
         const m = inp.value.trim();
         if (m) decide("deny", m);
-      }), btn(tr("返回"), "", () => {
+      })), btn(tr("返回"), "", (() => {
         P.typing = false;
         renderPanel();
-      }));
-      setTimeout(() => inp.focus(), 50);
-    } else box.append(btn(tr("同意"), "allow", () => decide("allow")), btn(tr("拒絕"), "deny", () => decide("deny")), btn(tr("拒絕並說明…"), "", () => {
+      })));
+      setTimeout((() => inp.focus()), 50);
+    } else box.append(btn(tr("同意"), "allow", (() => decide("allow"))), btn(tr("拒絕"), "deny", (() => decide("deny"))), btn(tr("拒絕並說明…"), "", (() => {
       P.typing = true;
       renderPanel();
-    }));
+    })));
   } else {
     const q = parseQ(c.text);
     const lines = c.text.split("\n");
@@ -5337,7 +5481,7 @@ function renderPanel() {
     if (mk && ap) box.append(el("div", "apq", "<b>" + trf("這題要你核准一份 {kind}", {
       kind: mk.kind === "prd" ? "PRD" : "spec"
     }) + "</b><span>" + esc(mk.path) + " · sha256 " + esc(mk.sha256.slice(0, 12)) + "…</span><span>" + tr("按「核准並簽名」：先用你的金鑰簽下這一版，再回答「核准」。檔案在問完之後改過，就不簽也不回答。在對話裡打「核准」不算。") + "</span>"));
-    box.append(el("pre", "", esc((q.tab >= 0 ? q.lines.slice(q.tab) : q.lines).filter(l => l.trim() && !/^\s*[─╌]+\s*$/.test(l)).slice(q.tab >= 0 ? 0 : -14).slice(0, 24).join("\n"))));
+    box.append(el("pre", "", esc((q.tab >= 0 ? q.lines.slice(q.tab) : q.lines).filter((l => l.trim() && !/^\s*[─╌]+\s*$/.test(l))).slice(q.tab >= 0 ? 0 : -14).slice(0, 24).join("\n"))));
     if (q.preview.length) box.append(el("div", "hint", tr("右邊的預覽（跟著目前選到的選項變）")), el("pre", "", esc(q.preview.join("\n").slice(0, 2e3))));
     if (P.typing) {
       const inp = el("input");
@@ -5349,68 +5493,68 @@ function renderPanel() {
         if (!t) return;
         if (q.textRow) sendText(t, moves(rowOf(q), q.textRow), !q.multi); else sendText(t);
       };
-      inp.addEventListener("keydown", e => {
+      inp.addEventListener("keydown", (e => {
         if (e.key === "Enter") {
           e.preventDefault();
           fire();
         }
-      });
+      }));
       const row = el("div", "txtrow");
       row.append(inp, btn(tr("送出"), "allow", fire));
       box.append(row);
       if (q.multi) box.append(el("div", "hint", trf("複選題：送出後這一行會打勾，再按「{next}」。", {
         next: nextLabel(q)
       })));
-      box.append(btn(tr("返回選項"), "", () => {
+      box.append(btn(tr("返回選項"), "", (() => {
         P.typing = false;
         renderPanel();
-      }));
-      setTimeout(() => inp.focus(), 50);
+      })));
+      setTimeout((() => inp.focus()), 50);
     } else {
       if (q.multi) box.append(el("div", "hint", trf("可複選：點選項打勾（再點一次取消），選好按「{next}」。", {
         next: nextLabel(q)
       })));
-      if (mk && ap) box.append(btn(tr("核准並簽名"), "allow", () => approveQuestion(c)));
+      if (mk && ap) box.append(btn(tr("核准並簽名"), "allow", (() => approveQuestion(c))));
       for (const o of q.opts) {
         if (o.n === q.textRow) continue;
         if (o.n === ap) continue;
-        box.append(btn((o.box ? o.on ? "☑ " : "☐ " : "") + (o.plain ? "" : o.n + ". ") + o.label.slice(0, 60), "opt", () => keys(optionKeys(q, o))));
+        box.append(btn((o.box ? o.on ? "☑ " : "☐ " : "") + (o.plain ? "" : o.n + ". ") + o.label.slice(0, 60), "opt", (() => keys(optionKeys(q, o)))));
       }
-      if (q.textRow) box.append(btn(tr("✎ 自己打答案…"), "opt", () => {
+      if (q.textRow) box.append(btn(tr("✎ 自己打答案…"), "opt", (() => {
         P.typing = true;
         renderPanel();
-      })); else if (!q.opts.length) box.append(btn(tr("✎ 打字…"), "opt", () => {
+      }))); else if (!q.opts.length) box.append(btn(tr("✎ 打字…"), "opt", (() => {
         P.typing = true;
         renderPanel();
-      }));
+      })));
       const nav = el("div", "nav");
-      if (q.multi && q.next) nav.append(btn(nextLabel(q), "allow", () => keys(moves(rowOf(q), (q.textRow || 0) + 1).concat([ "Enter" ]))));
-      if (q.tab >= 0) nav.append(btn(tr("← 上一題"), "", () => keys((q.cur === q.textRow ? [ "Up" ] : []).concat([ "Left" ]))));
+      if (q.multi && q.next) nav.append(btn(nextLabel(q), "allow", (() => keys(moves(rowOf(q), (q.textRow || 0) + 1).concat([ "Enter" ])))));
+      if (q.tab >= 0) nav.append(btn(tr("← 上一題"), "", (() => keys((q.cur === q.textRow ? [ "Up" ] : []).concat([ "Left" ])))));
       box.append(nav);
       const more = el("details", "more");
       more.append(el("summary", "", tr("其他按鍵")));
-      for (const [lab, k] of [ [ "↑", [ "Up" ] ], [ "↓", [ "Down" ] ], [ "Enter", [ "Enter" ] ] ]) more.append(btn(lab, "", () => keys(k)));
-      more.append(btn(q.tab >= 0 ? tr("Esc（取消整個問題）") : "Esc", "deny", () => {
+      for (const [lab, k] of [ [ "↑", [ "Up" ] ], [ "↓", [ "Down" ] ], [ "Enter", [ "Enter" ] ] ]) more.append(btn(lab, "", (() => keys(k))));
+      more.append(btn(q.tab >= 0 ? tr("Esc（取消整個問題）") : "Esc", "deny", (() => {
         if (q.tab < 0 || confirm(tr("Esc 會取消整個問題，agent 會當成你拒絕回答。確定？"))) keys([ "Escape" ]);
-      }));
+      })));
       box.append(more);
     }
   }
   if (P.note) box.append(el("div", "pnote", esc(P.note)));
-  box.append(btn(tr("稍後再答（關閉）"), "later", () => closePanel()));
+  box.append(btn(tr("稍後再答（關閉）"), "later", (() => closePanel())));
 }
 
 let sig = "";
 
 function sigNow() {
   const a = S.cur;
-  return [ S.view, a ? key(a) + a.status : "", S.size, S.msgs ? S.msgs.length : -1, (S.term || "").length, outFor(OUT, a ? key(a) : "").map(o => o.id + o.st).join(","), S.cards.map(c => c.id + ":" + (c.text_fp || "") + (c.reason ? ":r" : "")).join(","), S.guess ].join("|");
+  return [ S.view, a ? key(a) + a.status : "", S.size, S.msgs ? S.msgs.length : -1, (S.term || "").length, outFor(OUT, a ? key(a) : "").map((o => o.id + o.st)).join(","), S.cards.map((c => c.id + ":" + (c.text_fp || "") + (c.reason ? ":r" : ""))).join(","), S.guess ].join("|");
 }
 
 function copyText(t, b) {
   const done = () => {
     b.textContent = tr("已複製");
-    setTimeout(() => b.textContent = tr("複製"), 1200);
+    setTimeout((() => b.textContent = tr("複製")), 1200);
   };
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(t).then(done);
@@ -5497,9 +5641,9 @@ function renderMain(force) {
   const place = S.view + "|" + (inChat ? S.tab : "") + "|" + (S.cur ? key(S.cur) : "");
   const moved = place !== PLACE;
   PLACE = place;
-  if (moved && !(S.view === "chat" && (!inChat || S.tab === "chat"))) requestAnimationFrame(() => {
+  if (moved && !(S.view === "chat" && (!inChat || S.tab === "chat"))) requestAnimationFrame((() => {
     $("log").scrollTop = 0;
-  });
+  }));
   if (S.view === "shares") {
     sig = "";
     if (force) showShares();
@@ -5588,14 +5732,14 @@ function renderMain(force) {
     const seen = {};
     let last = "";
     if (S.guess) want.push([ "guess", null, () => el("div", "when", tr("讀不到這個 agent 正在用的 session，顯示的是這個資料夾最近的對話")) ]);
-    S.msgs.forEach((m, i) => {
+    S.msgs.forEach(((m, i) => {
       const d = msgDay(m.ts);
       const day = d && d !== last ? d : "";
       if (d) last = d;
       const k = msgKey(m, i, seen) + "|" + day;
       want.push([ k, msgSig(m), () => msgNode(m, day) ]);
-    });
-    const keep = new Set(want.map(w => w[0]));
+    }));
+    const keep = new Set(want.map((w => w[0])));
     for (const [k, v] of nodes) {
       if (!keep.has(k)) {
         v.n.remove();
@@ -5674,7 +5818,7 @@ async function loadChat() {
       S.term = t.text || "";
       S.msgs = null;
       const n1 = OUT.length;
-      OUT = outSettle(OUT, key(a), [], Date.now()).filter(o => !(o.k === key(a) && outShown(o, QU.list, a) === "taken"));
+      OUT = outSettle(OUT, key(a), [], Date.now()).filter((o => !(o.k === key(a) && outShown(o, QU.list, a) === "taken")));
       if (OUT.length !== n1) outSave(BUGSTORE, OUT);
     } else {
       S.msgs = r.messages;
@@ -5708,10 +5852,10 @@ async function beacon(why) {
       msgs: S.msgs,
       term: S.term,
       guess: S.guess,
-      out: OUT.map(o => ({
+      out: OUT.map((o => ({
         ...o,
         shown: a && o.k === key(a) ? outShown(o, QU.list, a) : o.st
-      })),
+      }))),
       drafts: Object.keys(DR).length,
       bugs: bugLoad(BUGSTORE).length,
       banner: $("via").hidden ? "" : $("via").textContent,
@@ -5727,7 +5871,7 @@ async function beacon(why) {
         log_h: $("log").scrollHeight,
         log_top: Math.round($("log").scrollTop)
       },
-      badges: [ ...document.querySelectorAll("#alist .badge, #alist .qn") ].map(e => e.textContent.trim()).filter(Boolean),
+      badges: [ ...document.querySelectorAll("#alist .badge, #alist .qn") ].map((e => e.textContent.trim())).filter(Boolean),
       online: navigator.onLine,
       homeDown: S.homeDown,
       visible: document.visibilityState === "visible",
@@ -5738,7 +5882,7 @@ async function beacon(why) {
   } catch (e) {}
 }
 
-setInterval(() => {
+setInterval((() => {
   const n = OUT.length;
   OUT = outExpire(OUT, Date.now());
   if (OUT.length !== n) {
@@ -5746,13 +5890,13 @@ setInterval(() => {
     renderMain(true);
   }
   beacon("tick");
-}, 6e4);
+}), 6e4);
 
-addEventListener("error", () => setTimeout(() => beacon("error"), 500));
+addEventListener("error", (() => setTimeout((() => beacon("error")), 500)));
 
-document.addEventListener("visibilitychange", () => {
+document.addEventListener("visibilitychange", (() => {
   if (document.visibilityState === "visible") beacon("visible");
-});
+}));
 
 function selfCheckBubbles(a) {
   try {
@@ -5762,7 +5906,7 @@ function selfCheckBubbles(a) {
     for (const o of S2) OUT = outDrop(OUT, o.id);
     outSave(BUGSTORE, OUT);
     if (mode === "transcript") {
-      const R = S2.filter(o => outSpanCovers(S.msgs, o, QU.list, a));
+      const R = S2.filter((o => outSpanCovers(S.msgs, o, QU.list, a)));
       if (!R.length) {
         renderMain(true);
         beacon("bubble-scrolled-out");
@@ -5927,12 +6071,12 @@ function hydrateMd(node, a, base) {
       miss();
       continue;
     }
-    raw("/api/files/raw?" + fq(a, p)).then(async r => {
+    raw("/api/files/raw?" + fq(a, p)).then((async r => {
       if (!r.ok) return miss();
       const u = URL.createObjectURL(await r.blob());
       MDU.push(u);
       im.src = u;
-    }).catch(miss);
+    })).catch(miss);
   }
   for (const l of node.querySelectorAll("a.mdfile")) {
     const p = relPath(base, l.dataset.file);
@@ -5951,12 +6095,12 @@ function hydrateMd(node, a, base) {
   return node;
 }
 
-const blobData = b => new Promise((ok, no) => {
+const blobData = b => new Promise(((ok, no) => {
   const fr = new FileReader;
   fr.onload = () => ok(fr.result);
   fr.onerror = no;
   fr.readAsDataURL(b);
-});
+}));
 
 async function inlineHtml(body, a, base) {
   try {
@@ -5966,20 +6110,20 @@ async function inlineHtml(body, a, base) {
     for (const im of doc.querySelectorAll("img[src]")) {
       const p = relPath(base, im.getAttribute("src"));
       if (!p || ++n > 24) continue;
-      jobs.push(raw("/api/files/raw?" + fq(a, p)).then(async r => {
+      jobs.push(raw("/api/files/raw?" + fq(a, p)).then((async r => {
         if (r.ok) im.setAttribute("src", await blobData(await r.blob()));
-      }).catch(() => {}));
+      })).catch((() => {})));
     }
     for (const lk of doc.querySelectorAll('link[rel~="stylesheet"][href]')) {
       const p = relPath(base, lk.getAttribute("href"));
       if (!p || ++n > 24) continue;
-      jobs.push(raw("/api/files/raw?" + fq(a, p)).then(async r => {
+      jobs.push(raw("/api/files/raw?" + fq(a, p)).then((async r => {
         if (r.ok) {
           const st = doc.createElement("style");
           st.textContent = await r.text();
           lk.replaceWith(st);
         }
-      }).catch(() => {}));
+      })).catch((() => {})));
     }
     if (!jobs.length) return body;
     await Promise.all(jobs);
@@ -6079,7 +6223,7 @@ function showFiles() {
           const b = el("button", "", tr("用分享選單打開"));
           b.onclick = () => navigator.share({
             files: [ file ]
-          }).catch(() => {});
+          }).catch((() => {}));
           v.append(b);
         }
       } catch (e) {}
@@ -6123,19 +6267,19 @@ function showFiles() {
       const sub = (t.blocked ? tr("不開放") : t.exists ? fsize(t.size) : tr("已刪除")) + (t.count > 1 ? " · " + trf("{n} 次", {
         n: t.count
       }) : "");
-      log.append(frow(ICON[t.kind] || ICON.none, t.rel != null ? t.rel : short(t.path), sub, off, () => openFile(p, t.kind, t.name, t.size)));
+      log.append(frow(ICON[t.kind] || ICON.none, t.rel != null ? t.rel : short(t.path), sub, off, (() => openFile(p, t.kind, t.name, t.size))));
     }
   }
   log.append(el("div", "fsec", tr("工作目錄 · ") + esc(short(L.root || ""))));
   if (!L.entries.length) log.append(el("div", "hint", tr("（空的）")));
   for (const e of filesOrder(L.entries)) {
     const p = (F.dir ? F.dir + "/" : "") + e.name;
-    if (e.dir) log.append(frow(ICON.dir, e.name, "", false, () => {
+    if (e.dir) log.append(frow(ICON.dir, e.name, "", false, (() => {
       F.dir = p;
       F.list = null;
       renderMain(true);
       loadFiles();
-    })); else log.append(frow(ICON[e.kind] || ICON.none, e.name, fsize(e.size), e.kind === "none", () => openFile(p, e.kind, e.name, e.size)));
+    }))); else log.append(frow(ICON[e.kind] || ICON.none, e.name, fsize(e.size), e.kind === "none", (() => openFile(p, e.kind, e.name, e.size))));
   }
   if (L.truncated) log.append(el("div", "hint", tr("只列出前 500 個")));
   const up = el("label", "dl", esc(trf("📷 上傳照片到 {host}", {
@@ -6219,7 +6363,7 @@ function resetCanvas() {
 function canvasFile() {
   const L = CV.list;
   if (!L || !L.files || !L.files.length) return null;
-  return L.files.find(f => f.path === CV.file) || L.files[0];
+  return L.files.find((f => f.path === CV.file)) || L.files[0];
 }
 
 async function loadCanvas() {
@@ -6280,23 +6424,23 @@ const PDFS = {
 };
 
 function loadPdfjs() {
-  if (!PDFS.lib) PDFS.lib = import("./vendor/pdf.min.mjs").then(m => {
+  if (!PDFS.lib) PDFS.lib = import("./vendor/pdf.min.mjs").then((m => {
     m.GlobalWorkerOptions.workerSrc = "./vendor/pdf.worker.min.mjs";
     return m;
-  }).catch(e => {
+  })).catch((e => {
     PDFS.lib = null;
     throw e;
-  });
+  }));
   return PDFS.lib;
 }
 
 async function pdfDoc(blob) {
   let d = PDFS.docs.get(blob);
   if (!d) {
-    d = loadPdfjs().then(async m => m.getDocument({
+    d = loadPdfjs().then((async m => m.getDocument({
       data: new Uint8Array(await blob.arrayBuffer()),
       isEvalSupported: false
-    }).promise);
+    }).promise));
     PDFS.docs.set(blob, d);
   }
   return d;
@@ -6355,19 +6499,19 @@ function pdfView(blob, key) {
   prev.onclick = () => go(-1);
   next.onclick = () => go(1);
   let sx = null;
-  pg.addEventListener("pointerdown", e => {
+  pg.addEventListener("pointerdown", (e => {
     sx = e.clientX;
-  });
-  pg.addEventListener("pointerup", e => {
+  }));
+  pg.addEventListener("pointerup", (e => {
     if (sx !== null && Math.abs(e.clientX - sx) > 50) go(e.clientX < sx ? 1 : -1);
     sx = null;
-  });
-  pdfDoc(blob).then(d => {
+  }));
+  pdfDoc(blob).then((d => {
     doc = d;
     requestAnimationFrame(show);
-  }).catch(e => {
+  })).catch((e => {
     at.textContent = tr("PDF 打不開：") + (e && e.message || "");
-  });
+  }));
   return w;
 }
 
@@ -6503,7 +6647,7 @@ async function loadShares() {
     SH.err = "";
     showShareSub();
     if (ch && S.view === "shares") {
-      const c = SH.cur && r.shares.find(y => y.id === SH.cur);
+      const c = SH.cur && r.shares.find((y => y.id === SH.cur));
       if (c && c.has_body && SH.body === null && !SH.bodyErr) loadShareBody(c.id);
       renderMain(true);
     }
@@ -6633,7 +6777,7 @@ function showShares() {
   log.replaceChildren();
   $("composer").hidden = true;
   const L = SH.list;
-  const x = L && SH.cur ? L.find(y => y.id === SH.cur) : null;
+  const x = L && SH.cur ? L.find((y => y.id === SH.cur)) : null;
   if (x) {
     $("title").textContent = shName(x) || tr("分享");
     $("subtitle").textContent = x.type === "photo" ? tr("照片") : shHost(x.url) || tr("文字");
@@ -6672,7 +6816,7 @@ function showShares() {
       d.append(give);
       if (SH.open === x.id) {
         const box = el("div", "pick");
-        for (const a of S.agents.filter(a => a.kind !== "peer_error")) {
+        for (const a of S.agents.filter((a => a.kind !== "peer_error"))) {
           const bb = el("button", "opt", esc(a.host + " · " + (a.name || a.cwd_name || a.pane_id)));
           bb.onclick = () => {
             SH.open = null;
@@ -6710,7 +6854,7 @@ function showShares() {
     d.append(bar);
     if (SH.open === x.id) {
       const box = el("div", "pick");
-      const ag = S.agents.filter(a => a.kind !== "peer_error");
+      const ag = S.agents.filter((a => a.kind !== "peer_error"));
       if (!ag.length) box.append(el("div", "hint", tr("沒有可以交給的 agent")));
       for (const a of ag) {
         const bb = el("button", "opt", esc(a.host + " · " + (a.name || a.cwd_name || a.pane_id)));
@@ -6801,14 +6945,14 @@ const SP = {
 async function loadSpecs() {
   let L;
   try {
-    L = (await j("/api/specs")).filter(x => x.kind !== "peer_error");
+    L = (await j("/api/specs")).filter((x => x.kind !== "peer_error"));
     SP.err = "";
   } catch (e) {
     if (e) SP.err = e.message || tr("讀不到");
     if (S.view === "specs") renderMain(true);
     return;
   }
-  const ls = JSON.stringify(L.map(x => [ specSig(x), x.state, x.approved_ts || "" ]));
+  const ls = JSON.stringify(L.map((x => [ specSig(x), x.state, x.approved_ts || "" ])));
   const ch = ls !== SP.lsig;
   SP.lsig = ls;
   SP.list = L;
@@ -6825,7 +6969,7 @@ function showSpecs() {
   log.replaceChildren();
   $("composer").hidden = true;
   const L = SP.list;
-  const s = L && SP.cur ? L.find(x => specKey(x) === SP.cur) : null;
+  const s = L && SP.cur ? L.find((x => specKey(x) === SP.cur)) : null;
   if (s) {
     const sg = specSig(s);
     if (sg !== SP.sig) {
@@ -6870,7 +7014,7 @@ function showSpecs() {
   $("subtitle").textContent = L ? trf("{n} 份等你核准", {
     n: specsWaiting(L)
   }) : "";
-  log.append(backTo(tr("← PRD 簽核"), () => openPrds()));
+  log.append(backTo(tr("← PRD 簽核"), (() => openPrds())));
   if (SP.err) log.append(el("div", "hint", esc(SP.err)));
   if (!L) {
     if (!SP.err) log.append(el("div", "typing", tr("讀取中…")));
@@ -6885,11 +7029,11 @@ function showSpecs() {
     const fc = el("div", "fchips");
     for (const [k, lab] of [ [ "", trf("全部（{n}）", {
       n: L.length
-    }) ], ...PJ.map(p => [ p.key, p.label + trf("（{x}）", {
+    }) ], ...PJ.map((p => [ p.key, p.label + trf("（{x}）", {
       x: p.n + (p.waiting ? trf("，{n} 等你", {
         n: p.waiting
       }) : "")
-    }) ]) ]) {
+    }) ])) ]) {
       const b = el("button", SP.filter === k ? "on" : "", esc(lab));
       b.onclick = () => {
         SP.filter = k;
@@ -6899,7 +7043,7 @@ function showSpecs() {
     }
     log.append(fc);
   }
-  for (const x of specOrder(specFiltered(L, SP.filter))) log.append(frow(specCanApprove(x) ? "📝" : x.state === "approved" ? "✅" : "📄", x.title || x.id, x.host + " · " + (x.project ? x.project + " · " : "") + x.id + " · " + specLabel(x), false, () => openSpec(x)));
+  for (const x of specOrder(specFiltered(L, SP.filter))) log.append(frow(specCanApprove(x) ? "📝" : x.state === "approved" ? "✅" : "📄", x.title || x.id, x.host + " · " + (x.project ? x.project + " · " : "") + x.id + " · " + specLabel(x), false, (() => openSpec(x))));
 }
 
 function openSpec(x) {
@@ -6977,7 +7121,7 @@ async function loadHarness() {
     if (S.view === "harness") renderMain(true);
     return;
   }
-  const ls = JSON.stringify(L.map(x => [ hcSig(x), x.state ]));
+  const ls = JSON.stringify(L.map((x => [ hcSig(x), x.state ])));
   const ch = ls !== HC.lsig;
   HC.lsig = ls;
   HC.list = L;
@@ -6994,7 +7138,7 @@ function showHarness() {
   log.replaceChildren();
   $("composer").hidden = true;
   const L = HC.list;
-  const c = L && HC.cur ? L.find(x => hcKey(x) === HC.cur) : null;
+  const c = L && HC.cur ? L.find((x => hcKey(x) === HC.cur)) : null;
   if (c) {
     const sg = hcSig(c);
     if (sg !== HC.sig) {
@@ -7115,7 +7259,7 @@ function showHarness() {
   $("subtitle").textContent = L ? trf("{n} 張等你核准", {
     n: hcWaiting(L)
   }) : "";
-  log.append(backTo(tr("← PRD 簽核"), () => openPrds()));
+  log.append(backTo(tr("← PRD 簽核"), (() => openPrds())));
   if (HC.err) log.append(el("div", "hint", esc(HC.err)));
   if (!L) {
     if (!HC.err) log.append(el("div", "typing", tr("讀取中…")));
@@ -7125,7 +7269,7 @@ function showHarness() {
     log.append(el("div", "", '<div id="empty">' + tr("沒有決策卡。") + "</div>"));
     return;
   }
-  for (const x of hcOrder(L)) log.append(frow(hcCanDecide(x) ? "🔏" : x.state === "approved" ? "✅" : "📄", hcView(x).title, x.project + " · " + hcView(x).state, false, () => {
+  for (const x of hcOrder(L)) log.append(frow(hcCanDecide(x) ? "🔏" : x.state === "approved" ? "✅" : "📄", hcView(x).title, x.project + " · " + hcView(x).state, false, (() => {
     HC.cur = hcKey(x);
     HC.sig = "";
     HC.note = "";
@@ -7133,7 +7277,7 @@ function showHarness() {
     HC.tech = false;
     renderMain(true);
     $("log").scrollTop = 0;
-  }));
+  })));
 }
 
 async function decideHarness(e, c, decision) {
@@ -7395,17 +7539,17 @@ async function rerunOracle(e, p) {
 
 function claimRow(j) {
   const d = el("div", "claim");
-  const T = S.agents.filter(a => a && a.kind !== "peer_error" && a.pane_id);
+  const T = S.agents.filter((a => a && a.kind !== "peer_error" && a.pane_id));
   if (!T.length) return d;
   const sel = el("select");
-  T.forEach((a, i) => {
+  T.forEach(((a, i) => {
     const o = el("option");
     o.value = i;
     o.textContent = (a.name || a.cwd_name || a.pane_id) + trf("（{x}）", {
       x: a.host
     });
     sel.append(o);
-  });
+  }));
   const b = el("button", "allow", tr("這是我的"));
   b.onclick = e => claimJob(e, j, T[+sel.value]);
   d.append(sel, b);
@@ -7449,14 +7593,14 @@ function commentEl(x, c, owner, old) {
     const T = jobHandoffTargets(x, S.agents, owner);
     if (T.length) {
       const sel = el("select");
-      T.forEach((a, i) => {
+      T.forEach(((a, i) => {
         const o = el("option");
         o.value = i;
         o.textContent = (a.name || a.pane_id) + trf("（{x}）", {
           x: a.host
         });
         sel.append(o);
-      });
+      }));
       const b = el("button", "allow", esc(trf("交給 {who}", {
         who: T[0].name || T[0].pane_id
       })));
@@ -7505,7 +7649,7 @@ async function rejectWith(e, x, owner, version) {
     renderMain(true);
     return;
   }
-  const a = jobHandoffTargets(x, S.agents, owner).find(q => agentHq(q) === owner);
+  const a = jobHandoffTargets(x, S.agents, owner).find((q => agentHq(q) === owner));
   if (a) await handoffComment(e, x, c, a); else {
     toast(tr("已退回；寫的人不在線上，之後按「交給」"));
     await loadJobs();
@@ -7563,14 +7707,14 @@ function commentsBox(log, x, owner) {
       const T = jobHandoffTargets(x, S.agents, owner);
       if (T.length) {
         const sel = el("select");
-        T.forEach((a, i) => {
+        T.forEach(((a, i) => {
           const o = el("option");
           o.value = i;
           o.textContent = (a.name || a.pane_id) + trf("（{x}）", {
             x: a.host
           });
           sel.append(o);
-        });
+        }));
         const b = el("button", "allow", esc(trf("交給 {who}", {
           who: T[0].name || T[0].pane_id
         })));
@@ -7657,10 +7801,10 @@ function rawBox(log, text) {
 }
 
 function jobDetail(log, jb, owner, back) {
-  log.append(backTo("← " + back, () => {
+  log.append(backTo("← " + back, (() => {
     JB.job = null;
     renderMain(true);
-  }));
+  })));
   const top = el("div", "sh");
   top.append(el("div", "tt", esc(jb.title)));
   if (jb.what) top.append(el("div", "u", esc(jb.what)));
@@ -7673,7 +7817,7 @@ function jobDetail(log, jb, owner, back) {
 }
 
 function projDetail(log, x, back, backFn) {
-  const jb = JB.job ? x.jobs.find(q => jobKey(q) === JB.job) : null;
+  const jb = JB.job ? x.jobs.find((q => jobKey(q) === JB.job)) : null;
   if (jb) return jobDetail(log, jb, x.p.owner, x.p.title || x.p.id);
   log.append(backTo("← " + back, backFn));
   log.append(projCard(x, true));
@@ -7695,25 +7839,25 @@ function showAgentJobs() {
     if (!JB.err) log.append(el("div", "typing", tr("讀取中…")));
     return;
   }
-  const x = JB.proj ? mine.find(q => q.key === JB.proj) : null;
-  if (x) return projDetail(log, x, tr("這個 agent 的專案"), () => {
+  const x = JB.proj ? mine.find((q => q.key === JB.proj)) : null;
+  if (x) return projDetail(log, x, tr("這個 agent 的專案"), (() => {
     JB.proj = null;
     JB.job = null;
     renderMain(true);
-  });
-  const jobs = jobsOfAgent(t, a), jb = JB.job ? jobs.find(q => jobKey(q) === JB.job) : null;
+  }));
+  const jobs = jobsOfAgent(t, a), jb = JB.job ? jobs.find((q => jobKey(q) === JB.job)) : null;
   if (jb) return jobDetail(log, jb, agentHq(a), tr("排程"));
   okrCard(log, a);
   for (const c of cardsFor(a)) log.append(cardEl(c));
   reqNew(log, a);
-  const shown = agentHq(a) === DEFAULT_OWNER ? jobs : jobs.filter(j => !j.unclaimed);
+  const shown = agentHq(a) === DEFAULT_OWNER ? jobs : jobs.filter((j => !j.unclaimed));
   const C = schedCards(QU.off ? [] : QU.list, a, shown, Date.now());
   if (!C.length) log.append(el("div", "hint", tr("現在沒有要求，也沒有工作。在上面寫一則，它接手、做完，這裡都看得到。")));
   for (const c of C) log.append(schedRowEl(c, a, shown));
   const bs = bonStatsLine(bonStats(shown));
   if (bs) log.append(el("div", "hint", esc(bs)));
   log.append(el("div", "hq", esc(hqLine(hqSummary(mine)))));
-  const grp = sideGroups(S.agents, t, S.cards, PR.list).groups.find(g => g.hq === agentHq(a));
+  const grp = sideGroups(S.agents, t, S.cards, PR.list).groups.find((g => g.hq === agentHq(a)));
   if (grp && grp.workers.length) {
     log.append(el("div", "fsec", esc(trf("底下的 agent（{n}）", {
       n: grp.workers.length
@@ -7775,13 +7919,13 @@ async function loadAlerts() {
 
 async function loadAsks() {
   try {
-    const L = (await j("/api/asks?all=1")).filter(x => x && x.id);
+    const L = (await j("/api/asks?all=1")).filter((x => x && x.id));
     UA.err = "";
     const ls = JSON.stringify(L);
     if (ls !== UA.lsig) {
       UA.lsig = ls;
-      UA.list = L.filter(a => a.state === "open");
-      UA.done = L.filter(a => a.state !== "open").sort((a, b) => String(b.closed || "").localeCompare(String(a.closed || ""))).slice(0, 50);
+      UA.list = L.filter((a => a.state === "open"));
+      UA.done = L.filter((a => a.state !== "open")).sort(((a, b) => String(b.closed || "").localeCompare(String(a.closed || "")))).slice(0, 50);
       showConfirmSub();
       if (S.view === "confirm" && !UA.open) renderMain(true);
     }
@@ -7925,7 +8069,7 @@ const signingItems = () => {
   return signItems(PR.list, SP.list, HC.list, t, t.comments);
 };
 
-const confirmSig = () => JSON.stringify([ waitingItems().map(i => i.key + (i.ref.text_fp || "")), signingItems().map(i => i.key), DCS.lsig.length, CF.tab, AL.lsig, UA.lsig, UA.open ]);
+const confirmSig = () => JSON.stringify([ waitingItems().map((i => i.key + (i.ref.text_fp || ""))), signingItems().map((i => i.key)), DCS.lsig.length, CF.tab, AL.lsig, UA.lsig, UA.open ]);
 
 function showConfirmSub() {
   const t = JT();
@@ -8120,9 +8264,9 @@ const PD = {
 
 async function loadPrds() {
   try {
-    const L = (await j("/api/prds")).filter(x => x.kind === "prd");
+    const L = (await j("/api/prds")).filter((x => x.kind === "prd"));
     PR.err = "";
-    const ls = JSON.stringify(L.map(p => [ prdSig(p), p.state ]));
+    const ls = JSON.stringify(L.map((p => [ prdSig(p), p.state ])));
     if (ls !== PR.lsig) {
       PR.lsig = ls;
       PR.list = L;
@@ -8166,15 +8310,15 @@ function showPrd() {
   const log = $("log");
   log.replaceChildren();
   $("composer").hidden = true;
-  const p = (PR.list || []).find(x => prdKey(x) === PD.cur);
-  log.append(backTo(PD.back === "agent" ? tr("← 排程") : tr("← 通知"), () => {
+  const p = (PR.list || []).find((x => prdKey(x) === PD.cur));
+  log.append(backTo(PD.back === "agent" ? tr("← 排程") : tr("← 通知"), (() => {
     if (PD.back === "agent" && S.cur) {
       S.view = "chat";
       S.tab = "jobs";
       renderSide();
       renderMain(true);
     } else openConfirm();
-  }));
+  })));
   if (!p) {
     log.append(el("div", "typing", PR.err ? esc(PR.err) : tr("讀取中…")));
     return;
@@ -8342,7 +8486,7 @@ function applyHash() {
     return;
   }
   if (h.open === "compact") HASH_OPEN.compact = true;
-  if (h.host && S.agents.some(x => x.host === h.host)) setOpenHost(h.host);
+  if (h.host && S.agents.some((x => x.host === h.host))) setOpenHost(h.host);
   if (h.card) {
     const c = S.cards[0];
     if (!c) return;
@@ -8367,7 +8511,7 @@ function applyHash() {
     return;
   }
   if (h.view === "explorer") {
-    const a = S.cur || S.agents.find(x => x.kind !== "peer_error" && x.pane_id);
+    const a = S.cur || S.agents.find((x => x.kind !== "peer_error" && x.pane_id));
     if (!a) return;
     hashDone = true;
     pick(a);
@@ -8376,7 +8520,7 @@ function applyHash() {
     return;
   }
   if (h.prd) {
-    const p = (PR.list || []).find(x => prdKey(x) === h.prd);
+    const p = (PR.list || []).find((x => prdKey(x) === h.prd));
     if (!p) {
       loadPrds();
       return;
@@ -8391,7 +8535,7 @@ function applyHash() {
     return;
   }
   if (h.machine) {
-    if (!S.agents.some(x => x.host === h.machine)) return;
+    if (!S.agents.some((x => x.host === h.machine))) return;
     hashDone = true;
     MC.tab = [ "usage", "gpu" ].includes(h.tab) ? h.tab : "res";
     openMachine(h.machine);
@@ -8399,7 +8543,7 @@ function applyHash() {
     return;
   }
   if (h.view === "loose") {
-    const a = S.agents.find(x => x.kind !== "peer_error" && agentHq(x) === DEFAULT_OWNER);
+    const a = S.agents.find((x => x.kind !== "peer_error" && agentHq(x) === DEFAULT_OWNER));
     if (!a) return;
     hashDone = true;
     pick(a);
@@ -8408,8 +8552,8 @@ function applyHash() {
   }
   if (h.badges) {
     const i = h.badges.indexOf(":"), k = h.badges.slice(0, i), v = h.badges.slice(i + 1);
-    const a = k === "agent" ? S.agents.find(x => key(x) === v) : null;
-    if (k === "host" ? !S.agents.some(x => x.host === v) : !a) return;
+    const a = k === "agent" ? S.agents.find((x => key(x) === v)) : null;
+    if (k === "host" ? !S.agents.some((x => x.host === v)) : !a) return;
     hashDone = true;
     showBadgeList(a ? {
       agent: a
@@ -8419,7 +8563,7 @@ function applyHash() {
     return;
   }
   if (h.agent) {
-    const a = S.agents.find(x => key(x) === h.agent) || S.agents.find(x => (x.name || x.cwd_name) === h.agent && (!h.host || x.host === h.host));
+    const a = S.agents.find((x => key(x) === h.agent)) || S.agents.find((x => (x.name || x.cwd_name) === h.agent && (!h.host || x.host === h.host)));
     if (!a) return;
     hashDone = true;
     pick(a);
@@ -8428,7 +8572,7 @@ function applyHash() {
     if (h.open) {
       const n = h.open.split("/").pop();
       const k = /\.pdf$/i.test(n) ? "pdf" : /\.(mp4|m4v|mov|webm)$/i.test(n) ? "video" : /\.(md|markdown)$/i.test(n) ? "md" : /\.(png|jpe?g|gif|webp|svg)$/i.test(n) ? "image" : "text";
-      setTimeout(() => openFile(h.open, k, n, 0), 300);
+      setTimeout((() => openFile(h.open, k, n, 0)), 300);
     }
     if (h.project) {
       JB.proj = h.project;
@@ -8441,9 +8585,9 @@ function applyHash() {
 function renderLogin(c, box) {
   if (c.step === "method") {
     box.append(el("div", "hint", tr("這個 agent 要重新登入 Claude。用你的 Claude 訂閱登入：")));
-    box.append(btn(tr("用 Claude 訂閱登入"), "allow", () => loginDo({
+    box.append(btn(tr("用 Claude 訂閱登入"), "allow", (() => loginDo({
       action: "method"
-    })));
+    }))));
     box.append(el("div", "hint", tr("要改用 API（Console）帳號登入，請到電腦前操作。")));
   } else {
     if (c.url) {
@@ -8462,22 +8606,22 @@ function renderLogin(c, box) {
     inp.setAttribute("autocorrect", "off");
     inp.spellcheck = false;
     const row = el("div", "txtrow");
-    row.append(inp, btn(tr("送出"), "allow", () => {
+    row.append(inp, btn(tr("送出"), "allow", (() => {
       const v = inp.value.trim();
       if (v) loginDo({
         action: "code",
         code: v
       });
-    }));
+    })));
     box.append(row);
   }
   if (P.note) box.append(el("div", "pnote", esc(P.note)));
-  box.append(btn(tr("稍後再說"), "later", () => closePanel()));
+  box.append(btn(tr("稍後再說"), "later", (() => closePanel())));
 }
 
 function loginDo(payload) {
   const c = P.card;
-  return act(async () => {
+  return act((async () => {
     const [r, j] = await post("/api/login", Object.assign({
       host: c.host,
       id: c.id
@@ -8490,16 +8634,16 @@ function loginDo(payload) {
     }
     if (payload.action === "code") {
       closePanel(tr("已送出授權碼，登入完成後這張卡片會自己消失"));
-      S.cards = S.cards.filter(x => !sameCard(x, c));
+      S.cards = S.cards.filter((x => !sameCard(x, c)));
       renderSide();
       renderMain(true);
     } else P.note = tr("已選訂閱登入，等登入頁出現…");
-  });
+  }));
 }
 
 function syncPanel() {
   if (!P.card || P.busy) return;
-  const f = S.cards.find(x => sameCard(x, P.card));
+  const f = S.cards.find((x => sameCard(x, P.card)));
   if (!f) {
     closePanel(tr("這個問題已經處理了"));
     return;
@@ -8533,14 +8677,14 @@ async function poll() {
   if (S.view === "prds" && S.tick % 5 === 1) loadDecisions();
   if (S.view === "confirm" && S.tick % 5 === 1) loadDecisions();
   try {
-    S.cards = (await j("/api/pending")).filter(x => x.kind !== "peer_error");
+    S.cards = (await j("/api/pending")).filter((x => x.kind !== "peer_error"));
     syncPanel();
   } catch (e) {}
   if (S.tick % 3 === 1 || !S.agents.length) {
     try {
       S.agents = await j("/api/agents");
       const k = S.cur ? key(S.cur) : load();
-      const f = S.agents.find(a => key(a) === k);
+      const f = S.agents.find((a => key(a) === k));
       if (f) {
         if (!S.cur) {
           S.cur = f;
@@ -8594,24 +8738,24 @@ ta.addEventListener("input", sizeTa);
 
 ta.addEventListener("input", keepDraft);
 
-ta.addEventListener("focus", () => setTimeout(() => {
+ta.addEventListener("focus", (() => setTimeout((() => {
   fitVV();
   const l = $("log");
   l.scrollTop = l.scrollHeight;
-}, 350));
+}), 350)));
 
-ta.addEventListener("blur", () => setTimeout(() => {
+ta.addEventListener("blur", (() => setTimeout((() => {
   window.scrollTo(0, 0);
   fitVV();
   sizeTa();
-}, 120));
+}), 120)));
 
-ta.addEventListener("keydown", e => {
+ta.addEventListener("keydown", (e => {
   if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
     e.preventDefault();
     send();
   }
-});
+}));
 
 function stopMode() {
   const a = S.cur;
@@ -8628,7 +8772,7 @@ function paintSend() {
 
 ta.addEventListener("input", paintSend);
 
-$("send").addEventListener("pointerdown", e => e.preventDefault());
+$("send").addEventListener("pointerdown", (e => e.preventDefault()));
 
 $("send").onclick = () => {
   if (quickJustOpened) {
@@ -8685,46 +8829,46 @@ function openQuick() {
   ed.onclick = () => {
     closeQuick();
     openSettings();
-    setTimeout(() => {
+    setTimeout((() => {
       const t = document.getElementById("quickText");
       if (t) t.scrollIntoView({
         block: "center"
       });
-    }, 200);
+    }), 200);
   };
   m.append(ed);
   document.body.append(m);
-  setTimeout(() => document.addEventListener("pointerdown", function off(e) {
+  setTimeout((() => document.addEventListener("pointerdown", (function off(e) {
     if (!m.contains(e.target) && e.target !== $("send")) {
       closeQuick();
       document.removeEventListener("pointerdown", off, true);
     }
-  }, true), 0);
+  }), true)), 0);
 }
 
-$("send").addEventListener("pointerdown", () => {
+$("send").addEventListener("pointerdown", (() => {
   quickJustOpened = false;
   clearTimeout(quickTimer);
-  quickTimer = setTimeout(() => {
+  quickTimer = setTimeout((() => {
     quickJustOpened = true;
     openQuick();
     if (navigator.vibrate) navigator.vibrate(10);
-  }, 450);
-});
+  }), 450);
+}));
 
-for (const ev of [ "pointerup", "pointerleave", "pointercancel" ]) $("send").addEventListener(ev, () => clearTimeout(quickTimer));
+for (const ev of [ "pointerup", "pointerleave", "pointercancel" ]) $("send").addEventListener(ev, (() => clearTimeout(quickTimer)));
 
-$("send").addEventListener("contextmenu", e => e.preventDefault());
+$("send").addEventListener("contextmenu", (e => e.preventDefault()));
 
 let TAPDOWN = 0;
 
-document.addEventListener("pointerdown", e => {
+document.addEventListener("pointerdown", (e => {
   TAPDOWN = e.isTrusted === true ? Date.now() : 0;
-}, true);
+}), true);
 
-document.addEventListener("click", () => setTimeout(() => {
+document.addEventListener("click", (() => setTimeout((() => {
   TAPDOWN = 0;
-}, 0), true);
+}), 0)), true);
 
 S.atts = [];
 
@@ -8739,7 +8883,7 @@ async function shrink(f) {
     c.height = Math.round(b.height * k);
     c.getContext("2d").drawImage(b, 0, 0, c.width, c.height);
     if (b.close) b.close();
-    const o = await new Promise(r => c.toBlob(r, "image/jpeg", .85));
+    const o = await new Promise((r => c.toBlob(r, "image/jpeg", .85)));
     return o || f;
   } catch (e) {
     return f;
@@ -8775,7 +8919,7 @@ function showAtts() {
     b.setAttribute("aria-label", tr("拿掉"));
     b.onclick = () => {
       URL.revokeObjectURL(x.url);
-      S.atts = S.atts.filter(y => y !== x);
+      S.atts = S.atts.filter((y => y !== x));
       showAtts();
     };
     d.append(b);
@@ -8898,7 +9042,7 @@ async function send() {
     }
     let t = typed;
     if (S.reply) {
-      const q = S.reply.trim().split("\n").slice(0, 12).map(l => "> " + l.slice(0, 300)).join("\n");
+      const q = S.reply.trim().split("\n").slice(0, 12).map((l => "> " + l.slice(0, 300))).join("\n");
       t = "（回覆你先前這段）\n" + q + "\n\n" + t;
       S.reply = null;
       $("quote").classList.remove("on");
@@ -8989,7 +9133,7 @@ async function enablePush() {
   }
 }
 
-if ("serviceWorker" in navigator && window.isSecureContext) navigator.serviceWorker.register("/sw.js").catch(() => {});
+if ("serviceWorker" in navigator && window.isSecureContext) navigator.serviceWorker.register("/sw.js").catch((() => {}));
 
 showVia();
 

@@ -21,6 +21,10 @@ Everything here runs on invented data. No machine, agent or person in it is real
 
 ## Look at it
 
+Live, on invented data: https://yiidtw.github.io/aide-rwd-portal/ (best on a phone, or in a narrow window).
+
+Or locally:
+
 ```sh
 python3 -m http.server 8000
 # open http://localhost:8000/ — on a phone, or a narrow window

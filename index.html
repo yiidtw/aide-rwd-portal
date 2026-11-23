@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#0f1115"><title>aide</title><link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0f1115"><title>aide</title>
 <style>
 :root{--danger-bg:rgba(239,68,68,.16);--danger-fg:#fca5a5;--danger-solid:#b91c1c;--warning-bg:rgba(249,115,22,.16);--warning-fg:#fdba74;--warning-solid:#c2410c;--info-bg:rgba(59,130,246,.18);--info-fg:#93c5fd;--info-solid:#1d4ed8;--accent-bg:rgba(139,92,246,.18);--accent-fg:#c4b5fd;--accent-solid:#6d28d9;--success-bg:rgba(34,197,94,.16);--success-fg:#86efac;--success-solid:#15803d;--on-solid:#fff;--bg:#0f1115;--side:#151922;--line:#262b36;--txt:#e9eaee;--mut:#9aa1ad;--me:#2563eb;--metx:#fff;--ai:#1e2330;--ok:#22c55e;--warn:#ef4444;--work:#3b82f6;--hover:#1d2230;--code:#090b0f;--field:#171b24;--cardbg:#1d1214;--cardline:#5a2328;--btn:#3a4050;--chip:rgba(255,255,255,.1);color-scheme:dark}
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--danger-bg:#fde8e8;--danger-fg:#b42323;--danger-solid:#b42323;--warning-bg:#ffedd5;--warning-fg:#9a3412;--warning-solid:#c2410c;--info-bg:#dbeafe;--info-fg:#1d4ed8;--info-solid:#1d4ed8;--accent-bg:#ede9fe;--accent-fg:#5b21b6;--accent-solid:#5b21b6;--success-bg:#dcfce7;--success-fg:#166534;--success-solid:#15803d;--on-solid:#fff;--bg:#ffffff;--side:#f4f5f7;--line:#e3e5ea;--txt:#16181d;--mut:#6b7280;--me:#2563eb;--metx:#fff;--ai:#eef0f4;--hover:#e8ebf1;--code:#f6f7f9;--field:#f4f5f7;--cardbg:#fff5f5;--cardline:#f3b4b4;--btn:#d9dde5;--chip:rgba(0,0,0,.06);color-scheme:light}}
@@ -4906,7 +4906,7 @@ let H2C = null;
 function loadH2C() {
   if (!H2C) H2C = new Promise((ok, no) => {
     const sc = document.createElement("script");
-    sc.src = "/vendor/html2canvas.js";
+    sc.src = "./vendor/html2canvas.js";
     sc.onload = () => window.html2canvas ? ok(window.html2canvas) : no(new Error("html2canvas"));
     sc.onerror = () => {
       H2C = null;
@@ -6280,8 +6280,8 @@ const PDFS = {
 };
 
 function loadPdfjs() {
-  if (!PDFS.lib) PDFS.lib = import("/vendor/pdf.min.mjs").then(m => {
-    m.GlobalWorkerOptions.workerSrc = "/vendor/pdf.worker.min.mjs";
+  if (!PDFS.lib) PDFS.lib = import("./vendor/pdf.min.mjs").then(m => {
+    m.GlobalWorkerOptions.workerSrc = "./vendor/pdf.worker.min.mjs";
     return m;
   }).catch(e => {
     PDFS.lib = null;

@@ -90,13 +90,13 @@ that answers them and the page works unchanged.
 [
   {
     "age_secs": 1,
-    "created": "2026-11-23T18:46:08.501Z",
+    "created": "2026-11-23T18:53:24.116Z",
     "cwd": "/home/demo/work/web-app",
     "cwd_name": "web-app",
     "gist": "Bash · npm test checkout",
     "hold_left_secs": 86399,
     "host": "studio-mac",
-    "id": "35d4d68799afd22b",
+    "id": "3b9d1f424e99e815",
     "input_fp": "4395966a5102d06b",
     "kind": "hook",
     "pane": "w1:p1",
@@ -111,7 +111,7 @@ that answers them and the page works unchanged.
   },
   {
     "age_secs": 1,
-    "created": "2026-11-23T18:46:08.501Z",
+    "created": "2026-11-23T18:53:24.116Z",
     "cwd": "aide-clipper/web-app",
     "cwd_name": "web-app",
     "gist": "aide clipper · upload_file · https://shop-admin.example.com/",
@@ -254,28 +254,28 @@ that answers them and the page works unchanged.
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795459568,
+      "mtime": 1795460004,
       "name": "docs",
       "size": 0
     },
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795459568,
+      "mtime": 1795460004,
       "name": "src",
       "size": 0
     },
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795459568,
+      "mtime": 1795460004,
       "name": "wikinote",
       "size": 0
     },
     {
       "dir": false,
       "kind": "md",
-      "mtime": 1795459568,
+      "mtime": 1795460004,
       "name": "README.md",
       "size": 62
     }
@@ -292,7 +292,7 @@ that answers them and the page works unchanged.
   "disks": [],
   "host": "studio-mac",
   "os": "none",
-  "ts": "2026-11-23T18:46:11.079Z"
+  "ts": "2026-11-23T18:53:26.646Z"
 }
 ```
 
@@ -308,7 +308,7 @@ that answers them and the page works unchanged.
     "files": 4,
     "partial": false
   },
-  "ts": "2026-11-23T18:46:11.092738578+00:00",
+  "ts": "2026-11-23T18:53:26.659291595+00:00",
   "windows": {
     "24h": {
       "hooks": [],
@@ -331,7 +331,7 @@ that answers them and the page works unchanged.
 ```json
 {
   "available": true,
-  "updated": 1795459452,
+  "updated": 1795459887,
   "rule": "One job at a time on the GPU: book a slot before you run anything else.",
   "order": [
     "paper-proofs",

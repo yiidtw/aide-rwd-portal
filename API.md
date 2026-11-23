@@ -25,6 +25,10 @@ that answers them and the page works unchanged.
 | GET | `/api/agents/start-options` | `host` |  |
 | POST | `/api/agents/start` |  | `host` `backend` `kind` `folder` `name` |
 | POST | `/api/agents/move` |  | `host` `pane` `to` |
+| GET | `/api/handoff` |  |  |
+| POST | `/api/handoff/put` |  |  |
+| GET | `/api/handoff/local` |  |  |
+| POST | `/api/handoff/takeover` |  | `host` `from` `pane` `note` |
 | POST | `/api/agents/interrupt` |  | `host` `pane` |
 | GET | `/api/agents/messages` | `host` `limit` `pane` `since` |  |
 | GET | `/api/files/list` | `host` `pane` `path` |  |
@@ -91,13 +95,13 @@ that answers them and the page works unchanged.
 [
   {
     "age_secs": 1,
-    "created": "2026-11-23T19:22:46.143Z",
+    "created": "2026-11-23T22:41:42.171Z",
     "cwd": "aide-clipper/web-app",
     "cwd_name": "web-app",
     "gist": "aide clipper · upload_file · https://shop-admin.example.com/",
     "hold_left_secs": 86399,
     "host": "studio-mac",
-    "id": "22fb12c16ec1e691",
+    "id": "ad8f09c6572b6ded",
     "input_fp": "9e089f9d21508fb4",
     "kind": "hook",
     "pane": null,
@@ -112,7 +116,7 @@ that answers them and the page works unchanged.
   },
   {
     "age_secs": 1,
-    "created": "2026-11-23T19:22:46.143Z",
+    "created": "2026-11-23T22:41:42.171Z",
     "cwd": "/home/demo/work/web-app",
     "cwd_name": "web-app",
     "gist": "Bash · npm test checkout",
@@ -255,28 +259,28 @@ that answers them and the page works unchanged.
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795461766,
+      "mtime": 1795473702,
       "name": "docs",
       "size": 0
     },
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795461766,
+      "mtime": 1795473702,
       "name": "src",
       "size": 0
     },
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795461766,
+      "mtime": 1795473702,
       "name": "wikinote",
       "size": 0
     },
     {
       "dir": false,
       "kind": "md",
-      "mtime": 1795461766,
+      "mtime": 1795473702,
       "name": "README.md",
       "size": 62
     }
@@ -293,7 +297,7 @@ that answers them and the page works unchanged.
   "disks": [],
   "host": "studio-mac",
   "os": "none",
-  "ts": "2026-11-23T19:22:49.091Z"
+  "ts": "2026-11-23T22:41:44.671Z"
 }
 ```
 
@@ -309,7 +313,7 @@ that answers them and the page works unchanged.
     "files": 4,
     "partial": false
   },
-  "ts": "2026-11-23T19:22:49.106366414+00:00",
+  "ts": "2026-11-23T22:41:44.684578425+00:00",
   "windows": {
     "24h": {
       "hooks": [],
@@ -332,7 +336,7 @@ that answers them and the page works unchanged.
 ```json
 {
   "available": true,
-  "updated": 1795461650,
+  "updated": 1795473585,
   "rule": "One job at a time on the GPU: book a slot before you run anything else.",
   "order": [
     "paper-proofs",

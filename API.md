@@ -95,13 +95,13 @@ that answers them and the page works unchanged.
 [
   {
     "age_secs": 1,
-    "created": "2026-11-23T22:41:42.171Z",
+    "created": "2026-11-26T21:25:51.391Z",
     "cwd": "aide-clipper/web-app",
     "cwd_name": "web-app",
     "gist": "aide clipper · upload_file · https://shop-admin.example.com/",
     "hold_left_secs": 86399,
     "host": "studio-mac",
-    "id": "ad8f09c6572b6ded",
+    "id": "8265fc1b5df2ad68",
     "input_fp": "9e089f9d21508fb4",
     "kind": "hook",
     "pane": null,
@@ -116,7 +116,7 @@ that answers them and the page works unchanged.
   },
   {
     "age_secs": 1,
-    "created": "2026-11-23T22:41:42.171Z",
+    "created": "2026-11-26T21:25:51.391Z",
     "cwd": "/home/demo/work/web-app",
     "cwd_name": "web-app",
     "gist": "Bash · npm test checkout",
@@ -259,28 +259,28 @@ that answers them and the page works unchanged.
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795473702,
+      "mtime": 1795728351,
       "name": "docs",
       "size": 0
     },
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795473702,
+      "mtime": 1795728351,
       "name": "src",
       "size": 0
     },
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795473702,
+      "mtime": 1795728351,
       "name": "wikinote",
       "size": 0
     },
     {
       "dir": false,
       "kind": "md",
-      "mtime": 1795473702,
+      "mtime": 1795728351,
       "name": "README.md",
       "size": 62
     }
@@ -297,7 +297,7 @@ that answers them and the page works unchanged.
   "disks": [],
   "host": "studio-mac",
   "os": "none",
-  "ts": "2026-11-23T22:41:44.671Z"
+  "ts": "2026-11-26T21:25:59.553Z"
 }
 ```
 
@@ -313,7 +313,7 @@ that answers them and the page works unchanged.
     "files": 4,
     "partial": false
   },
-  "ts": "2026-11-23T22:41:44.684578425+00:00",
+  "ts": "2026-11-26T21:25:59.578522760+00:00",
   "windows": {
     "24h": {
       "hooks": [],
@@ -336,7 +336,7 @@ that answers them and the page works unchanged.
 ```json
 {
   "available": true,
-  "updated": 1795473585,
+  "updated": 1795728241,
   "rule": "One job at a time on the GPU: book a slot before you run anything else.",
   "order": [
     "paper-proofs",
@@ -537,7 +537,7 @@ that answers them and the page works unchanged.
     "taken_at": null,
     "text": "When the guide is done, add a troubleshooting section for Windows.",
     "turn_ended_at": null
-  },
+  }
 …
 ```
 

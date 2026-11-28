@@ -47,6 +47,7 @@ that answers them and the page works unchanged.
 | GET | `/api/push/key` |  |  |
 | POST | `/api/push/subscribe` |  |  |
 | POST | `/api/push/test` |  |  |
+| POST | `/api/push/check` |  |  |
 | GET | `/sw.js` |  |  |
 | GET | `/vendor/html2canvas.js` |  |  |
 | GET | `/vendor/pdf.min.mjs` |  |  |
@@ -95,31 +96,31 @@ that answers them and the page works unchanged.
 [
   {
     "age_secs": 1,
-    "created": "2026-11-26T23:02:45.624Z",
-    "cwd": "aide-clipper/web-app",
-    "cwd_name": "web-app",
-    "gist": "aide clipper · upload_file · https://shop-admin.example.com/",
-    "hold_left_secs": 86399,
-    "host": "studio-mac",
-    "id": "41cafa3f2111cbdf",
-    "input_fp": "9e089f9d21508fb4",
-    "kind": "hook",
-    "pane": null,
-    "permission_mode": "default",
-    "preview": "command: web-app wants to upload invoice-2026-11.pdf (84 KB) into input[type=file]\nurl: https://shop-admin.example.com/",
-    "preview_truncated": false,
-    "reason": null,
-    "session_id": "clipper-c7",
-    "title": "aide clipper · upload_file · https://shop-admin.example.com/",
-    "tool": "aide clipper · upload_file",
-    "workspace": null
-  },
-  {
-    "age_secs": 1,
-    "created": "2026-11-26T23:02:45.624Z",
+    "created": "2026-11-28T11:33:41.922Z",
     "cwd": "/home/demo/work/web-app",
     "cwd_name": "web-app",
     "gist": "Bash · npm test checkout",
+    "hold_left_secs": 86399,
+    "host": "studio-mac",
+    "id": "0db26c8daa71b48f",
+    "input_fp": "4395966a5102d06b",
+    "kind": "hook",
+    "pane": "w1:p1",
+    "permission_mode": "default",
+    "preview": "command: npm test -- --watch=false checkout",
+    "preview_truncated": false,
+    "reason": null,
+    "session_id": "d3e0a001-0000-4000-8000-000000000001",
+    "title": "Run the checkout tests once",
+    "tool": "Bash",
+    "workspace": "w1"
+  },
+  {
+    "age_secs": 1,
+    "created": "2026-11-28T11:33:41.923Z",
+    "cwd": "aide-clipper/web-app",
+    "cwd_name": "web-app",
+    "gist": "aide clipper · upload_file · https://shop-admin.example.com/",
     "hold_left_secs": 86399,
     "host": "studio-mac",
 …
@@ -259,28 +260,28 @@ that answers them and the page works unchanged.
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795734165,
+      "mtime": 1795865621,
       "name": "docs",
       "size": 0
     },
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795734165,
+      "mtime": 1795865621,
       "name": "src",
       "size": 0
     },
     {
       "dir": true,
       "kind": "dir",
-      "mtime": 1795734165,
+      "mtime": 1795865621,
       "name": "wikinote",
       "size": 0
     },
     {
       "dir": false,
       "kind": "md",
-      "mtime": 1795734165,
+      "mtime": 1795865621,
       "name": "README.md",
       "size": 62
     }
@@ -297,7 +298,7 @@ that answers them and the page works unchanged.
   "disks": [],
   "host": "studio-mac",
   "os": "none",
-  "ts": "2026-11-26T23:02:48.249Z"
+  "ts": "2026-11-28T11:33:44.469Z"
 }
 ```
 
@@ -313,7 +314,7 @@ that answers them and the page works unchanged.
     "files": 4,
     "partial": false
   },
-  "ts": "2026-11-26T23:02:48.263533999+00:00",
+  "ts": "2026-11-28T11:33:44.485306545+00:00",
   "windows": {
     "24h": {
       "hooks": [],
@@ -336,7 +337,7 @@ that answers them and the page works unchanged.
 ```json
 {
   "available": true,
-  "updated": 1795734049,
+  "updated": 1795865505,
   "rule": "One job at a time on the GPU: book a slot before you run anything else.",
   "order": [
     "paper-proofs",
